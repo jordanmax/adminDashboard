@@ -400,14 +400,30 @@ textarea {
   .md-lead:hover .md-lead__date {
     border-left: 3px solid #3f51b5; }
   .md-lead--new {
-    border-left: 3px solid #3f51b5; }
+    border-left: 3px solid #3f51b5;
+    /*			.md-lead__label {
+				background: #fff;
+			}
+			.md-lead__body .md-lead__label {
+				background: #C3C3C3;
+			}
+			.md-lead__title {
+			    border-bottom: 1px solid #1E3098;
+			}
+			.md-lead__main {
+			    border-left: 1px solid #1E3098;
+			}
+			.md-lead__check-btn {
+				background:#00bcd4;
+			}
+			&:hover {
+				border-left: 3px solid rgb(255,64,129);
+			}*/ }
     .md-lead--new .md-lead__date {
       background: #3f51b5;
       color: #fff; }
-    .md-lead--new:hover {
-      border-left: 3px solid #ff4081; }
   .md-lead__check-btn {
-    background: #3f51b5;
+    background: #00bcd4;
     color: #fff; }
     .md-lead__check-btn:hover {
       background: #ff4081; }
