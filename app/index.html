@@ -38,10 +38,6 @@
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
           <a href="#scroll-tab-1" class="mdl-layout__tab is-active">Leads</a>
           <a href="#scroll-tab-2" class="mdl-layout__tab">Calendar</a>
-          <a href="#scroll-tab-3" class="mdl-layout__tab">Tab 3</a>
-          <a href="#scroll-tab-4" class="mdl-layout__tab">Tab 4</a>
-          <a href="#scroll-tab-5" class="mdl-layout__tab">Tab 5</a>
-          <a href="#scroll-tab-6" class="mdl-layout__tab">Tab 6</a>
         </div>
       </header>
       <div class="mdl-layout__drawer">
@@ -61,50 +57,116 @@
           <div class="mdl-cell mdl-cell--12-col">
             <section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
               <div class="page-content">
-                <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp full-width">
-                  <thead>
-                    <tr>
-                      <th class="full-width mdl-data-table__cell--non-numeric">Material</th>
-                      <th>Quantity</th>
-                      <th>Unit price</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
-                      <td>25</td>
-                      <td>$2.90</td>
-                    </tr>
-                    <tr>
-                      <td class="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
-                      <td>50</td>
-                      <td>$1.25</td>
-                    </tr>
-                    <tr>
-                      <td class="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-                      <td>10</td>
-                      <td>$2.35</td>
-                    </tr>
-                  </tbody>
-                </table>
+
+                    <div class="filter-form">
+                      <form action="#">
+                      <div class="mdl-textfield filter-form__select-all mdl-js-textfield">
+                      <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+                        <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
+                        <span class="mdl-checkbox__label">Select All</span>
+                      </label>
+                      </div>
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">
+                          <label class="mdl-textfield__label" for="sample2"><i class="material-icons">search</i></label>
+                          <span class="mdl-textfield__error">Input is not a number!</span>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <select class="mdl-textfield__input" id="professsion" name="professsion">
+                            <option value=""></option>
+                            <option value="option1">option 1</option>
+                            <option value="option2">option 2</option>
+                            <option value="option3">option 3</option>
+                            <option value="option4">option 4</option>
+                            <option value="option5">option 5</option>
+                          </select>
+                          <label class="mdl-textfield__label" for="professsion">Filter by:</label>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="md-lead md-lead--new mdl-shadow--2dp">
+                        <!-- Right aligned menu below button -->
+                        <div class="md-lead__date">
+                          <i class="material-icons">event</i>
+                          <div>May 13</div>
+                           10:30 AM  
+                        </div>
+
+                        <div class="md-lead__main">
+                          <div class="md-lead__title">
+                            <span class="md-lead__label">
+                              <i class="material-icons">place</i>Ontario, CA, United States
+                            </span>  
+                            <i class="material-icons">trending_flat</i>  
+                            <span class="md-lead__label">
+                            <i class="material-icons">place</i>Ontario, CA, United States</span> 
+                            <div class="md-lead__title__btns">
+                              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab md-lead__check-btn">
+                                <i class="material-icons">check</i>
+                              </button>
+                              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--accent">
+                                <i class="material-icons">place</i>
+                              </button>
+                              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+                                <i class="material-icons">delete_forever</i>
+                              </button>
+                            </div>
+                          
+                          </div>
+                          <div class="md-lead__body">
+                              <span class="md-lead__label"><b>Moving date: </b>05/05/2016</span>
+                              <span class="md-lead__label"><b>Moving size: </b>Over 3</span>
+                              <span class="md-lead__label"><b>Phone: </b>9095454758</span>
+                              <span class="md-lead__label"><b>E-mail: </b>tgfireup@gmail.com</span>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="md-lead mdl-shadow--2dp">
+                        <!-- Right aligned menu below button -->
+                        <div class="md-lead__date">
+                          <i class="material-icons">event</i>
+                          <div>May 13</div>
+                           10:30 AM  
+                        </div>
+
+                        <div class="md-lead__main">
+                          <div class="md-lead__title">
+                            <span class="md-lead__label">
+                              <i class="material-icons">place</i>Ontario, CA, United States
+                            </span>  
+                            <i class="material-icons">trending_flat</i>  
+                            <span class="md-lead__label">
+                            <i class="material-icons">place</i>Ontario, CA, United States</span> 
+                            <div class="md-lead__title__btns">
+                            
+                              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--accent">
+                                <i class="material-icons">place</i>
+                              </button>
+                              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+                                <i class="material-icons">delete_forever</i>
+                              </button>
+                            </div>
+                          
+                          </div>
+                          <div class="md-lead__body">
+                              <span class="md-lead__label"><b>Moving date: </b>05/05/2016</span>
+                              <span class="md-lead__label"><b>Moving size: </b>Over 3</span>
+                              <span class="md-lead__label"><b>Phone: </b>9095454758</span>
+                              <span class="md-lead__label"><b>E-mail: </b>tgfireup@gmail.com</span>
+                          </div>
+                        </div>
+                    </div>
+
+                  
               </div>
             </section>
             <section class="mdl-layout__tab-panel" id="scroll-tab-2">
               <div class="page-content">
-                    <div class="mdl-card mdl-shadow--2dp full-width">
-                        <div class="mdl-card__title">
-                            <h2 class="mdl-card__title-text">Move from: Ontario, CA, United States <i class="material-icons">trending_flat</i> Move to: Ontario, CA, United States</h2>
-                        </div>
-
-                        Moving date: 05/05/2016
 
 
-Moving size: Over 3
-Phone: 9095454758
-E-mail: tgfireup@gmail.com
-Referrer: from google.com
-                    </div>
-                </div>
+
+
               </div>
             </section>
             <section class="mdl-layout__tab-panel" id="scroll-tab-3">
