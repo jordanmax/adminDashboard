@@ -35219,6 +35219,9 @@ const navbar_component_1 = require('./components/navbar.component');
 const sidebar_component_1 = require('./components/sidebar.component');
 const leads_component_1 = require('./components/leads.component');
 let AppComponent = class AppComponent {
+    constructor() {
+        this.ckeditorContent = `<p>My HTML</p>`;
+    }
 };
 AppComponent = __decorate([
     core_1.Component({
@@ -35229,6 +35232,7 @@ AppComponent = __decorate([
         <sidebar class="mdl-layout__drawer"></sidebar>
         <main class="mdl-layout__content">
             <div class="mdl-grid">
+
                 <div class="mdl-cell mdl-cell--12-col">
                     <leads></leads>
                 </div>
@@ -35462,6 +35466,14 @@ let LeadsComponent = class LeadsComponent {
     markAsRead(groupIndex, leadIndex) {
         this.inbox[groupIndex].dayGroup.leads[leadIndex].type = 'read';
     }
+    showEditor(groupIndex, leadIndex) {
+        var lead = this.inbox[groupIndex].dayGroup.leads[leadIndex];
+        var selector = 'textarea#' + 'area-' + lead.id;
+        console.log(selector);
+        lead.showEditor = !lead.showEditor;
+        lead.type = 'read';
+        tinymce.init({ selector: selector });
+    }
     showMap(groupIndex, leadIndex) {
         var lead = this.inbox[groupIndex].dayGroup.leads[leadIndex];
         this.initMap(groupIndex, leadIndex);
@@ -35515,8 +35527,11 @@ LeadsComponent = __decorate([
       <div *ngFor="let lead of group.dayGroup.leads, let leadIndex = index" class="md-lead mdl-shadow--2dp {{ lead.type == 'new' ? 'md-lead--new' : '' }}">
         <div class="md-lead__main-wrap">
           <div class="md-lead__btns">
-            <button class="mdl-button mdl-button--icon mdl-button--accent" (click)="markAsRead(groupIndex, leadIndex)">
+            <button *ngIf="lead.type == 'new'" class="mdl-button mdl-button--icon mdl-button--accent" (click)="markAsRead(groupIndex, leadIndex)">
               <i class="material-icons">check</i>
+            </button>
+            <button class="mdl-button mdl-button--icon" (click)="showEditor(groupIndex, leadIndex)">
+              <i class="material-icons">&#xE158;</i>
             </button>
             <button class="mdl-button mdl-button--icon mdl-button--colored"(click)="showMap(groupIndex, leadIndex)">
               <i class="material-icons">place</i>
@@ -35548,6 +35563,21 @@ LeadsComponent = __decorate([
   
         <div class="md-lead__map-wrapper {{ lead.collapsed ? 'md-lead__map-wrapper--collapsed' : '' }}">
           <div id="map-{{ lead.id }}" class="md-lead__map"></div>
+        </div>
+
+        <div class="md-lead__send-msg {{ lead.showEditor ? '' : 'md-lead__send-msg--collapsed' }}">
+          <form action="#">
+            <textarea class="mdl-textfield__input"
+                      type="text"
+                      rows="3"
+                      id="area-{{ lead.id }}" >
+            </textarea>
+            <div class="mdl-textfield--align-right">
+              <button class="mdl-button mdl-button--raised mdl-button--accent">
+                Send
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

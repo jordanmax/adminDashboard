@@ -12,6 +12,7 @@ import {LeadsComponent} from './components/leads.component';
         <sidebar class="mdl-layout__drawer"></sidebar>
         <main class="mdl-layout__content">
             <div class="mdl-grid">
+
                 <div class="mdl-cell mdl-cell--12-col">
                     <leads></leads>
                 </div>
@@ -22,4 +23,7 @@ import {LeadsComponent} from './components/leads.component';
   directives: [NavBarComponent, SideBarComponent, LeadsComponent]
 })
 export class AppComponent {
+  constructor() {
+    this.ckeditorContent = `<p>My HTML</p>`;
+  }
 }

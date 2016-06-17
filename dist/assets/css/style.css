@@ -393,22 +393,20 @@ textarea {
 .md-lead {
   margin-bottom: 10px;
   position: relative;
-  background: #fff; }
+  background: #efefef; }
   .md-lead .md-lead__label {
     color: #333333;
     text-transform: none; }
   .md-lead__main-wrap {
-    border-left: 3px solid #fff;
+    border-left: 3px solid transparent;
     transition: border-color .3s ease; }
     .md-lead__main-wrap:hover {
       border-left: 3px solid #3f51b5; }
   .md-lead__map {
     height: 300px;
     width: 100%; }
-  .md-lead__body {
-    margin-top: 10px; }
-    .md-lead__body .md-lead__label {
-      background: transparent; }
+  .md-lead__body .md-lead__label {
+    background: transparent; }
   .md-lead__show-more {
     width: 100%;
     position: relative;
@@ -426,10 +424,12 @@ textarea {
     .md-lead__show-more .material-icons {
       font-size: 30px;
       line-height: 20px; }
-  .md-lead--new .md-lead__label {
-    font-weight: bold; }
-  .md-lead--new .md-lead__main-wrap {
-    border-left: 3px solid #ff4081; }
+  .md-lead--new {
+    background: #fff; }
+    .md-lead--new .md-lead__label {
+      font-weight: bold; }
+    .md-lead--new .md-lead__main-wrap {
+      border-left: 3px solid #ff4081; }
   .md-lead__check-btn {
     background: #00bcd4;
     color: #fff; }
@@ -447,15 +447,30 @@ textarea {
   .md-lead__main {
     position: relative;
     padding: 10px;
-    margin-right: 105px; }
+    margin-right: 140px; }
   .md-lead__btns {
     float: right;
-    width: 105px;
-    padding: 12px; }
+    width: 140px;
+    padding: 12px;
+    text-align: right; }
   .md-lead__title {
     font-size: 16px; }
     .md-lead__title .material-icons {
       vertical-align: middle; }
+  .md-lead__send-msg {
+    padding: 10px;
+    height: auto;
+    opacity: 1; }
+    .md-lead__send-msg--collapsed {
+      height: 0;
+      padding: 0;
+      opacity: 0;
+      overflow: hidden; }
+    .md-lead__send-msg .mdl-textfield__input {
+      width: 100%;
+      margin-bottom: 10px; }
+    .md-lead__send-msg .mdl-textfield--align-right {
+      margin-top: 10px; }
   .md-lead__map-wrapper {
     height: auto;
     opacity: 1; }
