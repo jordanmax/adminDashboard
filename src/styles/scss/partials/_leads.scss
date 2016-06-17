@@ -7,6 +7,13 @@
       color: #333333;
       text-transform: none;
     }
+    &__main-wrap {
+      border-left: 3px solid #fff;
+      transition: border-color .3s ease;
+      &:hover {
+        border-left: 3px solid rgb(63,81,181);
+      }
+    }
     &__map {
       height: 300px;
       width: 100%;
@@ -46,7 +53,7 @@
       .md-lead__label {
         font-weight: bold;
       }
-      .md-lead__main {
+      .md-lead__main-wrap {
         border-left: 3px solid rgb(255,64,129);
       }
 
@@ -75,11 +82,6 @@
 			position: relative;
 			padding: 10px;
       margin-right: 105px;
-      border-left: 3px solid #fff;
-      transition: border-color .3s ease;
-      &:hover {
-        border-left: 3px solid rgb(63,81,181);
-      }
     }
     &__btns {
       float: right;
