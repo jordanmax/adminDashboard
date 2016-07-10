@@ -270,8 +270,8 @@ export class LeadsComponent {
   ];
 
   moveToTrash(groupIndex, leadIndex) {
-    var allLeads = this.inbox[groupIndex].dayGroup.leads;
-    var lead = allLeads[leadIndex];
+    let allLeads = this.inbox[groupIndex].dayGroup.leads;
+    let lead = allLeads[leadIndex];
     if (confirm("Are you sure you want to delete " + lead.date + "?")) {
       allLeads.splice(leadIndex, 1);
     }
@@ -282,8 +282,8 @@ export class LeadsComponent {
   }
 
   showEditor(groupIndex, leadIndex) {
-    var lead = this.inbox[groupIndex].dayGroup.leads[leadIndex];
-    var selector = 'textarea#' + 'area-' + lead.id;
+    let lead = this.inbox[groupIndex].dayGroup.leads[leadIndex];
+    let selector = 'textarea#' + 'area-' + lead.id;
     console.log(selector)
     lead.showEditor = !lead.showEditor;
     lead.type = 'read';
@@ -291,17 +291,17 @@ export class LeadsComponent {
   }
 
   showMap(groupIndex, leadIndex) {
-    var lead = this.inbox[groupIndex].dayGroup.leads[leadIndex];
+    let lead = this.inbox[groupIndex].dayGroup.leads[leadIndex];
     this.initMap(groupIndex, leadIndex);
     lead.type = 'read';
     lead.collapsed = !lead.collapsed
   }
 
   initMap(groupIndex, leadIndex) {
-    var lead = this.inbox[groupIndex].dayGroup.leads[leadIndex];
-    var that = this;
-    var directionsDisplay;
-    var directionsService = new google.maps.DirectionsService();
+    let lead = this.inbox[groupIndex].dayGroup.leads[leadIndex];
+    let that = this;
+    let directionsDisplay;
+    let directionsService = new google.maps.DirectionsService();
 
     initialize();
     calcRoute();

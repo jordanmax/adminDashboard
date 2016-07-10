@@ -20,17 +20,6 @@ import {Component} from '@angular/core';
         </div>
       </div>
     </div>
-    <!-- Tabs -->
-    <div class="mdl-layout__tab-bar-container">
-      <div class="mdl-layout__tab-bar-button mdl-layout__tab-bar-left-button">
-        <i class="material-icons">chevron_left</i>
-      </div>
-      <div class="mdl-layout__tab-bar is-casting-shadow">
-        <a href="#scroll-tab-1" class="mdl-layout__tab is-active">Tab 1</a>
-        <a href="#scroll-tab-2" class="mdl-layout__tab">Tab 2upgraded</a>
-      </div>
-      <div class="mdl-layout__tab-bar-button mdl-layout__tab-bar-right-button"><i class="material-icons">chevron_right</i></div>
-    </div>
     `
 })
 export class NavBarComponent { }

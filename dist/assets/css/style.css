@@ -384,8 +384,7 @@ textarea {
 
 .mdl-layout-title--colored {
   background: #00bcd4;
-  color: #fff;
-  height: 112px; }
+  color: #fff; }
 
 .mdl-layout__drawer {
   border-right: none; }
@@ -503,6 +502,80 @@ textarea {
     line-height: 36px;
     vertical-align: middle; }
 
+.calendar {
+  padding: 20px;
+  background: #fff; }
+  .calendar__legend {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: #3f51b5;
+    border-radius: 50%;
+    margin-right: 20px; }
+  .calendar__legend-list {
+    margin: 0 0 20px; }
+  .calendar__header {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    font-size: 26px; }
+    .calendar__header i {
+      cursor: pointer; }
+    .calendar__header__title {
+      color: #3f51b5;
+      padding: 0 20px; }
+  .calendar__labels {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+    .calendar__labels__item {
+      width: calc(100% / 7);
+      box-sizing: border-box;
+      text-transform: uppercase;
+      background: #f3f3f3;
+      text-align: center;
+      line-height: 40px; }
+  .calendar__week {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+    .calendar__week + .calendar__week {
+      border-top: 1px solid #f3f3f3; }
+  .calendar__day {
+    width: calc(100% / 7);
+    box-sizing: border-box;
+    height: 20vh;
+    padding: 2px;
+    position: relative; }
+    .calendar__day:not(:last-child) {
+      border-right: 1px solid #f3f3f3; }
+    .calendar__day__date {
+      font-size: 16px;
+      color: #757575; }
+      .calendar__day__date.current {
+        color: rgba(0, 0, 0, 0.87); }
+    .calendar__day__job {
+      background: #3f51b5;
+      display: block;
+      color: #fff;
+      padding: 4px;
+      font-size: 12px;
+      line-height: 14px; }
+      .calendar__day__job + .calendar__day__job {
+        margin-top: 2px; }
+    .calendar__day .small {
+      background: #4caf50; }
+    .calendar__day .medium {
+      background: #ff9800; }
+    .calendar__day .large {
+      background: #f44336; }
+
 .filter-form {
   padding: 10px;
   background: #fff;
@@ -542,6 +615,27 @@ textarea {
 
 .body {
   color: #464646; }
+
+.text-right {
+  text-align: right; }
+
+.green {
+  background: #4caf50; }
+
+.orange {
+  background: #ff9800; }
+
+.red {
+  background: #f44336; }
+
+.green-text {
+  color: #4caf50; }
+
+.orange-text {
+  color: #ff9800; }
+
+.red-text {
+  color: #f44336; }
 
 @media print {
   * {

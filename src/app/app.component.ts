@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
+import { ROUTER_DIRECTIVES }  from '@angular/router';
+
 import {NavBarComponent} from './components/navbar.component';
 import {SideBarComponent} from './components/sidebar.component';
-import {LeadsComponent} from './components/leads.component';
-
 
 @Component({
   selector: 'my-app',
@@ -12,15 +12,14 @@ import {LeadsComponent} from './components/leads.component';
         <sidebar class="mdl-layout__drawer"></sidebar>
         <main class="mdl-layout__content">
             <div class="mdl-grid">
-
                 <div class="mdl-cell mdl-cell--12-col">
-                    <leads></leads>
+                    <router-outlet></router-outlet>
                 </div>
             </div>
         </main>
       </div>
       `,
-  directives: [NavBarComponent, SideBarComponent, LeadsComponent]
+  directives: [NavBarComponent, SideBarComponent, ROUTER_DIRECTIVES]
 })
 export class AppComponent {
   constructor() {
