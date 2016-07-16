@@ -11,7 +11,8 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync'),
     autoprefixer = require('gulp-autoprefixer'),
     sass = require('gulp-sass'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    modRewrite  = require('connect-modrewrite');
 
 var paths = {
   pages: ['src/*.html']
@@ -19,7 +20,7 @@ var paths = {
 
 gulp.task('css', function () {
     return gulp.src('src/styles/scss/style.scss')
-    .pipe(sass({errLogToConsole: true}))
+    .pipe(sass({errLogToConsole: true}).on('error', sass.logError))
     .pipe(autoprefixer('last 4 version'))
     .pipe(gulp.dest('./dist/assets/css'))
     .pipe(cssnano())
@@ -55,6 +56,7 @@ gulp.task('browser-sync', function() {
     }
   });
 });
+
 gulp.task('bs-reload', function () {
   browserSync.reload();
 });

@@ -49059,7 +49059,7 @@ let CalendarComponent = class CalendarComponent {
             },
             {
                 id: 2,
-                size: '2 bad room',
+                size: 'large',
                 date: '10-6-2016',
                 title: 'Move tigers to Snata Monica'
             },
@@ -49089,7 +49089,7 @@ let CalendarComponent = class CalendarComponent {
             },
             {
                 id: 2,
-                size: '2 bad room',
+                size: 'large',
                 date: '7-6-2016',
                 title: 'Move tigers to Snata Monica'
             },
@@ -49119,7 +49119,7 @@ let CalendarComponent = class CalendarComponent {
             },
             {
                 id: 2,
-                size: '2 bad room',
+                size: 'large',
                 date: '1-7-2016',
                 title: 'Move tigers to Snata Monica'
             },
@@ -49149,7 +49149,7 @@ let CalendarComponent = class CalendarComponent {
             },
             {
                 id: 2,
-                size: '2 bad room',
+                size: 'large',
                 date: '1-6-2016',
                 title: 'Move tigers to Snata Monica'
             },
@@ -49181,6 +49181,8 @@ let CalendarComponent = class CalendarComponent {
         this.month = this.calCurrentDate.getMonth();
         this.year = this.calCurrentDate.getFullYear();
         this.currentMonthDays = this.getDaysInMonth(this.month, this.year);
+        this.selectedDayWeekIndex = null;
+        this.selectedDayIndex = null;
     }
     getDaysInMonth(month, year) {
         let date = new Date(year, month, 1);
@@ -49198,11 +49200,11 @@ let CalendarComponent = class CalendarComponent {
                     date: jobDate,
                     day: day,
                     miliseconds: date.getTime(),
+                    fullDate: date.toLocaleDateString(),
                     isCurrentMonth: date.getMonth() === month ? 'current' : '',
-                    jobs: []
+                    jobs: [],
+                    className: ''
                 };
-                // console.log('job date:' + date.getMonth() + ' job Month:' + date.getDate())
-                // console.log('================')
                 this.jobs.forEach(job => {
                     let jobDay = job.date.split('-');
                     let jobDate = jobDay[0];
@@ -49212,12 +49214,16 @@ let CalendarComponent = class CalendarComponent {
                     }
                 });
                 days.push(item);
-                console.log(days);
                 date.setDate(date.getDate() + 1);
             }
-            weeks.push(days.slice(0));
+            weeks.push({
+                days: days.slice(0),
+                selectedDay: null,
+                className: 'closed'
+            });
             days.length = 0;
         }
+        console.log(weeks);
         return weeks;
     }
     sortByWeeks() {
@@ -49229,6 +49235,20 @@ let CalendarComponent = class CalendarComponent {
     showPrevMonth() {
         this.currentMonthDays = this.getDaysInMonth(this.month - 1, this.year);
         this.month--;
+    }
+    showFullInfo(day, weekIndex, dayIndex) {
+        if (this.selectedDayWeekIndex && this.selectedDayIndex) {
+            this.currentMonthDays[this.selectedDayWeekIndex].selectedDay = null;
+            this.currentMonthDays[this.selectedDayWeekIndex].className = 'closed';
+            this.currentMonthDays[this.selectedDayWeekIndex]
+                .days[this.selectedDayIndex].className = '';
+        }
+        this.currentMonthDays[weekIndex].days[dayIndex].className = 'active';
+        this.currentMonthDays[weekIndex].selectedDay = day;
+        this.currentMonthDays[weekIndex].className = 'active';
+        this.selectedDayWeekIndex = weekIndex;
+        this.selectedDayIndex = dayIndex;
+        console.log(day);
     }
 };
 CalendarComponent = __decorate([
@@ -49295,14 +49315,35 @@ CalendarComponent = __decorate([
         </div>
       </div>
 
-      <div class="calendar__week" *ngFor="let week of currentMonthDays, let groupIndex = index">
-        <div class="calendar__day" *ngFor="let day of week">
-          <span class="calendar__day__date {{ day.isCurrentMonth }}">
-            {{ day.date }}
-          </span>
-          <span class="calendar__day__job {{ job.size }}" *ngFor="let job of day.jobs">
-            {{ job.title }}
-          </span>
+      <div class="calendar__week" *ngFor="let week of currentMonthDays, let weekIndex = index">
+        
+        <div class="calendar__days-wrap">
+          <div class="calendar__day" *ngFor="let day of week.days, let dayIndex = index" (click)="showFullInfo(day, weekIndex, dayIndex)">
+            <div class="calendar__day-inner {{ day.className }}">
+              <span class="calendar__day__date {{ day.isCurrentMonth }}">
+                {{ day.date }}
+              </span>
+              <span class="calendar__day__job {{ job.size }}" *ngFor="let job of day.jobs">
+                {{ job.date }} | {{ job.size }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="calendar__day-full-info {{ week.className }}">
+          <div *ngIf="week.selectedDay">
+            <div class="calendar__day__date-label">{{ week.selectedDay.fullDate }}</div>
+            <div *ngFor="let job of week.selectedDay.jobs"
+                  class="calendar__day-full-info__job">
+              {{ job.date }} | {{ job.size }} | {{ job.title }} 
+            </div>
+            <div *ngIf="!week.selectedDay.jobs.length" class="calendar__day__no-job">
+                No jobs booked for today 
+                <button class="mdl-button mdl-button--raised mdl-button--colored">
+                  Add job
+                </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>`
