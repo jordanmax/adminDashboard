@@ -1,9 +1,9 @@
 import { provideRouter, RouterConfig } from '@angular/router';
 import {LeadsComponent} from './components/leads.component';
-import {CalendarComponent} from './components/calendar.component';
+import {CalendarComponent} from './calendar/calendar.component';
 
 export const routes: RouterConfig = [
-  { path: '', component: LeadsComponent },
+  { path: '', component: CalendarComponent },
   { path: 'calendar', component: CalendarComponent },
 ];
 

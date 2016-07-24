@@ -38,7 +38,7 @@
 	}
 	&__week {
 		& + & {
-			border-top: 1px solid $gray;	
+			border-top: 1px solid $gray;
 		}
 	}
 	&__days-wrap {
@@ -46,6 +46,7 @@
 	}
 	&__day {
 		width: calc(100% / 7);
+    height: 10vh;
 		box-sizing: border-box;
 		position: relative;
 		cursor:pointer;
@@ -63,7 +64,7 @@
 			font-size: 16px;
 			color: $gray;
 			&.current {
-				color: $black;	
+        color: $black;
 			}
 		}
 		&__job {
@@ -103,10 +104,20 @@
 		box-sizing: border-box;
 		position: relative;
 		&.active {
-			background: $indigo;
-			.calendar__day__date.current {
-				color: #fff
-			}
+			background: $gray;
+      color: $black;
+      .calendar__day__date {
+        color: $black;
+      }
+		//	.calendar__day__date.current {
+		//		color: #fff;
+		//	}
+      //&:hover {
+      //  .calendar__day__date {
+      //    color: #fff
+      //  }
+      //}
+
 			&:after {
 			content: '';
 			position: absolute;
@@ -117,7 +128,7 @@
 			height: 0;
 			border-style: solid;
 			border-width: 20px 15px 0 15px;
-			border-color: $indigo transparent transparent transparent;
+			border-color: $gray transparent transparent transparent;
 			z-index: 1;
 			}
 		}
@@ -129,12 +140,12 @@
 		width: calc(100% + 40px);
 		margin-left: -20px;
 		box-sizing: border-box;
-	    box-shadow: inset 0px 15px 6px -10px rgba(0,0,0,0.15);
-	    position: relative;
-	    transition: all .3s cubic-bezier(0.4, 0.0, 0.2, 1);
-	    &.active {
-	    	padding: 20px;
-	    }
+    box-shadow: inset 0 15px 6px -10px rgba(0,0,0,0.15);
+    position: relative;
+    transition: all .3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    &.active {
+      padding: 20px;
+    }
 		&__job {
 			background: #fff;
 			padding: 5px;

@@ -2,10 +2,12 @@
 	&-lead {
 		margin-bottom: 10px;
 		position: relative;
-		background: #efefef;
+		background: #fff;
+    opacity: .8;
     .md-lead__label {
       color: #333333;
       text-transform: none;
+      background: transparent;
     }
     &__main-wrap {
       border-left: 3px solid transparent;
@@ -50,14 +52,18 @@
     }
 		&--new {
       background: #fff;
+      @include boxShadow();
+      opacity: 1;
       .md-lead__label {
         font-weight: bold;
       }
       .md-lead__main-wrap {
         border-left: 3px solid rgb(255,64,129);
       }
-
-		}
+      .md-lead__main .md-lead__label {
+        background-color: hsla(0,0%,62%,.2);
+      }
+    }
 		&__check-btn {
 			background: #00bcd4;
 			color: #fff;
@@ -149,6 +155,7 @@
 		    line-height: 36px;
 		    vertical-align: middle;
 		}
-
 	}
 }
+
+

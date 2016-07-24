@@ -1,0 +1,93 @@
+<div class="modal" [ngClass]="{open: isOpen, close: isClosed}">
+  <div class="modal__overlay"></div>
+  <div class="modal__content">
+    <div class="modal__header">
+      Add new job
+      {{ isOpen }}
+      {{ isClosed }}
+    </div>
+
+      <form action="#" (ngSubmit)="onSubmit()" #jobForm="ngForm">
+
+        <div class="mdl-grid">
+
+      <div class="form-field mdl-cell mdl-cell--6-col">
+        <input class="form-field__input"
+               type="text"
+               id="movingDate"
+               [(ngModel)]="model.movingDate" name="movingDate"
+               ngControl="name" #name="ngForm" required>
+        <label class="form-field__label" for="movingDate">Date...</label>
+        <span></span>
+        <div class="form-field__error" [hidden]="name.valid || name.pristine">
+          Date is required
+        </div>
+      </div>
+      <div class="form-field mdl-cell mdl-cell--6-col">
+        <input class="form-field__input"
+               type="text"
+               id="movingSize"
+               [(ngModel)]="model.movingSize" name="movingSize"
+        >
+        <label class="form-field__label" for="movingSize">Moving size...</label>
+        <span></span>
+      </div>
+
+      <div class="form-field mdl-cell mdl-cell--6-col">
+        <input class="form-field__input"
+               type="text"
+               id="moveFrom"
+               [(ngModel)]="model.moveFrom" name="moveFrom"
+        >
+        <label class="form-field__label" for="moveFrom">Move From...</label>
+        <span></span>
+      </div>
+
+      <div class="form-field mdl-cell mdl-cell--6-col">
+        <input class="form-field__input"
+               type="text"
+               id="moveTo"
+               [(ngModel)]="model.moveFrom" name="moveTo"
+        >
+        <label class="form-field__label" for="moveTo">Move To...</label>
+        <span></span>
+      </div>
+
+      <div class="form-field mdl-cell mdl-cell--4-col">
+        <input class="form-field__input"
+               type="text"
+               id="Phone"
+               [(ngModel)]="model.phone" name="phone"
+        >
+        <label class="form-field__label" for="Phone">Phone...</label>
+        <span></span>
+      </div>
+      <div class="form-field mdl-cell mdl-cell--4-col">
+        <input class="form-field__input"
+               type="text"
+               id="name"
+               [(ngModel)]="model.name" name="name"
+        >
+        <label class="form-field__label" for="name">Name...</label>
+        <span></span>
+      </div>
+      <div class="form-field mdl-cell mdl-cell--4-col">
+        <input class="form-field__input"
+               type="text"
+               id="mail"
+               [(ngModel)]="model.mail" name="mail"
+        >
+        <label class="form-field__label" for="mail">E-mail...</label>
+        <span></span>
+      </div>
+
+    </div>
+
+        <div class="small-space"></div>
+        <button type="button" class="mdl-button" (click)="closeModal()">Close</button>
+        <button class="mdl-button mdl-button--raised" [disabled]="!jobForm.form.valid">Create job</button>
+
+      </form>
+
+  </div>
+</div>

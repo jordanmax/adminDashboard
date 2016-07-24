@@ -13,6 +13,8 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     uglify = require('gulp-uglify'),
     modRewrite  = require('connect-modrewrite');
+    //babel = require("gulp-babel");
+    //babel = require('babelify');
 
 var paths = {
   pages: ['src/*.html']

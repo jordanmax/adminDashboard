@@ -49003,43 +49003,145 @@ const router_1 = require('@angular/router');
 const navbar_component_1 = require('./components/navbar.component');
 const sidebar_component_1 = require('./components/sidebar.component');
 let AppComponent = class AppComponent {
-    constructor() {
-        this.ckeditorContent = `<p>My HTML</p>`;
-    }
 };
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
         template: `
-      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer has-drawer has-tabs is-upgraded">
-        <navbar class="mdl-layout__header is-casting-shadow"></navbar>
-        <sidebar class="mdl-layout__drawer"></sidebar>
-        <main class="mdl-layout__content">
-            <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--12-col">
-                    <router-outlet></router-outlet>
-                </div>
-            </div>
+        <navbar class="header"></navbar>
+        <main class="main">
+          <sidebar class="sidebar"></sidebar>
+          <div class="page-content">
+            <router-outlet></router-outlet>
+          </div>
         </main>
-      </div>
       `,
         directives: [navbar_component_1.NavBarComponent, sidebar_component_1.SideBarComponent, router_1.ROUTER_DIRECTIVES]
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;
-},{"./components/navbar.component":383,"./components/sidebar.component":384,"@angular/core":148,"@angular/router":307}],380:[function(require,module,exports){
+},{"./components/navbar.component":391,"./components/sidebar.component":392,"@angular/core":148,"@angular/router":307}],380:[function(require,module,exports){
 "use strict";
 const router_1 = require('@angular/router');
-const leads_component_1 = require('./components/leads.component');
-const calendar_component_1 = require('./components/calendar.component');
+const calendar_component_1 = require('./calendar/calendar.component');
 exports.routes = [
-    { path: '', component: leads_component_1.LeadsComponent },
+    { path: '', component: calendar_component_1.CalendarComponent },
     { path: 'calendar', component: calendar_component_1.CalendarComponent },
 ];
 exports.APP_ROUTER_PROVIDERS = [
     router_1.provideRouter(exports.routes)
 ];
-},{"./components/calendar.component":381,"./components/leads.component":382,"@angular/router":307}],381:[function(require,module,exports){
+},{"./calendar/calendar.component":388,"@angular/router":307}],381:[function(require,module,exports){
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+const core_1 = require('@angular/core');
+const MissionService_1 = require('./MissionService');
+let AstronautComponent = class AstronautComponent {
+    constructor(missionService) {
+        this.missionService = missionService;
+        this.mission = '<no mission announced>';
+        this.confirmed = false;
+        this.announced = false;
+        this.subscription = missionService.missionAnnounced$.subscribe(mission => {
+            this.mission = mission;
+            this.announced = true;
+            this.confirmed = false;
+        });
+    }
+    confirm() {
+        this.confirmed = true;
+        this.missionService.confirmMission(this.astronaut);
+    }
+    ngOnDestroy() {
+        //prevent memory leak when component destroyed
+        this.subscription.unsubscribe();
+    }
+};
+__decorate([
+    core_1.Input()
+], AstronautComponent.prototype, "astronaut", void 0);
+AstronautComponent = __decorate([
+    core_1.Component({
+        selector: 'my-astronaut',
+        template: `
+    <p>
+      {{astronaut}}: <strong>{{mission}}</strong>
+      <button
+        (click)="confirm()"
+        [disabled]="!announced || confirmed">
+        Confirm
+      </button>
+    </p>
+  `
+    }),
+    __param(0, core_1.Inject(MissionService_1.MissionService))
+], AstronautComponent);
+exports.AstronautComponent = AstronautComponent;
+},{"./MissionService":383,"@angular/core":148}],382:[function(require,module,exports){
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+const core_1 = require('@angular/core');
+const AstronautComponent_1 = require('./AstronautComponent');
+const MissionService_1 = require('./MissionService');
+let MissionControlComponent = class MissionControlComponent {
+    constructor(missionService) {
+        this.missionService = missionService;
+        this.astronauts = ['Lovell', 'Swigert', 'Haise'];
+        this.history = [];
+        this.missions = ['Fly to the moon!',
+            'Fly to mars!',
+            'Fly to Vegas!'];
+        this.nextMission = 0;
+        missionService.missionConfirmed$.subscribe(astronaut => {
+            this.history.push(`${astronaut} confirmed the mission`);
+        });
+    }
+    announce() {
+        let mission = this.missions[this.nextMission++];
+        this.missionService.announceMission(mission);
+        this.history.push(`Mission "${mission}" announced`);
+        if (this.nextMission >= this.missions.length) {
+            this.nextMission = 0;
+        }
+    }
+};
+MissionControlComponent = __decorate([
+    core_1.Component({
+        selector: 'mission-control',
+        template: `
+    <h2>Mission Control</h2>
+    <button (click)="announce()">Announce mission</button>
+    <my-astronaut *ngFor="let astronaut of astronauts"
+      [astronaut]="astronaut">
+    </my-astronaut>
+    <h3>History</h3>
+    <ul>
+      <li *ngFor="let event of history">{{event}}</li>
+    </ul>
+  `,
+        directives: [AstronautComponent_1.AstronautComponent],
+        providers: [MissionService_1.MissionService]
+    }),
+    __param(0, core_1.Inject(MissionService_1.MissionService))
+], MissionControlComponent);
+exports.MissionControlComponent = MissionControlComponent;
+},{"./AstronautComponent":381,"./MissionService":383,"@angular/core":148}],383:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -49048,130 +49150,173 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 const core_1 = require('@angular/core');
-let CalendarComponent = class CalendarComponent {
+const Subject_1 = require('rxjs/Subject');
+let MissionService = class MissionService {
     constructor() {
-        this.jobs = [
-            {
-                id: 1,
-                size: 'small',
-                date: '10-6-2016',
-                title: 'Jobs for Mike in Los Santos'
-            },
-            {
-                id: 2,
-                size: 'large',
-                date: '10-6-2016',
-                title: 'Move tigers to Snata Monica'
-            },
-            {
-                id: 11,
-                size: 'medium',
-                date: '10-6-2016',
-                title: 'Jobs for Mike in Los Santos'
-            },
-            {
-                id: 21,
-                size: 'large',
-                date: '10-6-2016',
-                title: 'Move tigers to Snata Monica'
-            },
-            {
-                id: 3,
-                size: 'large',
-                date: '9-6-2016',
-                title: 'Move Refrigirator to Irvine'
-            },
-            {
-                id: 1,
-                size: 'small',
-                date: '5-6-2016',
-                title: 'Jobs for Mike in Los Santos'
-            },
-            {
-                id: 2,
-                size: 'large',
-                date: '7-6-2016',
-                title: 'Move tigers to Snata Monica'
-            },
-            {
-                id: 11,
-                size: 'medium',
-                date: '7-6-2016',
-                title: 'Jobs for Mike in Los Santos'
-            },
-            {
-                id: 21,
-                size: 'large',
-                date: '7-6-2016',
-                title: 'Move tigers to Snata Monica'
-            },
-            {
-                id: 3,
-                size: 'large',
-                date: '4-6-2016',
-                title: 'Move Refrigirator to Irvine'
-            },
-            {
-                id: 1,
-                size: 'small',
-                date: '13-6-2016',
-                title: 'Jobs for Mike in Los Santos'
-            },
-            {
-                id: 2,
-                size: 'large',
-                date: '1-7-2016',
-                title: 'Move tigers to Snata Monica'
-            },
-            {
-                id: 11,
-                size: 'medium',
-                date: '10-6-2016',
-                title: 'Jobs for Mike in Los Santos'
-            },
-            {
-                id: 21,
-                size: 'large',
-                date: '22-8-2016',
-                title: 'Move tigers to Snata Monica'
-            },
-            {
-                id: 3,
-                size: 'large',
-                date: '22-6-2016',
-                title: 'Move Refrigirator to Irvine'
-            },
-            {
-                id: 1,
-                size: 'small',
-                date: '2-6-2016',
-                title: 'Jobs for Mike in Los Santos'
-            },
-            {
-                id: 2,
-                size: 'large',
-                date: '1-6-2016',
-                title: 'Move tigers to Snata Monica'
-            },
-            {
-                id: 11,
-                size: 'medium',
-                date: '1-5-2016',
-                title: 'Jobs for Mike in Los Santos'
-            },
-            {
-                id: 21,
-                size: 'large',
-                date: '7-7-2016',
-                title: 'Move tigers to Snata Monica'
-            },
-            {
-                id: 3,
-                size: 'large',
-                date: '25-6-2016',
-                title: 'Move Refrigirator to Irvine'
-            }
-        ];
+        // Observable string sources
+        this.missionAnnouncedSource = new Subject_1.Subject();
+        this.missionConfirmedSource = new Subject_1.Subject();
+        // Observable string streams
+        this.missionAnnounced$ = this.missionAnnouncedSource.asObservable();
+        this.missionConfirmed$ = this.missionConfirmedSource.asObservable();
+    }
+    // Service message commands
+    announceMission(mission) {
+        this.missionAnnouncedSource.next(mission);
+    }
+    confirmMission(astronaut) {
+        this.missionConfirmedSource.next(astronaut);
+    }
+};
+MissionService = __decorate([
+    core_1.Injectable()
+], MissionService);
+exports.MissionService = MissionService;
+},{"@angular/core":148,"rxjs/Subject":332}],384:[function(require,module,exports){
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+const core_1 = require('@angular/core');
+const add_job_modal_service_1 = require('./add-job-modal.service');
+const common_1 = require('@angular/common');
+const job_1 = require('./job');
+let AddJobModalComponent = class AddJobModalComponent {
+    constructor(addJobModalService) {
+        this.addJobModalService = addJobModalService;
+        this.isOpen = false;
+        this.isClosed = false;
+        this.currentDate = '';
+        // @Input() addJobModal;
+        // @Output() addJob = new EventEmitter<Object>();
+        //
+        this.submitted = false;
+        this.model = new job_1.Job('', 'Long Beach, CA, United States', 'Portland, OR, United States', '2 Bedrooms', '925-285-0446', 'Simba', 'max@mail.com');
+        this.subscription = addJobModalService.modelOpened$.subscribe(date => {
+            this.isOpen = true;
+            this.isClosed = false;
+            this.model.movingDate = date;
+        });
+    }
+    ngOnDestroy() {
+        //prevent memory leak when component destroyed
+        this.subscription.unsubscribe();
+    }
+    closeModal() {
+        this.isOpen = false;
+        this.isClosed = true;
+    }
+    onSubmit() {
+        this.model = new job_1.Job('', '', '', '', '', '', '');
+    }
+    get diagnostic() { return JSON.stringify(this.model); }
+};
+AddJobModalComponent = __decorate([
+    core_1.Component({
+        selector: 'add-job-modal',
+        templateUrl: 'src/app/calendar/add-job-modal.component.html',
+        directives: [common_1.NgClass]
+    }),
+    __param(0, core_1.Inject(add_job_modal_service_1.AddJobModalService))
+], AddJobModalComponent);
+exports.AddJobModalComponent = AddJobModalComponent;
+},{"./add-job-modal.service":385,"./job":390,"@angular/common":1,"@angular/core":148}],385:[function(require,module,exports){
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+const core_1 = require('@angular/core');
+const Subject_1 = require('rxjs/Subject');
+let AddJobModalService = class AddJobModalService {
+    constructor() {
+        // Observable string sources
+        this.modelOpenedSource = new Subject_1.Subject();
+        // Observable string streams
+        this.modelOpened$ = this.modelOpenedSource.asObservable();
+    }
+    // Service message commands
+    openModal(date) {
+        this.modelOpenedSource.next(date);
+    }
+};
+AddJobModalService = __decorate([
+    core_1.Injectable()
+], AddJobModalService);
+exports.AddJobModalService = AddJobModalService;
+},{"@angular/core":148,"rxjs/Subject":332}],386:[function(require,module,exports){
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+const core_1 = require('@angular/core');
+const calendar_service_component_1 = require('./calendar-service.component');
+let CalendarHeader = class CalendarHeader {
+    constructor(calendarService) {
+        this.calendarService = calendarService;
+        console.log(calendarService);
+    }
+};
+CalendarHeader = __decorate([
+    core_1.Component({
+        selector: 'calendar-header',
+        template: `
+      <div class="calendar__header">
+        <div class="mdl-cell mdl-cell--6-col">
+          <button class="mdl-button mdl-button--icon">
+             <i class="material-icons" (click)="calendarService.showPrevMonth()">keyboard_arrow_left</i>
+          </button>
+       
+          <span class="calendar__header__title">
+            {{ calendarService.calMonthsLabels[calendarService.month] }}
+          </span>
+
+          <button class="mdl-button mdl-button--icon">
+              <i class="material-icons" (click)="calendarService.showNextMonth()">keyboard_arrow_right</i>
+          </button>
+        </div>
+
+        <div class="mdl-cell mdl-cell--6-col text-right">
+          <button class="mdl-button">
+            Day
+          </button>
+          <button class="mdl-button">
+            Week
+          </button>
+          <button class="mdl-button mdl-button--raised mdl-button--colored">
+            Month
+          </button>
+        </div>
+      </div>`
+    }),
+    __param(0, core_1.Inject(calendar_service_component_1.CalendarService))
+], CalendarHeader);
+exports.CalendarHeader = CalendarHeader;
+},{"./calendar-service.component":387,"@angular/core":148}],387:[function(require,module,exports){
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+const core_1 = require('@angular/core');
+let CalendarService = class CalendarService {
+    constructor() {
         this.calDaysLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
         this.calMonthsLabels = ['January', 'February', 'March', 'April',
             'May', 'June', 'July', 'August', 'September',
@@ -49183,6 +49328,7 @@ let CalendarComponent = class CalendarComponent {
         this.currentMonthDays = this.getDaysInMonth(this.month, this.year);
         this.selectedDayWeekIndex = null;
         this.selectedDayIndex = null;
+        this.jobs = ['1'];
     }
     getDaysInMonth(month, year) {
         let date = new Date(year, month, 1);
@@ -49199,20 +49345,22 @@ let CalendarComponent = class CalendarComponent {
                 let item = {
                     date: jobDate,
                     day: day,
+                    dayIndex: j,
                     miliseconds: date.getTime(),
                     fullDate: date.toLocaleDateString(),
                     isCurrentMonth: date.getMonth() === month ? 'current' : '',
                     jobs: [],
                     className: ''
                 };
-                this.jobs.forEach(job => {
-                    let jobDay = job.date.split('-');
-                    let jobDate = jobDay[0];
-                    let jobMonth = jobDay[1];
-                    if (jobDate == date.getDate() && jobMonth == date.getMonth()) {
-                        item.jobs[item.jobs.length] = job;
-                    }
-                });
+                //console.log(this.calDaysInMonth)
+                // this.jobs.forEach(job => {
+                //   let jobDay = job.date.split('-');
+                //   let jobDate = jobDay[0];
+                //   let jobMonth = jobDay[1];
+                //   if(jobDate == date.getDate() && jobMonth == date.getMonth()) {
+                //     item.jobs[item.jobs.length] = job;
+                //   }
+                // });
                 days.push(item);
                 date.setDate(date.getDate() + 1);
             }
@@ -49223,7 +49371,6 @@ let CalendarComponent = class CalendarComponent {
             });
             days.length = 0;
         }
-        console.log(weeks);
         return weeks;
     }
     sortByWeeks() {
@@ -49248,47 +49395,101 @@ let CalendarComponent = class CalendarComponent {
         this.currentMonthDays[weekIndex].className = 'active';
         this.selectedDayWeekIndex = weekIndex;
         this.selectedDayIndex = dayIndex;
-        console.log(day);
+    }
+};
+CalendarService = __decorate([
+    core_1.Injectable()
+], CalendarService);
+exports.CalendarService = CalendarService;
+},{"@angular/core":148}],388:[function(require,module,exports){
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+const core_1 = require('@angular/core');
+const days_list_component_1 = require('./days-list.component');
+const calendar_header_component_1 = require('./calendar-header.component');
+const add_job_modal_component_1 = require('./add-job-modal.component');
+const add_job_modal_service_1 = require('./add-job-modal.service');
+const MissionControlComponent_1 = require('./MissionControlComponent');
+const calendar_service_component_1 = require('./calendar-service.component');
+let CalendarComponent = class CalendarComponent {
+    constructor(calendarService, addJobModalService) {
+        this.calendarService = calendarService;
+        this.addJobModalService = addJobModalService;
+        this.addJobModal = {
+            isOpen: '',
+            currentDay: null
+        };
+    }
+    openModal() {
+        console.log('opened');
+    }
+    openAddJobModal(day, weekIndex) {
+        this.addJobModal.currentDay = {
+            dayIndex: day.dayIndex,
+            weekIndex: weekIndex
+        };
+    }
+    addJob(job) {
+        let dayIndex = this.addJobModal.currentDay.dayIndex;
+        let weekIndex = this.addJobModal.currentDay.weekIndex;
+        //this.currentMonthDays[weekIndex].days[dayIndex].jobs.push(job);
     }
 };
 CalendarComponent = __decorate([
     core_1.Component({
         selector: 'calendar',
         template: `
-    <h4>Calendar Page</h4>
-    <div class="calendar mdl-shadow--2dp">
-      <div class="calendar__header">
-        <div class="mdl-cell mdl-cell--6-col">
-          <button class="mdl-button mdl-button--icon">
-             <i class="material-icons" (click)="showPrevMonth()">keyboard_arrow_left</i>
-          </button>
-       
-          <span class="calendar__header__title">
-            {{ calMonthsLabels[month] }}
-          </span>
+    <h4 class="page-header">Calendar Page</h4>
+    <div class="calendar card-shadow">
+      <mission-control></mission-control>
+      <calendar-header></calendar-header>
+      <days-list></days-list>
+    </div>
 
-          <button class="mdl-button mdl-button--icon">
-              <i class="material-icons" (click)="showNextMonth()">keyboard_arrow_right</i>
-          </button>
-        </div>
-
-        <div class="mdl-cell mdl-cell--6-col text-right">
-          <button class="mdl-button">
-            День
-          </button>
-          <button class="mdl-button">
-            Неделя
-          </button>
-          <button class="mdl-button mdl-button--raised mdl-button--colored">
-            Месяц
-          </button>
-          <button class="mdl-button">
-            4 дня
-          </button>
-        </div>
-      </div>
-
-      <ul class="demo-list-item mdl-list calendar__legend-list">
+    <add-job-modal></add-job-modal>
+    `,
+        directives: [add_job_modal_component_1.AddJobModalComponent, days_list_component_1.DaysList, calendar_header_component_1.CalendarHeader, MissionControlComponent_1.MissionControlComponent],
+        providers: [calendar_service_component_1.CalendarService, add_job_modal_service_1.AddJobModalService]
+    }),
+    __param(0, core_1.Inject(calendar_service_component_1.CalendarService)),
+    __param(1, core_1.Inject(add_job_modal_service_1.AddJobModalService))
+], CalendarComponent);
+exports.CalendarComponent = CalendarComponent;
+},{"./MissionControlComponent":382,"./add-job-modal.component":384,"./add-job-modal.service":385,"./calendar-header.component":386,"./calendar-service.component":387,"./days-list.component":389,"@angular/core":148}],389:[function(require,module,exports){
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+const core_1 = require('@angular/core');
+const calendar_service_component_1 = require('./calendar-service.component');
+const add_job_modal_service_1 = require('./add-job-modal.service');
+let DaysList = class DaysList {
+    constructor(calendarService, addJobModalService) {
+        this.calendarService = calendarService;
+        this.addJobModalService = addJobModalService;
+    }
+    openModal(date) {
+        this.addJobModalService.openModal(date);
+    }
+};
+DaysList = __decorate([
+    core_1.Component({
+        selector: 'days-list',
+        template: `<ul class="demo-list-item mdl-list calendar__legend-list">
         <li class="mdl-list__item">
           <span class="mdl-list__item-primary-content">
             <span class="calendar__legend green"></span>
@@ -49310,21 +49511,25 @@ CalendarComponent = __decorate([
       </ul>
 
       <div class="calendar__labels">
-        <div class="calendar__labels__item" *ngFor="let dayName of calDaysLabels">
+        <div class="calendar__labels__item"
+         *ngFor="let dayName of calendarService.calDaysLabels">
           {{ dayName }}
         </div>
       </div>
 
-      <div class="calendar__week" *ngFor="let week of currentMonthDays, let weekIndex = index">
+      <div class="calendar__week" 
+      *ngFor="let week of calendarService.currentMonthDays, let weekIndex = index">
         
         <div class="calendar__days-wrap">
-          <div class="calendar__day" *ngFor="let day of week.days, let dayIndex = index" (click)="showFullInfo(day, weekIndex, dayIndex)">
+          <div class="calendar__day"
+               *ngFor="let day of week.days, let dayIndex = index"
+               (click)="calendarService.showFullInfo(day, weekIndex, dayIndex)">
             <div class="calendar__day-inner {{ day.className }}">
               <span class="calendar__day__date {{ day.isCurrentMonth }}">
                 {{ day.date }}
               </span>
               <span class="calendar__day__job {{ job.size }}" *ngFor="let job of day.jobs">
-                {{ job.date }} | {{ job.size }}
+                {{ job.movingDate }} | {{ job.moveFrom }} | {{ job.moveTo }} | {{ job.phone }}
               </span>
             </div>
           </div>
@@ -49335,22 +49540,40 @@ CalendarComponent = __decorate([
             <div class="calendar__day__date-label">{{ week.selectedDay.fullDate }}</div>
             <div *ngFor="let job of week.selectedDay.jobs"
                   class="calendar__day-full-info__job">
-              {{ job.date }} | {{ job.size }} | {{ job.title }} 
+              {{ job.movingDate }} | {{ job.moveFrom }} | {{ job.moveTo }} 
+              {{ job.movingSize }} | {{ job.phone }} | {{ job.name }} | {{ job.mail }} 
             </div>
             <div *ngIf="!week.selectedDay.jobs.length" class="calendar__day__no-job">
                 No jobs booked for today 
-                <button class="mdl-button mdl-button--raised mdl-button--colored">
+            </div>
+            <button class="small-space mdl-button mdl-button--raised mdl-button--colored"
+                    (click)="openModal(week.selectedDay.fullDate)">
                   Add job
-                </button>
-            </div>
+            </button>
           </div>
         </div>
       </div>
-    </div>`
-    })
-], CalendarComponent);
-exports.CalendarComponent = CalendarComponent;
-},{"@angular/core":148}],382:[function(require,module,exports){
+  `
+    }),
+    __param(0, core_1.Inject(calendar_service_component_1.CalendarService)),
+    __param(1, core_1.Inject(add_job_modal_service_1.AddJobModalService))
+], DaysList);
+exports.DaysList = DaysList;
+},{"./add-job-modal.service":385,"./calendar-service.component":387,"@angular/core":148}],390:[function(require,module,exports){
+"use strict";
+class Job {
+    constructor(movingDate, moveFrom, moveTo, movingSize, phone, name, mail) {
+        this.movingDate = movingDate;
+        this.moveFrom = moveFrom;
+        this.moveTo = moveTo;
+        this.movingSize = movingSize;
+        this.phone = phone;
+        this.name = name;
+        this.mail = mail;
+    }
+}
+exports.Job = Job;
+},{}],391:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -49359,347 +49582,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 const core_1 = require('@angular/core');
-let LeadsComponent = class LeadsComponent {
-    constructor() {
-        this.inbox = [
-            {
-                dayGroup: {
-                    data: 'Today',
-                    leads: [
-                        {
-                            id: 1,
-                            type: 'new',
-                            moveFrom: 'LA, CA, United States',
-                            moveTo: 'irvine, CA, United States',
-                            date: {
-                                day: 'May 23',
-                                time: '10:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        },
-                        {
-                            id: 2,
-                            type: 'new',
-                            moveFrom: 'ntario, CA, United States',
-                            moveTo: 'irvine, CA, United States',
-                            date: {
-                                day: 'June 3',
-                                time: '10:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        },
-                        {
-                            id: 3,
-                            type: 'new',
-                            moveFrom: 'orange, CA, United States',
-                            moveTo: 'long beach, CA, United States',
-                            date: {
-                                day: 'Aug 11',
-                                time: '20:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        },
-                        {
-                            id: 4,
-                            type: 'new',
-                            moveFrom: 'LA, CA, United States',
-                            moveTo: 'irvine, CA, United States',
-                            date: {
-                                day: 'May 23',
-                                time: '10:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        },
-                        {
-                            id: 5,
-                            type: 'new',
-                            moveFrom: 'ntario, CA, United States',
-                            moveTo: 'irvine, CA, United States',
-                            date: {
-                                day: 'June 3',
-                                time: '10:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        },
-                        {
-                            id: 6,
-                            moveFrom: 'orange, CA, United States',
-                            moveTo: 'long beach, CA, United States',
-                            date: {
-                                day: 'Aug 11',
-                                time: '20:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        }
-                    ]
-                }
-            },
-            {
-                dayGroup: {
-                    data: 'Yestarday',
-                    leads: [
-                        {
-                            id: 7,
-                            type: 'new',
-                            moveFrom: 'LA, CA, United States',
-                            moveTo: 'irvine, CA, United States',
-                            date: {
-                                day: 'May 23',
-                                time: '10:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        },
-                        {
-                            id: 8,
-                            type: 'new',
-                            moveFrom: 'ntario, CA, United States',
-                            moveTo: 'irvine, CA, United States',
-                            date: {
-                                day: 'June 3',
-                                time: '10:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        },
-                        {
-                            id: 9,
-                            moveFrom: 'orange, CA, United States',
-                            moveTo: 'long beach, CA, United States',
-                            date: {
-                                day: 'Aug 11',
-                                time: '20:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        }
-                    ]
-                }
-            },
-            {
-                dayGroup: {
-                    data: '06.16.2016',
-                    leads: [
-                        {
-                            id: 10,
-                            type: 'new',
-                            moveFrom: 'LA, CA, United States',
-                            moveTo: 'irvine, CA, United States',
-                            date: {
-                                day: 'May 23',
-                                time: '10:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        },
-                        {
-                            id: 11,
-                            type: 'new',
-                            moveFrom: 'ntario, CA, United States',
-                            moveTo: 'irvine, CA, United States',
-                            date: {
-                                day: 'June 3',
-                                time: '10:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        },
-                        {
-                            id: 12,
-                            moveFrom: 'orange, CA, United States',
-                            moveTo: 'long beach, CA, United States',
-                            date: {
-                                day: 'Aug 11',
-                                time: '20:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        }
-                    ]
-                }
-            }
-        ];
-    }
-    moveToTrash(groupIndex, leadIndex) {
-        let allLeads = this.inbox[groupIndex].dayGroup.leads;
-        let lead = allLeads[leadIndex];
-        if (confirm("Are you sure you want to delete " + lead.date + "?")) {
-            allLeads.splice(leadIndex, 1);
-        }
-    }
-    markAsRead(groupIndex, leadIndex) {
-        this.inbox[groupIndex].dayGroup.leads[leadIndex].type = 'read';
-    }
-    showEditor(groupIndex, leadIndex) {
-        let lead = this.inbox[groupIndex].dayGroup.leads[leadIndex];
-        let selector = 'textarea#' + 'area-' + lead.id;
-        console.log(selector);
-        lead.showEditor = !lead.showEditor;
-        lead.type = 'read';
-        tinymce.init({ selector: selector });
-    }
-    showMap(groupIndex, leadIndex) {
-        let lead = this.inbox[groupIndex].dayGroup.leads[leadIndex];
-        this.initMap(groupIndex, leadIndex);
-        lead.type = 'read';
-        lead.collapsed = !lead.collapsed;
-    }
-    initMap(groupIndex, leadIndex) {
-        let lead = this.inbox[groupIndex].dayGroup.leads[leadIndex];
-        let that = this;
-        let directionsDisplay;
-        let directionsService = new google.maps.DirectionsService();
-        initialize();
-        calcRoute();
-        function initialize() {
-            directionsDisplay = new google.maps.DirectionsRenderer();
-            var mapOptions = {
-                zoom: 7,
-                scrollwheel: false,
-                center: new google.maps.LatLng(40.7903, -73.9597)
-            };
-            var map = new google.maps.Map(document.getElementById('map-' + lead.id), mapOptions);
-            directionsDisplay.setMap(map);
-        }
-        function calcRoute() {
-            var start = lead.moveFrom;
-            var end = lead.moveTo;
-            // sets a object literal with an origin of start, destination of end and the travel mode
-            var request = {
-                origin: start,
-                destination: end,
-                travelMode: google.maps.TravelMode.WALKING
-            };
-            // this gives the directionsService var a route of the request object literal, and a callback method that executes upon the receipt of the response from directionsService.  Learn more about callbacks here, http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/
-            directionsService.route(request, function (response, status) {
-                if (status == google.maps.DirectionsStatus.OK) {
-                    directionsDisplay.setDirections(response);
-                    lead.distance = response.routes[0].legs[0].distance.text;
-                }
-            });
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
-        google.maps.event.addDomListener(window, 'load', calcRoute);
-    }
-};
-LeadsComponent = __decorate([
-    core_1.Component({
-        selector: 'leads',
-        template: `
-    <div *ngFor="let group of inbox, let groupIndex = index">
-      <h4>{{ group.dayGroup.data }}</h4>
-      <div *ngFor="let lead of group.dayGroup.leads, let leadIndex = index" class="md-lead mdl-shadow--2dp {{ lead.type == 'new' ? 'md-lead--new' : '' }}">
-        <div class="md-lead__main-wrap">
-          <div class="md-lead__btns">
-            <button *ngIf="lead.type == 'new'" class="mdl-button mdl-button--icon mdl-button--accent" (click)="markAsRead(groupIndex, leadIndex)">
-              <i class="material-icons">check</i>
-            </button>
-            <button class="mdl-button mdl-button--icon" (click)="showEditor(groupIndex, leadIndex)">
-              <i class="material-icons">&#xE158;</i>
-            </button>
-            <button class="mdl-button mdl-button--icon mdl-button--colored"(click)="showMap(groupIndex, leadIndex)">
-              <i class="material-icons">place</i>
-            </button>
-            <button class="mdl-button mdl-button--icon" (click)="moveToTrash(groupIndex, leadIndex)">
-              <i class="material-icons">delete_forever</i>
-            </button>
-          </div>
-          
-          <div class="md-lead__main">
-            <div class="md-lead__title">
-              <span class="md-lead__label">
-                {{ lead.moveFrom }}
-              </span>
-              <i class="material-icons">trending_flat</i>
-              <span class="md-lead__label">
-                {{ lead.moveTo }}
-              </span>
-            </div>
-          </div>
-          <div class="md-lead__body">
-            <span class="md-lead__label">Moving dates: 05/05/2016</span>
-            <span class="md-lead__label">Moving size: Over 3</span>
-            <span class="md-lead__label">Phone: 9095454758</span>
-            <span class="md-lead__label">E-mail: tgfireup@gmail.com {{ lead.id}}</span>
-            <span class="md-lead__label">Distance: {{ lead.distance }}</span>
-          </div>
-        </div>
-  
-        <div class="md-lead__map-wrapper {{ lead.collapsed ? 'md-lead__map-wrapper--collapsed' : '' }}">
-          <div id="map-{{ lead.id }}" class="md-lead__map"></div>
-        </div>
-
-        <div class="md-lead__send-msg {{ lead.showEditor ? '' : 'md-lead__send-msg--collapsed' }}">
-          <form action="#">
-            <textarea class="mdl-textfield__input"
-                      type="text"
-                      rows="3"
-                      id="area-{{ lead.id }}" >
-            </textarea>
-            <div class="mdl-textfield--align-right">
-              <button class="mdl-button mdl-button--raised mdl-button--accent">
-                Send
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    `
-    })
-], LeadsComponent);
-exports.LeadsComponent = LeadsComponent;
-},{"@angular/core":148}],383:[function(require,module,exports){
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-const core_1 = require('@angular/core');
+const router_1 = require('@angular/router');
 let NavBarComponent = class NavBarComponent {
 };
 NavBarComponent = __decorate([
@@ -49707,27 +49590,20 @@ NavBarComponent = __decorate([
         selector: 'navbar',
         template: `
     <!-- Top row, always visible -->
-    <div class="mdl-layout__header-row">
-      <!-- Title -->
-      <span class="mdl-layout-title">All leads</span>
-      <div class="mdl-layout-spacer"></div>
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                      mdl-textfield--floating-label mdl-textfield--align-right">
-        <label class="mdl-button mdl-js-button mdl-button--icon"
-               for="waterfall-exp">
-          <i class="material-icons">search</i>
-        </label>
-        <div class="mdl-textfield__expandable-holder">
-          <input class="mdl-textfield__input" type="text" name="sample"
-                 id="waterfall-exp">
-        </div>
-      </div>
+    <div class="header">
+      <a href="#" class="header__logo">Qshark Titan</a>
+      <nav class="header__nav">
+        <a class="header__nav__link" [routerLink]="['/']">
+        All leads</a>
+        <a class="header__nav__link" [routerLink]="['/calendar']">calendar</a>
+      </nav>
     </div>
-    `
+    `,
+        directives: [router_1.ROUTER_DIRECTIVES]
     })
 ], NavBarComponent);
 exports.NavBarComponent = NavBarComponent;
-},{"@angular/core":148}],384:[function(require,module,exports){
+},{"@angular/core":148,"@angular/router":307}],392:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -49743,20 +49619,25 @@ SideBarComponent = __decorate([
     core_1.Component({
         selector: 'sidebar',
         template: `
-        <span class="mdl-layout-title mdl-layout-title--colored">
-            <span class="mdl-layout-title__text">Titan: Movers CRM</span>
-        </span>
-        <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" [routerLink]="['/']">All leads</a>
-          <a class="mdl-navigation__link" [routerLink]="['/calendar']">calendar</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
+        <nav class="sidebar-nav">
+          <a class="sidebar-nav__link active" [routerLink]="['/']">
+            <i class="material-icons">list</i>
+            Filter
+          </a>
+          <a href="" class="sidebar-nav__link">
+            <i class="material-icons">&#xE146;</i> 
+            New moving job
+          </a>
+          <a class="sidebar-nav__link" href=""><i class="material-icons">motorcycle</i>
+          Link</a>
+          <a class="sidebar-nav__link" href=""><i class="material-icons">motorcycle</i>
+          Link</a>
         </nav>`,
         directives: [router_1.ROUTER_DIRECTIVES]
     })
 ], SideBarComponent);
 exports.SideBarComponent = SideBarComponent;
-},{"@angular/core":148,"@angular/router":307}],385:[function(require,module,exports){
+},{"@angular/core":148,"@angular/router":307}],393:[function(require,module,exports){
 "use strict";
 const platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
 const app_component_1 = require('./app.component');
@@ -49765,7 +49646,7 @@ platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [
     app_routes_1.APP_ROUTER_PROVIDERS
 ])
     .catch(err => console.error(err));
-},{"./app.component":379,"./app.routes":380,"@angular/platform-browser-dynamic":238}]},{},[385])
+},{"./app.component":379,"./app.routes":380,"@angular/platform-browser-dynamic":238}]},{},[393])
 
 
 //# sourceMappingURL=bundle.js.map

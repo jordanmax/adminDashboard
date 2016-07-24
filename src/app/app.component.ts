@@ -7,22 +7,16 @@ import {SideBarComponent} from './components/sidebar.component';
 @Component({
   selector: 'my-app',
   template: `
-      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer has-drawer has-tabs is-upgraded">
-        <navbar class="mdl-layout__header is-casting-shadow"></navbar>
-        <sidebar class="mdl-layout__drawer"></sidebar>
-        <main class="mdl-layout__content">
-            <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--12-col">
-                    <router-outlet></router-outlet>
-                </div>
-            </div>
+        <navbar class="header"></navbar>
+        <main class="main">
+          <sidebar class="sidebar"></sidebar>
+          <div class="page-content">
+            <router-outlet></router-outlet>
+          </div>
         </main>
-      </div>
       `,
   directives: [NavBarComponent, SideBarComponent, ROUTER_DIRECTIVES]
 })
 export class AppComponent {
-  constructor() {
-    this.ckeditorContent = `<p>My HTML</p>`;
-  }
+
 }

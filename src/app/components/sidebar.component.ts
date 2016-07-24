@@ -4,14 +4,19 @@ import { ROUTER_DIRECTIVES }  from '@angular/router';
 @Component({
   selector: 'sidebar',
   template: `
-        <span class="mdl-layout-title mdl-layout-title--colored">
-            <span class="mdl-layout-title__text">Titan: Movers CRM</span>
-        </span>
-        <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" [routerLink]="['/']">All leads</a>
-          <a class="mdl-navigation__link" [routerLink]="['/calendar']">calendar</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
+        <nav class="sidebar-nav">
+          <a class="sidebar-nav__link active" [routerLink]="['/']">
+            <i class="material-icons">list</i>
+            Filter
+          </a>
+          <a href="" class="sidebar-nav__link">
+            <i class="material-icons">&#xE146;</i> 
+            New moving job
+          </a>
+          <a class="sidebar-nav__link" href=""><i class="material-icons">motorcycle</i>
+          Link</a>
+          <a class="sidebar-nav__link" href=""><i class="material-icons">motorcycle</i>
+          Link</a>
         </nav>`,
   directives: [ROUTER_DIRECTIVES]
 })

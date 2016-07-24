@@ -1,10 +1,45 @@
 .header {
+  height: 70px;
+  background: $indigo;
+  box-shadow: 0 1px 10px 0 rgba(50,50,50,.2);
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  &__logo {
+    line-height: 70px;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0 20px;
+    color: #fff;
+    font-size: 20px;
+  }
+  &__nav {
+    margin-left: 80px;
+    &__link {
+      font-size: 16px;
+      line-height: 68px;
+      display: inline-block;
+      color: #a5bde3;
+      border-bottom: 3px solid transparent;
+      text-decoration: none;
+      text-transform: uppercase;
+      padding: 0 20px;
+      font-weight: bold;
+      transition: all .3s ease-out;
+      &:hover {
+        border-color: $cyan;
+        opacity: 1;
+        color: #fff;
 
-}
-.logo {
-  margin: -58px 0 0 -100px;
-  @include position(absolute, 50% 0 0 50%);
-  img {
+      }
+
+    }
 
   }
+
+
 }
+

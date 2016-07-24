@@ -4,8 +4,8 @@ import {Component} from '@angular/core';
   selector: 'leads',
   template: `
     <div *ngFor="let group of inbox, let groupIndex = index">
-      <h4>{{ group.dayGroup.data }}</h4>
-      <div *ngFor="let lead of group.dayGroup.leads, let leadIndex = index" class="md-lead mdl-shadow--2dp {{ lead.type == 'new' ? 'md-lead--new' : '' }}">
+      <h4 class="page-header">{{ group.dayGroup.data }}</h4>
+      <div *ngFor="let lead of group.dayGroup.leads, let leadIndex = index" class="md-lead {{ lead.type == 'new' ? 'md-lead--new' : '' }}">
         <div class="md-lead__main-wrap">
           <div class="md-lead__btns">
             <button *ngIf="lead.type == 'new'" class="mdl-button mdl-button--icon mdl-button--accent" (click)="markAsRead(groupIndex, leadIndex)">

@@ -25,3 +25,14 @@
 .red-text {
 	color: $red;
 }
+.page-header {
+  margin-top: 0;
+  font-size: 17px;
+}
+.small-space {
+  margin-top: 20px;
+}
+
+.card-shadow {
+  @include boxShadow();
+}
