@@ -1,0 +1,68 @@
+.datepicker {
+  position: absolute;
+  z-index: 11;
+  box-shadow: 0 7px 8px -4px rgba(0,0,0,.2),0 13px 19px 2px rgba(0,0,0,.14),0 5px 24px 4px rgba(0,0,0,.12);
+  &__header {
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    background-color: $indigoLite;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    &__content {
+      padding: 15px 0;
+    }
+    &__month {
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+    &__day {
+      font-size: 50px;
+      line-height: 60px;
+    }
+    &__year {
+      color: #a6b2e7;
+    }
+  }
+  &__dayname {
+    background: $indigo;
+    padding: 4px;
+    color: #fff;
+    font-size: 16px;
+  }
+
+  &__body {
+    padding: 10px;
+    background: #fff;
+  }
+
+  &__day-names {
+    display: flex;
+    &__item {
+      width: calc(100% / 7);
+      text-align: center;
+    }
+  }
+
+  &__days-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    &__item {
+      text-align: center;
+      cursor: pointer;
+      width: calc(100% / 7);
+      .mdl-button--icon {
+        font-size: 14px;
+        line-height: 32px;
+        &.selected {
+          background: $indigo;
+          color: #fff;
+        }
+      }
+
+    }
+  }
+
+}

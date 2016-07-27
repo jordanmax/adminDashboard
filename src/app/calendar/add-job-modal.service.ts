@@ -5,7 +5,9 @@ import { Subject }    from 'rxjs/Subject';
 export class AddJobModalService {
   // Observable string sources
   private modelOpenedSource = new Subject<string>();
+  private updatedDirectionSource = new Subject<string>();
   // Observable string streams
+  updatedDirection$ = this.updatedDirectionSource.asObservable();
   modelOpened$ = this.modelOpenedSource.asObservable();
   // Service message commands
   openModal(date: string) {

@@ -75,6 +75,12 @@ export class CalendarService {
 
   }
 
+  addJob(job) {
+    let weekIndex = this.selectedDayWeekIndex;
+    let dayIndex = this.selectedDayIndex;
+    this.currentMonthDays[weekIndex].days[dayIndex].jobs.push(job);
+  }
+
   showNextMonth() {
     this.currentMonthDays = this.getDaysInMonth(this.month + 1, this.year)
     this.month++;

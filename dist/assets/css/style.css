@@ -749,7 +749,6 @@ textarea {
     transition: opacity 0.3s; }
   .modal__content {
     width: 50%;
-    max-width: 560px;
     min-width: 290px;
     background: #fff;
     padding: 20px;
@@ -812,11 +811,73 @@ textarea {
     -webkit-transform: scale3d(0.5, 0.5, 1);
     transform: scale3d(0.5, 0.5, 1); } }
 
+.datepicker {
+  position: absolute;
+  z-index: 11;
+  box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12); }
+  .datepicker__header {
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    background-color: #566dd1;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 5px; }
+    .datepicker__header__content {
+      padding: 15px 0; }
+    .datepicker__header__month {
+      font-size: 20px;
+      text-transform: uppercase; }
+    .datepicker__header__day {
+      font-size: 50px;
+      line-height: 60px; }
+    .datepicker__header__year {
+      color: #a6b2e7; }
+  .datepicker__dayname {
+    background: #3f51b5;
+    padding: 4px;
+    color: #fff;
+    font-size: 16px; }
+  .datepicker__body {
+    padding: 10px;
+    background: #fff; }
+  .datepicker__day-names {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+    .datepicker__day-names__item {
+      width: calc(100% / 7);
+      text-align: center; }
+  .datepicker__days-wrapper {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; }
+    .datepicker__days-wrapper__item {
+      text-align: center;
+      cursor: pointer;
+      width: calc(100% / 7); }
+      .datepicker__days-wrapper__item .mdl-button--icon {
+        font-size: 14px;
+        line-height: 32px; }
+        .datepicker__days-wrapper__item .mdl-button--icon.selected {
+          background: #3f51b5;
+          color: #fff; }
+
 .form-field {
   position: relative;
   padding-top: 20px;
   margin: 0 8px 10px; }
-  .form-field span {
+  .form-field .form-field__border {
     position: absolute;
     width: 100%;
     bottom: 0;
@@ -848,13 +909,22 @@ textarea {
       font-size: 12px;
       color: #3f51b5;
       height: 48px; }
-      .form-field__input:focus + .form-field__label span {
+      .form-field__input:focus + .form-field__label .form-field__border {
         -webkit-transform: scaleX(1);
             -ms-transform: scaleX(1);
                 transform: scaleX(1); }
-    .form-field__input.ng-invalid:not(.ng-pristine):focus ~ span {
+    .form-field__input.hasText + .form-field__label {
+      top: 0;
+      font-size: 12px;
+      color: #3f51b5;
+      height: 48px; }
+      .form-field__input.hasText + .form-field__label .form-field__border {
+        -webkit-transform: scaleX(1);
+            -ms-transform: scaleX(1);
+                transform: scaleX(1); }
+    .form-field__input.ng-invalid:not(.ng-pristine):focus ~ .form-field__border {
       background: #f44336; }
-    .form-field__input:focus ~ span {
+    .form-field__input:focus ~ .form-field__border {
       -webkit-transform: scaleX(1);
           -ms-transform: scaleX(1);
               transform: scaleX(1); }
@@ -876,6 +946,33 @@ textarea {
   .form-field__error {
     position: absolute;
     color: #f44336; }
+
+.flex-wrapper {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+
+.radio-button {
+  margin-top: -7px;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1; }
+  .radio-button .mdl-button {
+    min-width: 10px;
+    display: block; }
+  .radio-button__input {
+    position: absolute;
+    left: -9999px;
+    visibility: hidden; }
+    .radio-button__input:checked + .radio-button__green {
+      color: #fff;
+      background: #4caf50; }
+    .radio-button__input:checked + .radio-button__orange {
+      color: #fff;
+      background: #ff9800; }
+    .radio-button__input:checked + .radio-button__red {
+      color: #fff;
+      background: #f44336; }
 
 @font-face {
   font-family: 'Font-Name';

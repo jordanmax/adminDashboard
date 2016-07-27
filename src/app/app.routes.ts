@@ -4,7 +4,7 @@ import {CalendarComponent} from './calendar/calendar.component';
 
 export const routes: RouterConfig = [
   { path: '', component: CalendarComponent },
-  { path: 'calendar', component: CalendarComponent },
+  { path: 'calendar', component: LeadsComponent },
 ];
 
 export const APP_ROUTER_PROVIDERS = [
