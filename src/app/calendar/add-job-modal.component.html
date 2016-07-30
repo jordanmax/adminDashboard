@@ -2,20 +2,22 @@
   <div class="modal__overlay" (click)="closeModal()"></div>
   <div class="modal__content">
     <div class="modal__header">
-      Add new job
+      <span>Add new job</span>
+      <div class="modal__close">
+        <button class="mdl-button mdl-js-button mdl-button--icon" (click)="closeModal()">
+          <i class="material-icons">close</i>
+        </button>
+      </div>
     </div>
+
+    <div class="modal__body">
 
       <form action="#" (ngSubmit)="onSubmit()" #jobForm="ngForm">
 
-        <div class="mdl-grid">
+        <div class="mdl-grid" style="padding-top: 0">
 
           <div class="form-field mdl-cell mdl-cell--4-col">
             <datepicker [(ngModel)]="model.movingDate" model-format="DD.MM.YYYY" view-format="DD.MM.YYYY"></datepicker>
-            <label class="form-field__label" for="movingDate">Date</label>
-            <span class="form-field__border"></span>
-            <div class="form-field__error" [hidden]="name.valid || name.pristine">
-              Date is required
-            </div>
           </div>
           <div class="form-field mdl-cell mdl-cell--4-col">
             <input class="form-field__input"
@@ -29,6 +31,9 @@
             >
             <label class="form-field__label" for="movingSize">Moving size</label>
             <span class="form-field__border"></span>
+            <div class="form-field__error" [hidden]="name.valid || name.pristine">
+              movingSize is required
+            </div>
           </div>
 
           <div class="form-field mdl-cell mdl-cell--4-col flex-wrapper">
@@ -149,6 +154,8 @@
         <button class="mdl-button mdl-button--raised" [disabled]="!jobForm.form.valid">Create job</button>
 
       </form>
+
+    </div>
 
   </div>
 </div>
