@@ -1,6 +1,6 @@
 import {bootstrap}    from '@angular/platform-browser-dynamic';
 import {AppComponent} from './app.component';
-import { CalendarService } from './calendar/calendar-service.component';
+import { CalendarService } from './calendar/calendar-service.ts';
 import { APP_ROUTER_PROVIDERS } from './app.routes';
 
 bootstrap(AppComponent, [

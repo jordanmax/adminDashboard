@@ -1,68 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="97bfd859-6b4b-4e18-aef4-7ca73990affa" name="Default" comment="added datepicker">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/modules/_vars.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/dist/assets/plugins/font-awesome.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/dist/assets/fonts/fontawesome-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/modules/_defaults.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/modules/_breakpoints.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/modules/_typography.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/mixins/_position.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/.idea/adminDashboard-master.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/assets/css/plugins/font-awesome.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/favicon.ico" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/app/components/sidebar.component.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/gulpfile.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/tsconfig.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/index2.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/apple-touch-icon-precomposed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/partials/_footer.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/partials/_filter.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/.idea/jsLibraryMappings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/modules/_inputs.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/app/components/navbar.component.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/vendor/_external.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/style.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/modules/_misc.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/modules/_normalize.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/systemjs.config.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/dist/assets/fonts/fontawesome-webfont.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/modules/_buttons.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/app/components/leads.component.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/.editorconfig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/dist/assets/fonts/fontawesome-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/dist/assets/fonts/fontawesome-webfont.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/partials/_main.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/.idea/libraries/adminDashboard_master_node_modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/partials/_nav.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/modules/_lists.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/modules/_print.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/modules/_app.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/DOCS.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/partials/_leads.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/modules/_clearfix.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/app/app.component.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/partials/_sidebar.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/.jshintrc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/app/main.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/src/styles/scss/partials/_header.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/dist/assets/fonts/FontAwesome.otf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../adminDashboard-master/dist/assets/fonts/fontawesome-webfont.eot" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/assets/css/style.css" afterPath="$PROJECT_DIR$/dist/assets/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/assets/css/style.min.css" afterPath="$PROJECT_DIR$/dist/assets/css/style.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/styles/scss/partials/_datepicker.scss" afterPath="$PROJECT_DIR$/src/styles/scss/partials/_datepicker.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/calendar/add-job-modal.component.html" afterPath="$PROJECT_DIR$/src/app/calendar/add-job-modal.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/styles/scss/modules/_inputs.scss" afterPath="$PROJECT_DIR$/src/styles/scss/modules/_inputs.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/styles/scss/partials/_modal.scss" afterPath="$PROJECT_DIR$/src/styles/scss/partials/_modal.scss" />
-    </list>
+    <list default="true" id="97bfd859-6b4b-4e18-aef4-7ca73990affa" name="Default" comment="added datepicker" />
     <ignored path="adminDashboard-master.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -82,26 +21,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="datepicker.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/directives/datepicker.ts">
+      <file leaf-file-name="add-job-modal.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/calendar/add-job-modal.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+            <state relative-caret-position="80">
+              <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
               <folding>
-                <element signature="e#0#110#0" expanded="true" />
-                <marker date="1469648915195" expanded="true" signature="530:677" placeholder="..." />
-                <marker date="1469648915195" expanded="true" signature="767:2071" placeholder="..." />
-                <marker date="1469648915195" expanded="true" signature="876:1481" placeholder="..." />
-                <marker date="1469648915195" expanded="true" signature="960:1031" placeholder="..." />
-                <marker date="1469648915195" expanded="true" signature="1079:1314" placeholder="..." />
-                <marker date="1469648915195" expanded="true" signature="1398:1470" placeholder="..." />
-                <marker date="1469648915195" expanded="true" signature="1516:2062" placeholder="..." />
-                <marker date="1469648915195" expanded="true" signature="1563:1688" placeholder="..." />
-                <marker date="1469648915195" expanded="true" signature="1640:1675" placeholder="..." />
-                <marker date="1469648915195" expanded="true" signature="1735:2062" placeholder="..." />
-                <marker date="1469648915195" expanded="true" signature="1820:1822" placeholder="..." />
-                <marker date="1469648915195" expanded="true" signature="1820:2031" placeholder="..." />
-                <marker date="1469648915195" expanded="true" signature="1973:2015" placeholder="..." />
+                <element signature="e#0#102#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -110,75 +36,125 @@
       <file leaf-file-name="calendar.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/calendar/calendar.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="31" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="31" />
+            <state relative-caret-position="140">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
-                <marker date="1469394677323" expanded="true" signature="521:646" placeholder="..." />
-                <marker date="1469394677323" expanded="true" signature="648:711" placeholder="..." />
-                <marker date="1469394677323" expanded="true" signature="693:709" placeholder="..." />
+                <element signature="e#0#50#0" expanded="true" />
+                <marker date="1470076282164" expanded="true" signature="514:597" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add-job-modal.component.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/app/calendar/add-job-modal.component.html">
+      <file leaf-file-name="calendar-header.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/calendar/calendar-header.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
+            <state relative-caret-position="300">
+              <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#0#50#0" expanded="true" />
+                <marker date="1470076106711" expanded="true" signature="202:1097" placeholder="..." />
+                <marker date="1470076106711" expanded="true" signature="249:746" placeholder="..." />
+                <marker date="1470076106711" expanded="true" signature="304:429" placeholder="..." />
+                <marker date="1470076106711" expanded="true" signature="486:548" placeholder="..." />
+                <marker date="1470076106711" expanded="true" signature="604:731" placeholder="..." />
+                <marker date="1470076106711" expanded="true" signature="805:1084" placeholder="..." />
+                <marker date="1470076106711" expanded="true" signature="843:879" placeholder="..." />
+                <marker date="1470076106711" expanded="true" signature="917:954" placeholder="..." />
+                <marker date="1470076106711" expanded="true" signature="1031:1069" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add-job-modal.service.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/calendar/add-job-modal.service.ts">
+      <file leaf-file-name="_calendar.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/styles/scss/partials/_calendar.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="900">
+              <caret line="45" column="20" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_datepicker.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/styles/scss/partials/_datepicker.scss">
+      <file leaf-file-name="calendar-service.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/calendar/calendar-service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="10" column="0" selection-start-line="3" selection-start-column="19" selection-end-line="10" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="480">
+              <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
+                <element signature="n#!!block;n#showFullInfo#0;n#CalendarService#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_inputs.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/styles/scss/modules/_inputs.scss">
+      <file leaf-file-name="datepicker.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/directives/datepicker.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="580">
+              <caret line="33" column="27" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#110#0" expanded="true" />
+                <marker date="1470074614560" expanded="true" signature="530:685" placeholder="..." />
+                <marker date="1470074614560" expanded="true" signature="840:2256" placeholder="..." />
+                <marker date="1470074614560" expanded="true" signature="882:1113" placeholder="..." />
+                <marker date="1470074614560" expanded="true" signature="1045:1104" placeholder="..." />
+                <marker date="1470074614560" expanded="true" signature="1148:2247" placeholder="..." />
+                <marker date="1470074614560" expanded="true" signature="1196:1605" placeholder="..." />
+                <marker date="1470074614560" expanded="true" signature="1284:1363" placeholder="..." />
+                <marker date="1470074614560" expanded="true" signature="1379:1424" placeholder="..." />
+                <marker date="1470074614560" expanded="true" signature="1512:1592" placeholder="..." />
+                <marker date="1470074614560" expanded="true" signature="1654:1782" placeholder="..." />
+                <marker date="1470074614560" expanded="true" signature="1734:1769" placeholder="..." />
+                <marker date="1470074614560" expanded="true" signature="1829:2247" placeholder="..." />
+                <marker date="1470074614560" expanded="true" signature="1920:1933" placeholder="..." />
+                <marker date="1470074614560" expanded="true" signature="1920:2216" placeholder="..." />
+                <marker date="1470074614560" expanded="true" signature="1988:2200" placeholder="..." />
+                <marker date="1470074614560" expanded="true" signature="2158:2200" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="job.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/calendar/job.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_modal.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/styles/scss/partials/_modal.scss">
+      <file leaf-file-name="days-list.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/calendar/days-list.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="620">
-              <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_vars.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/styles/scss/modules/_vars.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" column="11" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="11" />
-              <folding />
+            <state relative-caret-position="800">
+              <caret line="42" column="43" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
+              <folding>
+                <marker date="1470085021127" expanded="true" signature="301:922" placeholder="..." />
+                <marker date="1470085021127" expanded="true" signature="337:504" placeholder="..." />
+                <marker date="1470085021127" expanded="true" signature="393:490" placeholder="..." />
+                <marker date="1470085021127" expanded="true" signature="540:709" placeholder="..." />
+                <marker date="1470085021127" expanded="true" signature="596:695" placeholder="..." />
+                <marker date="1470085021127" expanded="true" signature="745:910" placeholder="..." />
+                <marker date="1470085021127" expanded="true" signature="801:896" placeholder="..." />
+                <marker date="1470085021127" expanded="true" signature="960:1115" placeholder="..." />
+                <marker date="1470085021127" expanded="true" signature="1005:1102" placeholder="..." />
+                <marker date="1470085021127" expanded="true" signature="1157:2941" placeholder="..." />
+                <marker date="1470085021127" expanded="true" signature="1290:1912" placeholder="..." />
+                <marker date="1470085021127" expanded="true" signature="1337:1886" placeholder="..." />
+                <marker date="1470085021127" expanded="true" signature="1521:1869" placeholder="..." />
+                <marker date="1470085021127" expanded="true" signature="1570:1620" placeholder="..." />
+                <marker date="1470085021127" expanded="true" signature="1716:1847" placeholder="..." />
+                <marker date="1470085021127" expanded="true" signature="1984:2925" placeholder="..." />
+                <marker date="1470085021127" expanded="true" signature="2032:2903" placeholder="..." />
+                <marker date="1470085021127" expanded="true" signature="2198:2461" placeholder="..." />
+                <marker date="1470085021127" expanded="true" signature="2554:2629" placeholder="..." />
+                <marker date="1470085021127" expanded="true" signature="2746:2879" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -198,7 +174,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/app/components/lead.component.ts" />
         <option value="$PROJECT_DIR$/src/scss/partials/_leads.scss" />
         <option value="$PROJECT_DIR$/tsconfig.json" />
         <option value="$PROJECT_DIR$/src/app/app.component.ts" />
@@ -217,7 +192,6 @@
         <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/src/styles/scss/partials/_header.scss" />
         <option value="$PROJECT_DIR$/src/styles/scss/modules/_misc.scss" />
-        <option value="$PROJECT_DIR$/src/styles/scss/partials/_calendar.scss" />
         <option value="$PROJECT_DIR$/src/app/components/job-form.component.ts" />
         <option value="$PROJECT_DIR$/src/app/components/job-form.component.html" />
         <option value="$PROJECT_DIR$/src/app/components/job-form-modal.component.ts" />
@@ -226,29 +200,31 @@
         <option value="$PROJECT_DIR$/src/app/components/add-job-modal.component.html" />
         <option value="$PROJECT_DIR$/src/app/main.ts" />
         <option value="$PROJECT_DIR$/dist/bundle.js" />
-        <option value="$PROJECT_DIR$/src/app/calendar/calendar-header.component.ts" />
         <option value="$PROJECT_DIR$/src/app/calendar/todo.ts" />
         <option value="$PROJECT_DIR$/src/app/calendar/MissionControlComponent.ts" />
         <option value="$PROJECT_DIR$/src/app/calendar/AstronautComponent.ts" />
         <option value="$PROJECT_DIR$/src/app/calendar/MissionService.ts" />
-        <option value="$PROJECT_DIR$/src/app/calendar/days-list.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/calendar/calendar.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/calendar/calendar-service.component.ts" />
         <option value="$PROJECT_DIR$/src/app/app.routes.ts" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/app/calendar/add-job-modal.service.ts" />
         <option value="$PROJECT_DIR$/src/styles/scss/modules/_buttons.scss" />
-        <option value="$PROJECT_DIR$/src/app/calendar/job.ts" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/app/directives/googleplace.directive.ts" />
-        <option value="$PROJECT_DIR$/src/app/calendar/add-job-modal.component.ts" />
         <option value="$PROJECT_DIR$/src/styles/scss/style.scss" />
         <option value="$PROJECT_DIR$/src/styles/scss/modules/_vars.scss" />
-        <option value="$PROJECT_DIR$/src/app/directives/datepicker.ts" />
         <option value="$PROJECT_DIR$/src/styles/scss/partials/_modal.scss" />
         <option value="$PROJECT_DIR$/src/styles/scss/partials/_datepicker.scss" />
+        <option value="$PROJECT_DIR$/src/app/calendar/job.ts" />
         <option value="$PROJECT_DIR$/src/styles/scss/modules/_inputs.scss" />
         <option value="$PROJECT_DIR$/src/app/calendar/add-job-modal.component.html" />
+        <option value="$PROJECT_DIR$/src/app/calendar/calendar-service.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/calendar/add-job-modal.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/directives/datepicker.ts" />
+        <option value="$PROJECT_DIR$/src/app/calendar/calendar-header.component.ts" />
+        <option value="$PROJECT_DIR$/src/styles/scss/partials/_calendar.scss" />
+        <option value="$PROJECT_DIR$/src/app/calendar/calendar.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/calendar/days-list.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/calendar/calendar-service.ts" />
       </list>
     </option>
   </component>
@@ -293,7 +269,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -486,6 +461,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -678,6 +654,23 @@
       <workItem from="1469649571975" duration="954000" />
       <workItem from="1469713870347" duration="1000" />
       <workItem from="1469728483202" duration="10000" />
+      <workItem from="1470042563865" duration="1777000" />
+      <workItem from="1470044353628" duration="1836000" />
+      <workItem from="1470046202463" duration="2247000" />
+      <workItem from="1470049274501" duration="1680000" />
+      <workItem from="1470051082873" duration="746000" />
+      <workItem from="1470056532788" duration="1817000" />
+      <workItem from="1470058368456" duration="1201000" />
+      <workItem from="1470070131335" duration="1824000" />
+      <workItem from="1470072414064" duration="1945000" />
+      <workItem from="1470074372273" duration="1829000" />
+      <workItem from="1470076227628" duration="2325000" />
+      <workItem from="1470078916271" duration="1819000" />
+      <workItem from="1470080754861" duration="1361000" />
+      <workItem from="1470082576524" duration="1459000" />
+      <workItem from="1470084406736" duration="1694000" />
+      <workItem from="1470126593157" duration="19000" />
+      <workItem from="1470591748641" duration="153000" />
     </task>
     <task id="LOCAL-00001" summary="inits project">
       <created>1463170472743</created>
@@ -732,19 +725,19 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="138857000" />
+    <option name="totallyTimeSpent" value="164589000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20600632" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24236038" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32792208" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13636364" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13542795" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -786,58 +779,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/calendar/days-list.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1560">
-          <caret line="80" column="44" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/calendar/add-job-modal.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/calendar/add-job-modal.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/directives/datepicker.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#110#0" expanded="true" />
-            <marker date="1469648915195" expanded="true" signature="530:677" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="767:2071" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="876:1481" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="960:1031" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="1079:1314" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="1398:1470" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="1516:2062" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="1563:1688" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="1640:1675" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="1735:2062" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="1820:1822" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="1820:2031" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="1973:2015" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/calendar/add-job-modal.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="12" column="64" selection-start-line="12" selection-start-column="64" selection-end-line="12" selection-end-column="64" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -845,7 +790,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1700">
           <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -861,9 +805,8 @@
         <state relative-caret-position="420">
           <caret line="28" column="31" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="31" />
           <folding>
-            <marker date="1469394677323" expanded="true" signature="521:646" placeholder="..." />
-            <marker date="1469394677323" expanded="true" signature="648:711" placeholder="..." />
-            <marker date="1469394677323" expanded="true" signature="693:709" placeholder="..." />
+            <element signature="e#0#50#0" expanded="true" />
+            <marker date="1470076282164" expanded="true" signature="514:597" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -886,7 +829,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -901,7 +843,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1700">
           <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -917,9 +858,8 @@
         <state relative-caret-position="420">
           <caret line="28" column="31" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="31" />
           <folding>
-            <marker date="1469394677323" expanded="true" signature="521:646" placeholder="..." />
-            <marker date="1469394677323" expanded="true" signature="648:711" placeholder="..." />
-            <marker date="1469394677323" expanded="true" signature="693:709" placeholder="..." />
+            <element signature="e#0#50#0" expanded="true" />
+            <marker date="1470076282164" expanded="true" signature="514:597" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -942,7 +882,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -964,9 +903,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1380">
           <caret line="82" column="91" selection-start-line="82" selection-start-column="91" selection-end-line="82" selection-end-column="91" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -974,7 +910,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1700">
           <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -990,9 +925,8 @@
         <state relative-caret-position="500">
           <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
           <folding>
-            <marker date="1469394677323" expanded="true" signature="521:646" placeholder="..." />
-            <marker date="1469394677323" expanded="true" signature="648:711" placeholder="..." />
-            <marker date="1469394677323" expanded="true" signature="693:709" placeholder="..." />
+            <element signature="e#0#50#0" expanded="true" />
+            <marker date="1470076282164" expanded="true" signature="514:597" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1015,7 +949,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1030,7 +963,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1700">
           <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1046,9 +978,8 @@
         <state relative-caret-position="500">
           <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
           <folding>
-            <marker date="1469394677323" expanded="true" signature="521:646" placeholder="..." />
-            <marker date="1469394677323" expanded="true" signature="648:711" placeholder="..." />
-            <marker date="1469394677323" expanded="true" signature="693:709" placeholder="..." />
+            <element signature="e#0#50#0" expanded="true" />
+            <marker date="1470076282164" expanded="true" signature="514:597" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1057,9 +988,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1800">
           <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1077,24 +1005,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/calendar/job.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="128" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/calendar/days-list.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1560">
-          <caret line="80" column="44" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -1137,37 +1051,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="3" column="11" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/calendar/add-job-modal.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/directives/datepicker.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#110#0" expanded="true" />
-            <marker date="1469648915195" expanded="true" signature="530:677" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="767:2071" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="876:1481" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="960:1031" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="1079:1314" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="1398:1470" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="1516:2062" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="1563:1688" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="1640:1675" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="1735:2062" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="1820:1822" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="1820:2031" placeholder="..." />
-            <marker date="1469648915195" expanded="true" signature="1973:2015" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1175,52 +1058,162 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/calendar/calendar.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="31" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="31" />
-          <folding>
-            <marker date="1469394677323" expanded="true" signature="521:646" placeholder="..." />
-            <marker date="1469394677323" expanded="true" signature="648:711" placeholder="..." />
-            <marker date="1469394677323" expanded="true" signature="693:709" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/styles/scss/partials/_modal.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
-          <folding />
+        <state relative-caret-position="820">
+          <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/styles/scss/partials/_datepicker.scss">
+    <entry file="file://$PROJECT_DIR$/src/app/components/leads.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="0" selection-start-line="3" selection-start-column="19" selection-end-line="10" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="2780">
+          <caret line="339" column="52" selection-start-line="339" selection-start-column="10" selection-end-line="339" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/styles/scss/modules/_inputs.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="160">
+          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/calendar/add-job-modal.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
+        <state relative-caret-position="460">
+          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/scss/partials/_datepicker.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/calendar/calendar-header.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#0#50#0" expanded="true" />
+            <marker date="1470076106711" expanded="true" signature="202:1097" placeholder="..." />
+            <marker date="1470076106711" expanded="true" signature="249:746" placeholder="..." />
+            <marker date="1470076106711" expanded="true" signature="304:429" placeholder="..." />
+            <marker date="1470076106711" expanded="true" signature="486:548" placeholder="..." />
+            <marker date="1470076106711" expanded="true" signature="604:731" placeholder="..." />
+            <marker date="1470076106711" expanded="true" signature="805:1084" placeholder="..." />
+            <marker date="1470076106711" expanded="true" signature="843:879" placeholder="..." />
+            <marker date="1470076106711" expanded="true" signature="917:954" placeholder="..." />
+            <marker date="1470076106711" expanded="true" signature="1031:1069" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/calendar/calendar.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+            <marker date="1470076282164" expanded="true" signature="514:597" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/calendar/add-job-modal.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#102#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/scss/partials/_calendar.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="45" column="20" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/directives/datepicker.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="33" column="27" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#110#0" expanded="true" />
+            <marker date="1470074614560" expanded="true" signature="530:685" placeholder="..." />
+            <marker date="1470074614560" expanded="true" signature="840:2256" placeholder="..." />
+            <marker date="1470074614560" expanded="true" signature="882:1113" placeholder="..." />
+            <marker date="1470074614560" expanded="true" signature="1045:1104" placeholder="..." />
+            <marker date="1470074614560" expanded="true" signature="1148:2247" placeholder="..." />
+            <marker date="1470074614560" expanded="true" signature="1196:1605" placeholder="..." />
+            <marker date="1470074614560" expanded="true" signature="1284:1363" placeholder="..." />
+            <marker date="1470074614560" expanded="true" signature="1379:1424" placeholder="..." />
+            <marker date="1470074614560" expanded="true" signature="1512:1592" placeholder="..." />
+            <marker date="1470074614560" expanded="true" signature="1654:1782" placeholder="..." />
+            <marker date="1470074614560" expanded="true" signature="1734:1769" placeholder="..." />
+            <marker date="1470074614560" expanded="true" signature="1829:2247" placeholder="..." />
+            <marker date="1470074614560" expanded="true" signature="1920:1933" placeholder="..." />
+            <marker date="1470074614560" expanded="true" signature="1920:2216" placeholder="..." />
+            <marker date="1470074614560" expanded="true" signature="1988:2200" placeholder="..." />
+            <marker date="1470074614560" expanded="true" signature="2158:2200" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/calendar/job.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/calendar/days-list.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="800">
+          <caret line="42" column="43" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
+          <folding>
+            <marker date="1470085021127" expanded="true" signature="301:922" placeholder="..." />
+            <marker date="1470085021127" expanded="true" signature="337:504" placeholder="..." />
+            <marker date="1470085021127" expanded="true" signature="393:490" placeholder="..." />
+            <marker date="1470085021127" expanded="true" signature="540:709" placeholder="..." />
+            <marker date="1470085021127" expanded="true" signature="596:695" placeholder="..." />
+            <marker date="1470085021127" expanded="true" signature="745:910" placeholder="..." />
+            <marker date="1470085021127" expanded="true" signature="801:896" placeholder="..." />
+            <marker date="1470085021127" expanded="true" signature="960:1115" placeholder="..." />
+            <marker date="1470085021127" expanded="true" signature="1005:1102" placeholder="..." />
+            <marker date="1470085021127" expanded="true" signature="1157:2941" placeholder="..." />
+            <marker date="1470085021127" expanded="true" signature="1290:1912" placeholder="..." />
+            <marker date="1470085021127" expanded="true" signature="1337:1886" placeholder="..." />
+            <marker date="1470085021127" expanded="true" signature="1521:1869" placeholder="..." />
+            <marker date="1470085021127" expanded="true" signature="1570:1620" placeholder="..." />
+            <marker date="1470085021127" expanded="true" signature="1716:1847" placeholder="..." />
+            <marker date="1470085021127" expanded="true" signature="1984:2925" placeholder="..." />
+            <marker date="1470085021127" expanded="true" signature="2032:2903" placeholder="..." />
+            <marker date="1470085021127" expanded="true" signature="2198:2461" placeholder="..." />
+            <marker date="1470085021127" expanded="true" signature="2554:2629" placeholder="..." />
+            <marker date="1470085021127" expanded="true" signature="2746:2879" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/calendar/calendar-service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+            <element signature="n#!!block;n#showFullInfo#0;n#CalendarService#0" expanded="false" />
           </folding>
         </state>
       </provider>

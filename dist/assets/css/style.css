@@ -627,7 +627,10 @@ textarea {
   .calendar__days-wrap {
     display: -webkit-flex;
     display: -ms-flexbox;
-    display: flex; }
+    display: flex;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; }
   .calendar__day {
     width: calc(100% / 7);
     height: 10vh;
@@ -766,7 +769,7 @@ textarea {
   .modal__content {
     width: 50%;
     border-radius: 4px;
-    min-width: 290px;
+    min-width: 950px;
     background: #fff;
     text-align: center;
     position: relative;
@@ -835,30 +838,17 @@ textarea {
   border-radius: 4px;
   overflow: hidden;
   z-index: 11;
-  box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12); }
+  box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12);
+  min-width: 260px; }
   .datepicker__header {
     font-size: 16px;
     color: #fff;
-    text-align: center;
     background-color: #566dd1;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    padding: 5px; }
-    .datepicker__header__content {
-      padding: 15px 0; }
-    .datepicker__header__month {
+    padding: 10px;
+    text-align: left; }
+    .datepicker__header__date {
       font-size: 20px;
-      text-transform: uppercase; }
-    .datepicker__header__day {
-      font-size: 50px;
-      line-height: 60px; }
+      margin: 5px 0; }
     .datepicker__header__year {
       color: #a6b2e7; }
   .datepicker__dayname {
@@ -869,6 +859,18 @@ textarea {
   .datepicker__body {
     padding: 10px;
     background: #fff; }
+    .datepicker__body__date {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-align-content: center;
+          -ms-flex-line-pack: center;
+              align-content: center;
+      -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      line-height: 32px;
+      padding-bottom: 10px; }
   .datepicker__day-names {
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -897,6 +899,12 @@ textarea {
 .form-field {
   position: relative;
   padding-top: 20px; }
+  .form-field__map {
+    height: 400px;
+    width: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 20px; }
   .form-field .form-field__border {
     position: absolute;
     width: 100%;
@@ -908,6 +916,9 @@ textarea {
         -ms-transform: scaleX(0);
             transform: scaleX(0);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+  .form-field__distance {
+    font-size: 16px;
+    margin-top: 5px; }
   .form-field__input {
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
@@ -921,7 +932,9 @@ textarea {
     color: inherit;
     outline: none;
     position: relative;
-    z-index: 1; }
+    z-index: 1;
+    box-sizing: border-box;
+    min-height: 33px; }
     .form-field__input.ng-invalid:not(.ng-pristine) {
       border-bottom: 1px solid #f44336; }
     .form-field__input:focus + .form-field__label {

@@ -1,6 +1,13 @@
 .form-field {
   position: relative;
   padding-top: 20px;
+  &__map {
+    height: 400px;
+    width: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 20px;
+  }
   .form-field__border {
     position: absolute;
     width: 100%;
@@ -10,6 +17,10 @@
     background: $indigo;
     transform: scaleX(0);
     transition: all .3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  &__distance {
+    font-size: 16px;
+    margin-top: 5px;
   }
   &__input {
     border: none;
@@ -25,6 +36,8 @@
     outline: none;
     position: relative;
     z-index: 1;
+    box-sizing: border-box;
+    min-height: 33px;
     &.ng-invalid:not(.ng-pristine) {
       border-bottom: 1px solid $red;
     }

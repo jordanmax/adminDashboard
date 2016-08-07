@@ -1,5 +1,5 @@
 import { Component, Inject, Output, EventEmitter } from '@angular/core';
-import { CalendarService } from './calendar-service.component';
+import { CalendarService } from './calendar-service.ts';
 import { AddJobModalService } from './add-job-modal.service';
 
 @Component({
@@ -27,46 +27,48 @@ import { AddJobModalService } from './add-job-modal.service';
 
       <div class="calendar__labels">
         <div class="calendar__labels__item"
-         *ngFor="let dayName of calendarService.calDaysLabels">
+         *ngFor="let dayName of calendarService.dayNames">
           {{ dayName }}
         </div>
       </div>
-
+      
       <div class="calendar__week" 
-      *ngFor="let week of calendarService.currentMonthDays, let weekIndex = index">
+           *ngFor="let week of calendarService.fullMonth, let weekIndex = index">
         
         <div class="calendar__days-wrap">
+        
           <div class="calendar__day"
-               *ngFor="let day of week.days, let dayIndex = index"
-               (click)="calendarService.showFullInfo(day, weekIndex, dayIndex)">
-            <div class="calendar__day-inner {{ day.className }}">
-              <span class="calendar__day__date {{ day.isCurrentMonth }}">
-                {{ day.date }}
+               *ngFor="let d of week, let dayIndex = index"
+               (click)="calendarService.showFullInfo(d, weekIndex, dayIndex)">
+            <div class="calendar__day-inner">
+              <span class="calendar__day__date">
+                {{ d.day }}
               </span>
-              <span class="calendar__day__job {{ job.size }}" *ngFor="let job of day.jobs">
-                {{ job.movingDate }} | {{ job.moveFrom }} | {{ job.moveTo }} | {{ job.phone }}
-              </span>
+              <!--<span class="calendar__day__job {{ job.size }}" *ngFor="let job of day.jobs">-->
+                <!--{{ job.movingDate }} | {{ job.moveFrom }} | {{ job.moveTo }} | {{ job.phone }}-->
+              <!--</span>-->
             </div>
           </div>
+          
         </div>
 
-        <div class="calendar__day-full-info {{ week.className }}">
-          <div *ngIf="week.selectedDay">
-            <div class="calendar__day__date-label">{{ week.selectedDay.fullDate }}</div>
-            <div *ngFor="let job of week.selectedDay.jobs"
-                  class="calendar__day-full-info__job">
-              {{ job.movingDate }} | {{ job.moveFrom }} | {{ job.moveTo }} 
-              {{ job.movingSize }} | {{ job.phone }} | {{ job.name }} | {{ job.mail }} 
-            </div>
-            <div *ngIf="!week.selectedDay.jobs.length" class="calendar__day__no-job">
-                No jobs booked for today 
-            </div>
-            <button class="small-space mdl-button mdl-button--raised mdl-button--colored"
-                    (click)="openModal(week.selectedDay.fullDate)">
-                  Add job
-            </button>
-          </div>
-        </div>
+        <!--<div class="calendar__day-full-info {{ week.className }}">-->
+          <!--<div *ngIf="week.selectedDay">-->
+            <!--<div class="calendar__day__date-label">{{ week.selectedDay.fullDate }}</div>-->
+            <!--<div *ngFor="let job of week.selectedDay.jobs"-->
+                  <!--class="calendar__day-full-info__job">-->
+              <!--{{ job.movingDate }} | {{ job.moveFrom }} | {{ job.moveTo }} -->
+              <!--{{ job.movingSize }} | {{ job.phone }} | {{ job.name }} | {{ job.mail }} -->
+            <!--</div>-->
+            <!--<div *ngIf="!week.selectedDay.jobs.length" class="calendar__day__no-job">-->
+                <!--No jobs booked for today -->
+            <!--</div>-->
+            <!--<button class="small-space mdl-button mdl-button&#45;&#45;raised mdl-button&#45;&#45;colored"-->
+                    <!--(click)="openModal(week.selectedDay.fullDate)">-->
+                  <!--Add job-->
+            <!--</button>-->
+          <!--</div>-->
+        <!--</div>-->
       </div>
   `
 })

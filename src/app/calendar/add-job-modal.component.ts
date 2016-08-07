@@ -22,9 +22,21 @@ export class AddJobModalComponent {
   haveDistance = false;
   submitted = false;
   currentDate = '';
-  initDate= '100';
+  initDate= '';
   subscription: Subscription;
   model: Job;
+  movingSizeOptions = [
+    'Studio',
+    '1 Bedroom',
+    '2 Bedrooms',
+    '3 Bedrooms',
+    'Over 3',
+    'Other'
+  ];
+  selectedMovingSizeOptions: string;
+  directionsService = new google.maps.DirectionsService();
+  directionsDisplay = new google.maps.DirectionsRenderer();
+  model = new Job();
 
   @Output() addJob = new EventEmitter<Object>();
 
@@ -37,11 +49,20 @@ export class AddJobModalComponent {
       });
   }
 
-  model = new Job();
+
 
   getAddress(place:Object, field) {
     this.model[field] = place['formatted_address'];
     this.calcRoute();
+  }
+
+  setMovingSize(value) {
+    this.selectedMovingSizeOptions = value;
+    this.model.movingSize = value
+  }
+
+  showMovingSizeInput() {
+    return this.selectedMovingSizeOptions === 'Other'
   }
 
   closeModal() {
@@ -55,7 +76,23 @@ export class AddJobModalComponent {
     this.model = new Job();
   }
 
+  initMap() {
+    let mapOptions = {
+      zoom: 7,
+      scrollwheel: false,
+      center: new google.maps.LatLng(40.7903, -73.9597)
+    };
+    let map = new google.maps.Map(document.getElementById('modalMap'), mapOptions);
+
+    this.directionsDisplay.setMap(map);
+  }
+
+  renderRoutes(data) {
+    this.directionsDisplay.setDirections(data);
+  }
+
   ngOnInit() {
+    this.initMap()
   }
 
   calcRoute() {
@@ -63,6 +100,9 @@ export class AddJobModalComponent {
     let end = this.model.moveTo;
     let directionsService = new google.maps.DirectionsService();
 
+    if(!start || !end) {
+      return
+    }
     // sets a object literal with an origin of start, destination of end and the travel mode
     let request = {
       origin: start,
@@ -70,19 +110,20 @@ export class AddJobModalComponent {
       travelMode: google.maps.TravelMode.DRIVING
     };
 
-    if(!start || !end) {
-      return
-    }
-
     // this gives the directionsService var a route of the request object literal, and a callback method that executes upon the receipt of the response from directionsService.  Learn more about callbacks here, http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/
     this._ngZone.runOutsideAngular(() => {
       directionsService.route(request, (response, status) => {
         if (status == google.maps.DirectionsStatus.OK) {
+
+          this.renderRoutes(response);
           this.model.distance = response.routes[0].legs[0].distance.text;
           this._ngZone.run(() => { });
+
         } else {
+
           this.model.distance = 'Error';
           this._ngZone.run(() => { });
+
         }
       })
     });

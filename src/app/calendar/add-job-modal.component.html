@@ -14,29 +14,56 @@
 
       <form action="#" (ngSubmit)="onSubmit()" #jobForm="ngForm">
 
-        <div class="mdl-grid" style="padding-top: 0">
+        <div class="mdl-grid">
 
-          <div class="form-field mdl-cell mdl-cell--4-col">
+          <div class="form-field mdl-cell mdl-cell--3-col">
             <datepicker [(ngModel)]="model.movingDate" model-format="DD.MM.YYYY" view-format="DD.MM.YYYY"></datepicker>
           </div>
-          <div class="form-field mdl-cell mdl-cell--4-col">
-            <input class="form-field__input"
-                   type="text"
-                   id="movingSize"
-                   ngControl="name" #name="ngForm"
-                   [(ngModel)]="model.movingSize"
-                   name="movingSize"
-                   [ngClass]="{hasText: model.movingSize}"
-                   required
+
+          <div class="form-field mdl-cell mdl-cell--3-col">
+            <input class="form-field__input hasText"
+                   type="time"
+                   id="time"
+                   name="moveFrom"
+                   placeholder=""
+                   [(ngModel)] ="model.movingTime"
             >
-            <label class="form-field__label" for="movingSize">Moving size</label>
+            <label class="form-field__label" for="time">Moving Time</label>
+            <span class="form-field__border"></span>
+          </div>
+
+          <div class="form-field mdl-cell mdl-cell--2-col">
+            <select #sel
+                    (change)="setMovingSize(sel.value)"
+                    ngControl="name" #name="ngForm"
+                    class="form-field__input hasText"
+                    id="movingSizeOptions"
+                    name="movingSize">
+
+              <option *ngFor="let movingSize of movingSizeOptions">
+                {{movingSize}}
+              </option>
+
+            </select>
+            <label class="form-field__label" for="movingSizeOptions">Moving size</label>
             <span class="form-field__border"></span>
             <div class="form-field__error" [hidden]="name.valid || name.pristine">
               movingSize is required
             </div>
           </div>
 
-          <div class="form-field mdl-cell mdl-cell--4-col flex-wrapper">
+          <div class="mdl-cell mdl-cell--2-col form-field" *ngIf="showMovingSizeInput()">
+              <input class="form-field__input hasText"
+                     type="text"
+                     id="movingSize"
+                     [(ngModel)]="model.movingSize"
+              >
+              <label class="form-field__label" for="movingSize">Other moving size</label>
+              <span class="form-field__border"></span>
+
+          </div>
+
+          <div class="form-field mdl-cell mdl-cell--2-col flex-wrapper">
             <div class="radio-button">
               <input type="radio"
                      id="option-1"
@@ -46,7 +73,7 @@
                      #s
                      [checked]="model.movingSizeType == s.value" (click)="model.movingSizeType = s.value"
                >
-              <label class="mdl-button radio-button__green" for="option-1">Small</label>
+              <label class="mdl-button radio-button__green" for="option-1">S</label>
             </div>
 
             <div class="radio-button">
@@ -58,7 +85,7 @@
                      #m
                      [checked]="model.movingSizeType == m.value" (click)="model.movingSizeType = m.value"
               >
-              <label class="mdl-button radio-button__orange" for="option-2">Medium</label>
+              <label class="mdl-button radio-button__orange" for="option-2">M</label>
             </div>
 
             <div class="radio-button">
@@ -70,7 +97,7 @@
                      #l
                      [checked]="model.movingSizeType == l.value" (click)="model.movingSizeType = l.value"
               >
-              <label class="mdl-button radio-button__red" for="option-3">Large</label>
+              <label class="mdl-button radio-button__red" for="option-3">L</label>
             </div>
 
           </div>
@@ -108,10 +135,12 @@
           </div>
 
           <div class="form-field mdl-cell mdl-cell--4-col">
-            {{model.distance}}
+            <div class="form-field__distance">{{model.distance}}</div>
             <label class="form-field__label" for="moveTo">Distance</label>
             <span class="form-field__border"></span>
           </div>
+
+          <div class="form-field__map" id="modalMap"></div>
 
           <div class="form-field mdl-cell mdl-cell--4-col">
             <input class="form-field__input"

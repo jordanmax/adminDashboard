@@ -1,12 +1,25 @@
 import { Injectable } from '@angular/core';
+import * as moment_ from 'moment';
+
+const moment: moment.MomentStatic = (<any>moment_)['default'] || moment_;
 
 @Injectable()
 export class CalendarService {
-  calDaysLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  calMonthsLabels = ['January', 'February', 'March', 'April',
-    'May', 'June', 'July', 'August', 'September',
-    'October', 'November', 'December'];
-  calDaysInMonth  = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  public isOpened: boolean;
+  public dateValue: string;
+  public dateLabels: Object;
+  public viewValue: string;
+  public days: Array<Object>;
+  public fullMonth: Array<Object> = [];
+  public dayNames: Array<string>;
+  private el: any;
+  private date: any;
+  private cannonical: number;
+  public firstWeekDaySunday: boolean;
+
+  constructor() {
+    this.init();
+  }
 
   calCurrentDate = new Date();
 
@@ -20,7 +33,7 @@ export class CalendarService {
 
   selectedDayIndex = null;
 
-  jobs = ['1'];
+  jobs = [''];
 
   getDaysInMonth(month, year) {
     let date = new Date(year, month, 1);
@@ -71,8 +84,54 @@ export class CalendarService {
     return weeks;
   }
 
-  sortByWeeks() {
+  private generateCalendar(date): void {
+    let lastDayOfMonth = date.endOf('month').date();
+    let month = date.month();
+    let year = date.year();
+    let n = 1;
+    let firstWeekDay = null;
+    let week = [];
 
+    this.dateValue = date.format('MMMM');
+    this.days = [];
+    this.fullMonth = [];
+
+    if (this.firstWeekDaySunday === true) {
+      firstWeekDay = date.set('date', 2).day();
+    } else {
+      firstWeekDay = date.set('date', 1).day();
+    }
+
+    if (firstWeekDay !== 1) {
+      n -= firstWeekDay - 1;
+    }
+
+    for (let i = n; i <= lastDayOfMonth; i += 1) {
+      if (i > 0) {
+        this.days.push({day: i, month: month + 1, year: year, enabled: true});
+      } else {
+        this.days.push({day: null, month: null, year: null, enabled: false});
+      }
+    }
+
+    for(let i = 0, j = 1; i < this.days.length; i++, j++) {
+      week.push(this.days[i]);
+      if(j === 7) {
+        this.fullMonth.push(week);
+        week = [];
+        j = 0;
+      }
+    }
+    this.fullMonth.push(week);
+  }
+
+  private generateDayNames(): void {
+    this.dayNames = [];
+    let date = this.firstWeekDaySunday === true ? moment('2015-06-07') : moment('2015-06-01');
+    for (let i = 0; i < 7; i += 1) {
+      this.dayNames.push(date.format('ddd'));
+      date.add('1', 'd');
+    }
   }
 
   addJob(job) {
@@ -82,13 +141,13 @@ export class CalendarService {
   }
 
   showNextMonth() {
-    this.currentMonthDays = this.getDaysInMonth(this.month + 1, this.year)
-    this.month++;
+    this.date.add(1, 'M');
+    this.generateCalendar(this.date);
   }
 
   showPrevMonth() {
-    this.currentMonthDays = this.getDaysInMonth(this.month - 1, this.year)
-    this.month--;
+    this.date.subtract(1, 'M');
+    this.generateCalendar(this.date);
   }
 
   showFullInfo(day, weekIndex, dayIndex) {
@@ -105,5 +164,12 @@ export class CalendarService {
     this.selectedDayWeekIndex = weekIndex;
     this.selectedDayIndex = dayIndex;
 
+  }
+
+  private init(): void {
+    this.date = moment();
+    this.firstWeekDaySunday = false;
+    this.generateDayNames();
+    this.generateCalendar(this.date);
   }
 }

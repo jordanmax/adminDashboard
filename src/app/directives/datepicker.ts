@@ -10,37 +10,47 @@ const moment: moment.MomentStatic = (<any>moment_)['default'] || moment_;
   selector: 'datepicker[ngModel]',
   template: `
   <input type="text"
-         class="form-field__input"
+         class="form-field__input hasText"
          (focus)="openDatepicker()"
          [value]="viewValue"
          [hidden]="isStatic"
          readonly>
-
+  <label class="form-field__label" for="time">Moving Date</label>
   <div class="datepicker" *ngIf="isStatic || isOpened" [ngClass]="{ static: isStatic }">
-    <div class="datepicker__dayname">{{ dateLabels.fullDayName }}</div>
+    
     <div class="datepicker__header">
-      <div class="mdl-button mdl-js-button mdl-button--icon" (click)="prevMonth()">
-        <i class="material-icons">keyboard_arrow_left</i>
-      </div>
-      <div class="datepicker__header__content">
-        <div class="datepicker__header__month">{{ dateLabels.month }}</div>
-        <div class="datepicker__header__day">{{ dateLabels.day }}</div>
         <div class="datepicker__header__year">{{ dateLabels.year }}</div>
-      </div>
-      <div class="mdl-button mdl-js-button mdl-button--icon" (click)="nextMonth()">
-        <i class="material-icons">keyboard_arrow_right</i>
-      </div>
+        <div class="datepicker__header__date">
+          {{ dateLabels.fullDayName }}, {{ dateLabels.month }} {{ dateLabels.day }}
+        </div>
     </div>
     <div class="datepicker__body">
     
+      <div class="datepicker__body__date">
+          <div class="mdl-button mdl-js-button mdl-button--icon" (click)="prevMonth()">
+            <i class="material-icons">keyboard_arrow_left</i>
+          </div>
+          <div>
+            {{ dateValue }}
+          </div>
+          <div class="mdl-button mdl-js-button mdl-button--icon" (click)="nextMonth()">
+            <i class="material-icons">keyboard_arrow_right</i>
+          </div>
+      </div>
+      
       <div class="datepicker__day-names">
-        <span  class="datepicker__day-names__item" *ngFor="#dn of dayNames">
+        <span  class="datepicker__day-names__item" *ngFor="let dn of dayNames">
           {{ dn }}
         </span>
       </div>
       <div class="datepicker__days-wrapper">
-        <span class="datepicker__days-wrapper__item" *ngFor="#d of days; #i = index;">
-          <span class="day mdl-button mdl-button--icon" [ngClass]="{'disabled': !d.enabled, 'selected': isSelected(d)}" (click)="selectDate($event, d)">
+        <span class="datepicker__days-wrapper__item" *ngFor="let d of days; let i = index;">
+          
+          <span class="day mdl-button mdl-button--icon"
+                *ngIf="d.day"
+                [ngClass]="{'disabled': !d.enabled, 'selected': isSelected(d)}" 
+                (click)="selectDate($event, d)"
+          >
             {{ d.day }}
           </span>
         </span>
@@ -150,12 +160,6 @@ export class DatePicker implements ControlValueAccessor, AfterViewInit {
     let firstWeekDay = null;
 
     this.dateValue = date.format('MMMM YYYY');
-    this.dateLabels = {
-      day: date.format('DD'),
-      fullDayName: date.format('dddd'),
-      month: date.format('MMM'),
-      year: date.format('YYYY')
-    };
     this.days = [];
 
     if (this.firstWeekDaySunday === true) {
@@ -207,6 +211,12 @@ export class DatePicker implements ControlValueAccessor, AfterViewInit {
     this.viewValue = val.format(this.viewFormat || 'Do MMMM YYYY');
     this.cd.viewToModelUpdate(val.format(this.modelFormat || 'YYYY-MM-DD'));
     this.cannonical = val.toDate().getTime();
+    this.dateLabels = {
+      day: moment(this.cannonical).format('DD'),
+      fullDayName: moment(this.cannonical).format('ddd'),
+      month: moment(this.cannonical).format('MMM'),
+      year: moment(this.cannonical).format('YYYY')
+    };
   }
 
   private initValue(): void {

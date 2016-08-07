@@ -1,6 +1,7 @@
 export class Job {
   constructor(
     public movingDate: string = '',
+    public movingTime: string = '',
     public moveFrom: string = '',
     public moveTo: string = '',
     public movingSize: string = '',

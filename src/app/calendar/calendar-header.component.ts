@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { CalendarService } from './calendar-service.component';
+import { CalendarService } from './calendar-service.ts';
 
 @Component({
   selector: 'calendar-header',
@@ -11,7 +11,7 @@ import { CalendarService } from './calendar-service.component';
           </button>
        
           <span class="calendar__header__title">
-            {{ calendarService.calMonthsLabels[calendarService.month] }}
+            {{ calendarService.dateValue }}
           </span>
 
           <button class="mdl-button mdl-button--icon">

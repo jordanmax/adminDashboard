@@ -4,7 +4,7 @@ import { CalendarHeader } from './calendar-header.component';
 import { AddJobModalComponent } from './add-job-modal.component';
 import { AddJobModalService } from './add-job-modal.service';
 
-import { CalendarService } from './calendar-service.component';
+import { CalendarService } from './calendar-service.ts';
 import { Job } from './job';
 
 @Component({
@@ -12,7 +12,6 @@ import { Job } from './job';
   template: `
     <h4 class="page-header">Calendar Page</h4>
     <div class="calendar card-shadow">
-      <mission-control></mission-control>
       <calendar-header></calendar-header>
       <days-list></days-list>
     </div>

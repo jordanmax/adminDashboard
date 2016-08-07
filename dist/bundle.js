@@ -53255,9 +53255,19 @@ let AddJobModalComponent = class AddJobModalComponent {
         this.haveDistance = false;
         this.submitted = false;
         this.currentDate = '';
-        this.initDate = '100';
-        this.addJob = new core_1.EventEmitter();
+        this.initDate = '';
+        this.movingSizeOptions = [
+            'Studio',
+            '1 Bedroom',
+            '2 Bedrooms',
+            '3 Bedrooms',
+            'Over 3',
+            'Other'
+        ];
+        this.directionsService = new google.maps.DirectionsService();
+        this.directionsDisplay = new google.maps.DirectionsRenderer();
         this.model = new job_1.Job();
+        this.addJob = new core_1.EventEmitter();
         this.subscription = addJobModalService.modelOpened$.subscribe(date => {
             this.isOpen = true;
             this.isClosed = false;
@@ -53268,6 +53278,13 @@ let AddJobModalComponent = class AddJobModalComponent {
         this.model[field] = place['formatted_address'];
         this.calcRoute();
     }
+    setMovingSize(value) {
+        this.selectedMovingSizeOptions = value;
+        this.model.movingSize = value;
+    }
+    showMovingSizeInput() {
+        return this.selectedMovingSizeOptions === 'Other';
+    }
     closeModal() {
         this.isOpen = false;
         this.isClosed = true;
@@ -53277,25 +53294,39 @@ let AddJobModalComponent = class AddJobModalComponent {
         this.closeModal();
         this.model = new job_1.Job();
     }
+    initMap() {
+        let mapOptions = {
+            zoom: 7,
+            scrollwheel: false,
+            center: new google.maps.LatLng(40.7903, -73.9597)
+        };
+        let map = new google.maps.Map(document.getElementById('modalMap'), mapOptions);
+        this.directionsDisplay.setMap(map);
+    }
+    renderRoutes(data) {
+        this.directionsDisplay.setDirections(data);
+    }
     ngOnInit() {
+        this.initMap();
     }
     calcRoute() {
         let start = this.model.moveFrom;
         let end = this.model.moveTo;
         let directionsService = new google.maps.DirectionsService();
+        if (!start || !end) {
+            return;
+        }
         // sets a object literal with an origin of start, destination of end and the travel mode
         let request = {
             origin: start,
             destination: end,
             travelMode: google.maps.TravelMode.DRIVING
         };
-        if (!start || !end) {
-            return;
-        }
         // this gives the directionsService var a route of the request object literal, and a callback method that executes upon the receipt of the response from directionsService.  Learn more about callbacks here, http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/
         this._ngZone.runOutsideAngular(() => {
             directionsService.route(request, (response, status) => {
                 if (status == google.maps.DirectionsStatus.OK) {
+                    this.renderRoutes(response);
                     this.model.distance = response.routes[0].legs[0].distance.text;
                     this._ngZone.run(() => { });
                 }
@@ -53364,7 +53395,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 const core_1 = require('@angular/core');
-const calendar_service_component_1 = require('./calendar-service.component');
+const calendar_service_ts_1 = require('./calendar-service.ts');
 let CalendarHeader = class CalendarHeader {
     constructor(calendarService) {
         this.calendarService = calendarService;
@@ -53382,7 +53413,7 @@ CalendarHeader = __decorate([
           </button>
        
           <span class="calendar__header__title">
-            {{ calendarService.calMonthsLabels[calendarService.month] }}
+            {{ calendarService.dateValue }}
           </span>
 
           <button class="mdl-button mdl-button--icon">
@@ -53403,10 +53434,10 @@ CalendarHeader = __decorate([
         </div>
       </div>`
     }),
-    __param(0, core_1.Inject(calendar_service_component_1.CalendarService))
+    __param(0, core_1.Inject(calendar_service_ts_1.CalendarService))
 ], CalendarHeader);
 exports.CalendarHeader = CalendarHeader;
-},{"./calendar-service.component":385,"@angular/core":148}],385:[function(require,module,exports){
+},{"./calendar-service.ts":385,"@angular/core":148}],385:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -53415,20 +53446,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 const core_1 = require('@angular/core');
+const moment_ = require('moment');
+const moment = moment_['default'] || moment_;
 let CalendarService = class CalendarService {
     constructor() {
-        this.calDaysLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-        this.calMonthsLabels = ['January', 'February', 'March', 'April',
-            'May', 'June', 'July', 'August', 'September',
-            'October', 'November', 'December'];
-        this.calDaysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        this.fullMonth = [];
         this.calCurrentDate = new Date();
         this.month = this.calCurrentDate.getMonth();
         this.year = this.calCurrentDate.getFullYear();
         this.currentMonthDays = this.getDaysInMonth(this.month, this.year);
         this.selectedDayWeekIndex = null;
         this.selectedDayIndex = null;
-        this.jobs = ['1'];
+        this.jobs = [''];
+        this.init();
     }
     getDaysInMonth(month, year) {
         let date = new Date(year, month, 1);
@@ -53473,7 +53503,50 @@ let CalendarService = class CalendarService {
         }
         return weeks;
     }
-    sortByWeeks() {
+    generateCalendar(date) {
+        let lastDayOfMonth = date.endOf('month').date();
+        let month = date.month();
+        let year = date.year();
+        let n = 1;
+        let firstWeekDay = null;
+        let week = [];
+        this.dateValue = date.format('MMMM');
+        this.days = [];
+        this.fullMonth = [];
+        if (this.firstWeekDaySunday === true) {
+            firstWeekDay = date.set('date', 2).day();
+        }
+        else {
+            firstWeekDay = date.set('date', 1).day();
+        }
+        if (firstWeekDay !== 1) {
+            n -= firstWeekDay - 1;
+        }
+        for (let i = n; i <= lastDayOfMonth; i += 1) {
+            if (i > 0) {
+                this.days.push({ day: i, month: month + 1, year: year, enabled: true });
+            }
+            else {
+                this.days.push({ day: null, month: null, year: null, enabled: false });
+            }
+        }
+        for (let i = 0, j = 1; i < this.days.length; i++, j++) {
+            week.push(this.days[i]);
+            if (j === 7) {
+                this.fullMonth.push(week);
+                week = [];
+                j = 0;
+            }
+        }
+        this.fullMonth.push(week);
+    }
+    generateDayNames() {
+        this.dayNames = [];
+        let date = this.firstWeekDaySunday === true ? moment('2015-06-07') : moment('2015-06-01');
+        for (let i = 0; i < 7; i += 1) {
+            this.dayNames.push(date.format('ddd'));
+            date.add('1', 'd');
+        }
     }
     addJob(job) {
         let weekIndex = this.selectedDayWeekIndex;
@@ -53481,12 +53554,12 @@ let CalendarService = class CalendarService {
         this.currentMonthDays[weekIndex].days[dayIndex].jobs.push(job);
     }
     showNextMonth() {
-        this.currentMonthDays = this.getDaysInMonth(this.month + 1, this.year);
-        this.month++;
+        this.date.add(1, 'M');
+        this.generateCalendar(this.date);
     }
     showPrevMonth() {
-        this.currentMonthDays = this.getDaysInMonth(this.month - 1, this.year);
-        this.month--;
+        this.date.subtract(1, 'M');
+        this.generateCalendar(this.date);
     }
     showFullInfo(day, weekIndex, dayIndex) {
         if (this.selectedDayWeekIndex && this.selectedDayIndex) {
@@ -53501,12 +53574,18 @@ let CalendarService = class CalendarService {
         this.selectedDayWeekIndex = weekIndex;
         this.selectedDayIndex = dayIndex;
     }
+    init() {
+        this.date = moment();
+        this.firstWeekDaySunday = false;
+        this.generateDayNames();
+        this.generateCalendar(this.date);
+    }
 };
 CalendarService = __decorate([
     core_1.Injectable()
 ], CalendarService);
 exports.CalendarService = CalendarService;
-},{"@angular/core":148}],386:[function(require,module,exports){
+},{"@angular/core":148,"moment":326}],386:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -53522,7 +53601,7 @@ const days_list_component_1 = require('./days-list.component');
 const calendar_header_component_1 = require('./calendar-header.component');
 const add_job_modal_component_1 = require('./add-job-modal.component');
 const add_job_modal_service_1 = require('./add-job-modal.service');
-const calendar_service_component_1 = require('./calendar-service.component');
+const calendar_service_ts_1 = require('./calendar-service.ts');
 let CalendarComponent = class CalendarComponent {
     constructor(calendarService, addJobModalService) {
         this.calendarService = calendarService;
@@ -53538,7 +53617,6 @@ CalendarComponent = __decorate([
         template: `
     <h4 class="page-header">Calendar Page</h4>
     <div class="calendar card-shadow">
-      <mission-control></mission-control>
       <calendar-header></calendar-header>
       <days-list></days-list>
     </div>
@@ -53546,13 +53624,13 @@ CalendarComponent = __decorate([
     <add-job-modal (addJob)="addJob($event)"></add-job-modal>
     `,
         directives: [add_job_modal_component_1.AddJobModalComponent, days_list_component_1.DaysList, calendar_header_component_1.CalendarHeader],
-        providers: [calendar_service_component_1.CalendarService, add_job_modal_service_1.AddJobModalService]
+        providers: [calendar_service_ts_1.CalendarService, add_job_modal_service_1.AddJobModalService]
     }),
-    __param(0, core_1.Inject(calendar_service_component_1.CalendarService)),
+    __param(0, core_1.Inject(calendar_service_ts_1.CalendarService)),
     __param(1, core_1.Inject(add_job_modal_service_1.AddJobModalService))
 ], CalendarComponent);
 exports.CalendarComponent = CalendarComponent;
-},{"./add-job-modal.component":382,"./add-job-modal.service":383,"./calendar-header.component":384,"./calendar-service.component":385,"./days-list.component":387,"@angular/core":148}],387:[function(require,module,exports){
+},{"./add-job-modal.component":382,"./add-job-modal.service":383,"./calendar-header.component":384,"./calendar-service.ts":385,"./days-list.component":387,"@angular/core":148}],387:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -53564,7 +53642,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 const core_1 = require('@angular/core');
-const calendar_service_component_1 = require('./calendar-service.component');
+const calendar_service_ts_1 = require('./calendar-service.ts');
 const add_job_modal_service_1 = require('./add-job-modal.service');
 let DaysList = class DaysList {
     constructor(calendarService, addJobModalService) {
@@ -53601,58 +53679,61 @@ DaysList = __decorate([
 
       <div class="calendar__labels">
         <div class="calendar__labels__item"
-         *ngFor="let dayName of calendarService.calDaysLabels">
+         *ngFor="let dayName of calendarService.dayNames">
           {{ dayName }}
         </div>
       </div>
-
+      
       <div class="calendar__week" 
-      *ngFor="let week of calendarService.currentMonthDays, let weekIndex = index">
+           *ngFor="let week of calendarService.fullMonth, let weekIndex = index">
         
         <div class="calendar__days-wrap">
+        
           <div class="calendar__day"
-               *ngFor="let day of week.days, let dayIndex = index"
-               (click)="calendarService.showFullInfo(day, weekIndex, dayIndex)">
-            <div class="calendar__day-inner {{ day.className }}">
-              <span class="calendar__day__date {{ day.isCurrentMonth }}">
-                {{ day.date }}
+               *ngFor="let d of week, let dayIndex = index"
+               (click)="calendarService.showFullInfo(d, weekIndex, dayIndex)">
+            <div class="calendar__day-inner">
+              <span class="calendar__day__date">
+                {{ d.day }}
               </span>
-              <span class="calendar__day__job {{ job.size }}" *ngFor="let job of day.jobs">
-                {{ job.movingDate }} | {{ job.moveFrom }} | {{ job.moveTo }} | {{ job.phone }}
-              </span>
+              <!--<span class="calendar__day__job {{ job.size }}" *ngFor="let job of day.jobs">-->
+                <!--{{ job.movingDate }} | {{ job.moveFrom }} | {{ job.moveTo }} | {{ job.phone }}-->
+              <!--</span>-->
             </div>
           </div>
+          
         </div>
 
-        <div class="calendar__day-full-info {{ week.className }}">
-          <div *ngIf="week.selectedDay">
-            <div class="calendar__day__date-label">{{ week.selectedDay.fullDate }}</div>
-            <div *ngFor="let job of week.selectedDay.jobs"
-                  class="calendar__day-full-info__job">
-              {{ job.movingDate }} | {{ job.moveFrom }} | {{ job.moveTo }} 
-              {{ job.movingSize }} | {{ job.phone }} | {{ job.name }} | {{ job.mail }} 
-            </div>
-            <div *ngIf="!week.selectedDay.jobs.length" class="calendar__day__no-job">
-                No jobs booked for today 
-            </div>
-            <button class="small-space mdl-button mdl-button--raised mdl-button--colored"
-                    (click)="openModal(week.selectedDay.fullDate)">
-                  Add job
-            </button>
-          </div>
-        </div>
+        <!--<div class="calendar__day-full-info {{ week.className }}">-->
+          <!--<div *ngIf="week.selectedDay">-->
+            <!--<div class="calendar__day__date-label">{{ week.selectedDay.fullDate }}</div>-->
+            <!--<div *ngFor="let job of week.selectedDay.jobs"-->
+                  <!--class="calendar__day-full-info__job">-->
+              <!--{{ job.movingDate }} | {{ job.moveFrom }} | {{ job.moveTo }} -->
+              <!--{{ job.movingSize }} | {{ job.phone }} | {{ job.name }} | {{ job.mail }} -->
+            <!--</div>-->
+            <!--<div *ngIf="!week.selectedDay.jobs.length" class="calendar__day__no-job">-->
+                <!--No jobs booked for today -->
+            <!--</div>-->
+            <!--<button class="small-space mdl-button mdl-button&#45;&#45;raised mdl-button&#45;&#45;colored"-->
+                    <!--(click)="openModal(week.selectedDay.fullDate)">-->
+                  <!--Add job-->
+            <!--</button>-->
+          <!--</div>-->
+        <!--</div>-->
       </div>
   `
     }),
-    __param(0, core_1.Inject(calendar_service_component_1.CalendarService)),
+    __param(0, core_1.Inject(calendar_service_ts_1.CalendarService)),
     __param(1, core_1.Inject(add_job_modal_service_1.AddJobModalService))
 ], DaysList);
 exports.DaysList = DaysList;
-},{"./add-job-modal.service":383,"./calendar-service.component":385,"@angular/core":148}],388:[function(require,module,exports){
+},{"./add-job-modal.service":383,"./calendar-service.ts":385,"@angular/core":148}],388:[function(require,module,exports){
 "use strict";
 class Job {
-    constructor(movingDate = '', moveFrom = '', moveTo = '', movingSize = '', movingSizeType = '', phone = '', name = '', mail = '', distance = '') {
+    constructor(movingDate = '', movingTime = '', moveFrom = '', moveTo = '', movingSize = '', movingSizeType = '', phone = '', name = '', mail = '', distance = '') {
         this.movingDate = movingDate;
+        this.movingTime = movingTime;
         this.moveFrom = moveFrom;
         this.moveTo = moveTo;
         this.movingSize = movingSize;
@@ -54145,12 +54226,6 @@ let DatePicker = class DatePicker {
         let n = 1;
         let firstWeekDay = null;
         this.dateValue = date.format('MMMM YYYY');
-        this.dateLabels = {
-            day: date.format('DD'),
-            fullDayName: date.format('dddd'),
-            month: date.format('MMM'),
-            year: date.format('YYYY')
-        };
         this.days = [];
         if (this.firstWeekDaySunday === true) {
             firstWeekDay = date.set('date', 2).day();
@@ -54197,6 +54272,12 @@ let DatePicker = class DatePicker {
         this.viewValue = val.format(this.viewFormat || 'Do MMMM YYYY');
         this.cd.viewToModelUpdate(val.format(this.modelFormat || 'YYYY-MM-DD'));
         this.cannonical = val.toDate().getTime();
+        this.dateLabels = {
+            day: moment(this.cannonical).format('DD'),
+            fullDayName: moment(this.cannonical).format('ddd'),
+            month: moment(this.cannonical).format('MMM'),
+            year: moment(this.cannonical).format('YYYY')
+        };
     }
     initValue() {
         setTimeout(() => {
@@ -54251,37 +54332,47 @@ DatePicker = __decorate([
         selector: 'datepicker[ngModel]',
         template: `
   <input type="text"
-         class="form-field__input"
+         class="form-field__input hasText"
          (focus)="openDatepicker()"
          [value]="viewValue"
          [hidden]="isStatic"
          readonly>
-
+  <label class="form-field__label" for="time">Moving Date</label>
   <div class="datepicker" *ngIf="isStatic || isOpened" [ngClass]="{ static: isStatic }">
-    <div class="datepicker__dayname">{{ dateLabels.fullDayName }}</div>
+    
     <div class="datepicker__header">
-      <div class="mdl-button mdl-js-button mdl-button--icon" (click)="prevMonth()">
-        <i class="material-icons">keyboard_arrow_left</i>
-      </div>
-      <div class="datepicker__header__content">
-        <div class="datepicker__header__month">{{ dateLabels.month }}</div>
-        <div class="datepicker__header__day">{{ dateLabels.day }}</div>
         <div class="datepicker__header__year">{{ dateLabels.year }}</div>
-      </div>
-      <div class="mdl-button mdl-js-button mdl-button--icon" (click)="nextMonth()">
-        <i class="material-icons">keyboard_arrow_right</i>
-      </div>
+        <div class="datepicker__header__date">
+          {{ dateLabels.fullDayName }}, {{ dateLabels.month }} {{ dateLabels.day }}
+        </div>
     </div>
     <div class="datepicker__body">
     
+      <div class="datepicker__body__date">
+          <div class="mdl-button mdl-js-button mdl-button--icon" (click)="prevMonth()">
+            <i class="material-icons">keyboard_arrow_left</i>
+          </div>
+          <div>
+            {{ dateValue }}
+          </div>
+          <div class="mdl-button mdl-js-button mdl-button--icon" (click)="nextMonth()">
+            <i class="material-icons">keyboard_arrow_right</i>
+          </div>
+      </div>
+      
       <div class="datepicker__day-names">
-        <span  class="datepicker__day-names__item" *ngFor="#dn of dayNames">
+        <span  class="datepicker__day-names__item" *ngFor="let dn of dayNames">
           {{ dn }}
         </span>
       </div>
       <div class="datepicker__days-wrapper">
-        <span class="datepicker__days-wrapper__item" *ngFor="#d of days; #i = index;">
-          <span class="day mdl-button mdl-button--icon" [ngClass]="{'disabled': !d.enabled, 'selected': isSelected(d)}" (click)="selectDate($event, d)">
+        <span class="datepicker__days-wrapper__item" *ngFor="let d of days; let i = index;">
+          
+          <span class="day mdl-button mdl-button--icon"
+                *ngIf="d.day"
+                [ngClass]="{'disabled': !d.enabled, 'selected': isSelected(d)}" 
+                (click)="selectDate($event, d)"
+          >
             {{ d.day }}
           </span>
         </span>

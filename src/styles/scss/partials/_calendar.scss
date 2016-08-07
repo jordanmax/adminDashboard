@@ -43,6 +43,7 @@
 	}
 	&__days-wrap {
 		display: flex;
+    flex-wrap: wrap;
 	}
 	&__day {
 		width: calc(100% / 7);
