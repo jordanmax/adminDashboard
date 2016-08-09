@@ -55,8 +55,8 @@ export class AddJobModalComponent {
   }
 
   setMovingSize(value) {
-    this.selectedMovingSizeOptions = value;
-    this.model.movingSize = value
+    this.selectedMovingSizeOptions = value.trim();
+    this.model.movingSize = value.trim();
   }
 
   showMovingSizeInput() {
