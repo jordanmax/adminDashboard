@@ -1,8 +1,6 @@
 import { Component, Inject, OnDestroy, Output, EventEmitter, ViewChild, NgZone } from '@angular/core';
 import { GoogleplaceDirective } from '../directives/googleplace.directive';
 import {DatePicker} from '../directives/datepicker';
-
-import {DatePicker} from 'ng2-datepicker';
 import { Subscription }   from 'rxjs/Subscription';
 
 import { AddJobModalService } from './add-job-modal.service';

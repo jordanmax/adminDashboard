@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as moment_ from 'moment';
+import { Job } from './job';
 
 const moment: moment.MomentStatic = (<any>moment_)['default'] || moment_;
 
@@ -10,79 +11,94 @@ export class CalendarService {
   public dateLabels: Object;
   public viewValue: string;
   public days: Array<Object>;
-  public fullMonth: Array<Object> = [];
+  public fullMonth = [];
   public dayNames: Array<string>;
   private el: any;
   private date: any;
   private cannonical: number;
   public firstWeekDaySunday: boolean;
+  public jobs = [
+    {
+    movingDate:"8.08.2016",
+    movingTime:"02:12",
+    moveFrom:"Irving, TX, USA",
+    moveTo:"Santa Monica, CA, USA",
+    movingSize:"",
+    movingSizeType:"medium",
+    phone:"123213213312",
+    name:"aaasdsa",
+    mail:"das@das.das",
+    distance:"1,445 mi"
+    },
+    {
+      movingDate:"8.08.2016",
+      movingTime:"12:12",
+      moveFrom:"Irving, TX, USA",
+      moveTo:"Santa Monica, CA, USA",
+      movingSize:"",
+      movingSizeType:"small",
+      phone:"123213213312",
+      name:"aaasdsa",
+      mail:"das@das.das",
+      distance:"1,445 mi"
+    },
+    {
+      movingDate:"8.08.2016",
+      movingTime:"3:12",
+      moveFrom:"Irving, TX, USA",
+      moveTo:"Santa Monica, CA, USA",
+      movingSize:"",
+      movingSizeType:"small",
+      phone:"123213213312",
+      name:"aaasdsa",
+      mail:"das@das.das",
+      distance:"1,445 mi"
+    },
+    {
+      movingDate:"8.08.2016",
+      movingTime:"3:12",
+      moveFrom:"Irving, TX, USA",
+      moveTo:"Santa Monica, CA, USA",
+      movingSize:"",
+      movingSizeType:"small",
+      phone:"123213213312",
+      name:"aaasdsa",
+      mail:"das@das.das",
+      distance:"1,445 mi"
+    },
+    {
+      movingDate:"8.08.2016",
+      movingTime:"3:12",
+      moveFrom:"Irving, TX, USA",
+      moveTo:"Santa Monica, CA, USA",
+      movingSize:"",
+      movingSizeType:"small",
+      phone:"123213213312",
+      name:"aaasdsa",
+      mail:"das@das.das",
+      distance:"1,445 mi"
+    },
+    {
+      movingDate:"8.08.2016",
+      movingTime:"4:00",
+      moveFrom:"Irving, TX, USA",
+      moveTo:"Santa Monica, CA, USA",
+      movingSize:"",
+      movingSizeType:"large",
+      phone:"123213213312",
+      name:"aaasdsa",
+      mail:"das@das.das",
+      distance:"1,445 mi"
+    }
+  ];
 
   constructor() {
     this.init();
   }
 
-  calCurrentDate = new Date();
-
-  month = this.calCurrentDate.getMonth();
-
-  year  = this.calCurrentDate.getFullYear();
-
-  currentMonthDays = this.getDaysInMonth(this.month, this.year);
-
   selectedDayWeekIndex = null;
 
   selectedDayIndex = null;
-
-  jobs = [''];
-
-  getDaysInMonth(month, year) {
-    let date = new Date(year, month, 1);
-    let days = [];
-    let weeks = [];
-
-    let dayIndex = date.getDay();
-
-    let firstDate = dayIndex - 1;
-    date.setDate(date.getDate() - firstDate);
-
-    for(let i = 0; i < 6; i++) {
-      for(let j = 0; j < 7; j++) {
-        let jobDate = date.getDate();
-        let day = date.getDay();
-        let ms = date.getTime();
-        let item = {
-          date: jobDate,
-          day: day,
-          dayIndex: j,
-          miliseconds: date.getTime(),
-          fullDate: date.toLocaleDateString(),
-          isCurrentMonth: date.getMonth() === month ? 'current' : '',
-          jobs: [],
-          className: ''
-        };
-        //console.log(this.calDaysInMonth)
-        // this.jobs.forEach(job => {
-        //   let jobDay = job.date.split('-');
-        //   let jobDate = jobDay[0];
-        //   let jobMonth = jobDay[1];
-        //   if(jobDate == date.getDate() && jobMonth == date.getMonth()) {
-        //     item.jobs[item.jobs.length] = job;
-        //   }
-        // });
-
-        days.push(item);
-        date.setDate(date.getDate() + 1);
-      }
-      weeks.push({
-        days: days.slice(0),
-        selectedDay: null,
-        className: 'closed'
-      });
-      days.length = 0;
-    }
-
-    return weeks;
-  }
 
   private generateCalendar(date): void {
     let lastDayOfMonth = date.endOf('month').date();
@@ -107,22 +123,68 @@ export class CalendarService {
     }
 
     for (let i = n; i <= lastDayOfMonth; i += 1) {
+      let fullDate = '' + i + '.' +  date.format('MM') + '.' + date.format('YYYY');
+      let jobsByTimeObj = {};
+      let jobsByTime = [];
+
       if (i > 0) {
-        this.days.push({day: i, month: month + 1, year: year, enabled: true});
+        let dayItem = {
+          day: i,
+          month: month + 1,
+          fullDate: fullDate,
+          year: year,
+          isActive: false,
+          jobs: [],
+          jobsByTime: []
+        };
+
+        this.jobs.forEach(job => {
+          if(job.movingDate == fullDate) {
+            dayItem.jobs.push(job);
+            if(jobsByTimeObj[job.movingTime]) {
+              jobsByTimeObj[job.movingTime].push(job)
+            } else {
+              jobsByTimeObj[job.movingTime] = [];
+              jobsByTimeObj[job.movingTime].push(job)
+            }
+          }
+        });
+
+        for (var key in jobsByTimeObj) {
+          jobsByTime.push({
+            time: key,
+            jobs: jobsByTimeObj[key]
+          })
+        }
+
+        dayItem.jobsByTime = jobsByTime;
+
+        this.days.push(dayItem);
+
       } else {
-        this.days.push({day: null, month: null, year: null, enabled: false});
+        this.days.push({day: null});
       }
     }
 
     for(let i = 0, j = 1; i < this.days.length; i++, j++) {
       week.push(this.days[i]);
       if(j === 7) {
-        this.fullMonth.push(week);
+        this.fullMonth.push({
+            days: week,
+            isOpen: false,
+            selectedDay: null
+          }
+        );
         week = [];
         j = 0;
       }
     }
-    this.fullMonth.push(week);
+
+    this.fullMonth.push({
+      days: week,
+      isOpen: false,
+      selectedDay: null
+    });
   }
 
   private generateDayNames(): void {
@@ -135,9 +197,25 @@ export class CalendarService {
   }
 
   addJob(job) {
-    let weekIndex = this.selectedDayWeekIndex;
-    let dayIndex = this.selectedDayIndex;
-    this.currentMonthDays[weekIndex].days[dayIndex].jobs.push(job);
+    this.fullMonth[this.selectedDayWeekIndex].days[this.selectedDayIndex].jobs.push(job);
+
+    let jobsByTime = this.fullMonth[this.selectedDayWeekIndex].days[this.selectedDayIndex].jobsByTime;
+    let isJobAdded = false;
+
+    jobsByTime.forEach(time => {
+      if(time.time === job.movingTime) {
+        time.jobs.push(job);
+        isJobAdded = true
+      }
+    });
+
+    if(!isJobAdded) {
+      jobsByTime.push({
+        time: job.movingTime,
+        jobs: [job]
+      })
+    }
+
   }
 
   showNextMonth() {
@@ -151,19 +229,24 @@ export class CalendarService {
   }
 
   showFullInfo(day, weekIndex, dayIndex) {
-    if(this.selectedDayWeekIndex && this.selectedDayIndex) {
-      this.currentMonthDays[this.selectedDayWeekIndex].selectedDay = null;
-      this.currentMonthDays[this.selectedDayWeekIndex].className = 'closed';
-      this.currentMonthDays[this.selectedDayWeekIndex]
-        .days[this.selectedDayIndex].className = '';
+    if(!day.day) {
+      return false;
     }
 
-    this.currentMonthDays[weekIndex].days[dayIndex].className = 'active';
-    this.currentMonthDays[weekIndex].selectedDay = day;
-    this.currentMonthDays[weekIndex].className = 'active';
+    if(this.selectedDayWeekIndex != null && this.selectedDayIndex != null) {
+      this.fullMonth[this.selectedDayWeekIndex].isOpen = false;
+      this.fullMonth[this.selectedDayWeekIndex].days[this.selectedDayIndex].isActive = false;
+      this.fullMonth[this.selectedDayWeekIndex].selectedDay = null;
+    }
+
+    this.fullMonth[weekIndex].isOpen = true;
+    this.fullMonth[weekIndex].days[dayIndex].isActive = true;
+    this.fullMonth[weekIndex].selectedDay = day;
+
     this.selectedDayWeekIndex = weekIndex;
     this.selectedDayIndex = dayIndex;
 
+    console.log(day.jobsByTime);
   }
 
   private init(): void {

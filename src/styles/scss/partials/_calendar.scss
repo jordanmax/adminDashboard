@@ -47,23 +47,20 @@
 	}
 	&__day {
 		width: calc(100% / 7);
-    height: 10vh;
+    min-height: 10vh;
 		box-sizing: border-box;
 		position: relative;
 		cursor:pointer;
 		display: flex;
 		&:hover {
 			background: $lightGray;
-			.calendar__day__date  {
-				color: $black;
-			}
 		}
 		&:not(:last-child) {
 			border-right: 1px solid $gray;
 		}
 		&__date {
 			font-size: 16px;
-			color: $gray;
+      color: $black;
 			&.current {
         color: $black;
 			}
@@ -110,14 +107,6 @@
       .calendar__day__date {
         color: $black;
       }
-		//	.calendar__day__date.current {
-		//		color: #fff;
-		//	}
-      //&:hover {
-      //  .calendar__day__date {
-      //    color: #fff
-      //  }
-      //}
 
 			&:after {
 			content: '';
@@ -144,17 +133,41 @@
     box-shadow: inset 0 15px 6px -10px rgba(0,0,0,0.15);
     position: relative;
     transition: all .3s cubic-bezier(0.4, 0.0, 0.2, 1);
-    &.active {
+    &.open {
       padding: 20px;
+    }
+    &__job-wrapper {
+      display: flex;
+      padding-bottom: 5px;
+      border-bottom: 1px dashed #fff;
+      margin: 5px 0;
+
+    }
+    &__time {
+      color: #fff;
+      font-size: 20px;
+      min-width: 60px;
+      display: flex;
+      align-items: center;
     }
 		&__job {
 			background: #fff;
-			padding: 5px;
+      box-shadow: 0 2px 3px 2px rgba(0,0,0,.1);
+			padding: 10px;
 			position: relative;
 			z-index: 1;
-			& + & {
-				margin-top: 10px;
-			}
+      &.small {
+        border-left: 6px solid $green
+      }
+      &.medium {
+        border-left: 6px solid $orange
+      }
+      &.large {
+        border-left: 6px solid $red
+      }
+      & + & {
+        margin-left: 10px;
+      }
 		}
 	}
 

@@ -12,9 +12,7 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     sass = require('gulp-sass'),
     uglify = require('gulp-uglify'),
-    modRewrite  = require('connect-modrewrite');
-    //babel = require("gulp-babel");
-    //babel = require('babelify');
+    babelify = require('babelify');
 
 var paths = {
   pages: ['src/*.html']
@@ -37,12 +35,11 @@ var watchedBrowserify = watchify(browserify({
   entries: ['src/app/main.ts'],
   cache: {},
   packageCache: {}
-}).plugin(tsify));
-
+}).plugin(tsify,  { target: 'es6' }));
 
 function bundle() {
   return watchedBrowserify
-    .transform("babelify")
+    .transform(babelify, { extensions: [ '.tsx', '.ts' ] })
     .bundle()
     .pipe(source('bundle.js'))
     .pipe(buffer())

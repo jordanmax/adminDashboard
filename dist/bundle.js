@@ -53188,66 +53188,77 @@ exports.tryCatch = tryCatch;
 
 },{"./errorObject":369}],380:[function(require,module,exports){
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if ((typeof Reflect === "undefined" ? "undefined" : _typeof(Reflect)) === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+        if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    }return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-const core_1 = require('@angular/core');
-const router_1 = require('@angular/router');
-const navbar_component_1 = require('./components/navbar.component');
-const sidebar_component_1 = require('./components/sidebar.component');
-let AppComponent = class AppComponent {
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var navbar_component_1 = require('./components/navbar.component');
+var sidebar_component_1 = require('./components/sidebar.component');
+var AppComponent = function AppComponent() {
+    _classCallCheck(this, AppComponent);
 };
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        template: `
-        <navbar class="header"></navbar>
-        <main class="main">
-          <sidebar class="sidebar"></sidebar>
-          <div class="page-content">
-            <router-outlet></router-outlet>
-          </div>
-        </main>
-      `,
-        directives: [navbar_component_1.NavBarComponent, sidebar_component_1.SideBarComponent, router_1.ROUTER_DIRECTIVES]
-    })
-], AppComponent);
+AppComponent = __decorate([core_1.Component({
+    selector: 'my-app',
+    template: "\n        <navbar class=\"header\"></navbar>\n        <main class=\"main\">\n          <sidebar class=\"sidebar\"></sidebar>\n          <div class=\"page-content\">\n            <router-outlet></router-outlet>\n          </div>\n        </main>\n      ",
+    directives: [navbar_component_1.NavBarComponent, sidebar_component_1.SideBarComponent, router_1.ROUTER_DIRECTIVES]
+})], AppComponent);
 exports.AppComponent = AppComponent;
+
 },{"./components/navbar.component":390,"./components/sidebar.component":391,"@angular/core":148,"@angular/router":307}],381:[function(require,module,exports){
 "use strict";
-const router_1 = require('@angular/router');
-const leads_component_1 = require('./components/leads.component');
-const calendar_component_1 = require('./calendar/calendar.component');
-exports.routes = [
-    { path: '', component: calendar_component_1.CalendarComponent },
-    { path: 'calendar', component: leads_component_1.LeadsComponent },
-];
-exports.APP_ROUTER_PROVIDERS = [
-    router_1.provideRouter(exports.routes)
-];
+
+var router_1 = require('@angular/router');
+var leads_component_1 = require('./components/leads.component');
+var calendar_component_1 = require('./calendar/calendar.component');
+exports.routes = [{ path: '', component: calendar_component_1.CalendarComponent }, { path: 'calendar', component: leads_component_1.LeadsComponent }];
+exports.APP_ROUTER_PROVIDERS = [router_1.provideRouter(exports.routes)];
+
 },{"./calendar/calendar.component":386,"./components/leads.component":389,"@angular/router":307}],382:[function(require,module,exports){
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if ((typeof Reflect === "undefined" ? "undefined" : _typeof(Reflect)) === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+        if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    }return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
+var __param = undefined && undefined.__param || function (paramIndex, decorator) {
+    return function (target, key) {
+        decorator(target, key, paramIndex);
+    };
 };
-const core_1 = require('@angular/core');
-const googleplace_directive_1 = require('../directives/googleplace.directive');
-const datepicker_1 = require('../directives/datepicker');
-const add_job_modal_service_1 = require('./add-job-modal.service');
-const common_1 = require('@angular/common');
-const common_2 = require('@angular/common');
-const job_1 = require('./job');
-let AddJobModalComponent = class AddJobModalComponent {
-    constructor(addJobModalService, _ngZone) {
+var core_1 = require('@angular/core');
+var googleplace_directive_1 = require('../directives/googleplace.directive');
+var datepicker_1 = require('../directives/datepicker');
+var add_job_modal_service_1 = require('./add-job-modal.service');
+var common_1 = require('@angular/common');
+var common_2 = require('@angular/common');
+var job_1 = require('./job');
+var AddJobModalComponent = function () {
+    function AddJobModalComponent(addJobModalService, _ngZone) {
+        var _this = this;
+
+        _classCallCheck(this, AddJobModalComponent);
+
         this.addJobModalService = addJobModalService;
         this._ngZone = _ngZone;
         this.isOpen = false;
@@ -53256,117 +53267,141 @@ let AddJobModalComponent = class AddJobModalComponent {
         this.submitted = false;
         this.currentDate = '';
         this.initDate = '';
-        this.movingSizeOptions = [
-            'Studio',
-            '1 Bedroom',
-            '2 Bedrooms',
-            '3 Bedrooms',
-            'Over 3',
-            'Other'
-        ];
+        this.movingSizeOptions = ['Studio', '1 Bedroom', '2 Bedrooms', '3 Bedrooms', 'Over 3', 'Other'];
         this.directionsService = new google.maps.DirectionsService();
         this.directionsDisplay = new google.maps.DirectionsRenderer();
         this.model = new job_1.Job();
         this.addJob = new core_1.EventEmitter();
-        this.subscription = addJobModalService.modelOpened$.subscribe(date => {
-            this.isOpen = true;
-            this.isClosed = false;
-            this.initDate = date;
+        this.subscription = addJobModalService.modelOpened$.subscribe(function (date) {
+            _this.isOpen = true;
+            _this.isClosed = false;
+            _this.initDate = date;
         });
     }
-    getAddress(place, field) {
-        this.model[field] = place['formatted_address'];
-        this.calcRoute();
-    }
-    setMovingSize(value) {
-        this.selectedMovingSizeOptions = value;
-        this.model.movingSize = value;
-    }
-    showMovingSizeInput() {
-        return this.selectedMovingSizeOptions === 'Other';
-    }
-    closeModal() {
-        this.isOpen = false;
-        this.isClosed = true;
-    }
-    onSubmit() {
-        this.addJob.emit(this.model);
-        this.closeModal();
-        this.model = new job_1.Job();
-    }
-    initMap() {
-        let mapOptions = {
-            zoom: 7,
-            scrollwheel: false,
-            center: new google.maps.LatLng(40.7903, -73.9597)
-        };
-        let map = new google.maps.Map(document.getElementById('modalMap'), mapOptions);
-        this.directionsDisplay.setMap(map);
-    }
-    renderRoutes(data) {
-        this.directionsDisplay.setDirections(data);
-    }
-    ngOnInit() {
-        this.initMap();
-    }
-    calcRoute() {
-        let start = this.model.moveFrom;
-        let end = this.model.moveTo;
-        let directionsService = new google.maps.DirectionsService();
-        if (!start || !end) {
-            return;
+
+    _createClass(AddJobModalComponent, [{
+        key: "getAddress",
+        value: function getAddress(place, field) {
+            this.model[field] = place['formatted_address'];
+            this.calcRoute();
         }
-        // sets a object literal with an origin of start, destination of end and the travel mode
-        let request = {
-            origin: start,
-            destination: end,
-            travelMode: google.maps.TravelMode.DRIVING
-        };
-        // this gives the directionsService var a route of the request object literal, and a callback method that executes upon the receipt of the response from directionsService.  Learn more about callbacks here, http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/
-        this._ngZone.runOutsideAngular(() => {
-            directionsService.route(request, (response, status) => {
-                if (status == google.maps.DirectionsStatus.OK) {
-                    this.renderRoutes(response);
-                    this.model.distance = response.routes[0].legs[0].distance.text;
-                    this._ngZone.run(() => { });
-                }
-                else {
-                    this.model.distance = 'Error';
-                    this._ngZone.run(() => { });
-                }
+    }, {
+        key: "setMovingSize",
+        value: function setMovingSize(value) {
+            this.selectedMovingSizeOptions = value;
+            this.model.movingSize = value;
+        }
+    }, {
+        key: "showMovingSizeInput",
+        value: function showMovingSizeInput() {
+            return this.selectedMovingSizeOptions === 'Other';
+        }
+    }, {
+        key: "closeModal",
+        value: function closeModal() {
+            this.isOpen = false;
+            this.isClosed = true;
+        }
+    }, {
+        key: "onSubmit",
+        value: function onSubmit() {
+            this.addJob.emit(this.model);
+            this.closeModal();
+            this.model = new job_1.Job();
+        }
+    }, {
+        key: "initMap",
+        value: function initMap() {
+            var mapOptions = {
+                zoom: 7,
+                scrollwheel: false,
+                center: new google.maps.LatLng(40.7903, -73.9597)
+            };
+            var map = new google.maps.Map(document.getElementById('modalMap'), mapOptions);
+            this.directionsDisplay.setMap(map);
+        }
+    }, {
+        key: "renderRoutes",
+        value: function renderRoutes(data) {
+            this.directionsDisplay.setDirections(data);
+        }
+    }, {
+        key: "ngOnInit",
+        value: function ngOnInit() {
+            this.initMap();
+        }
+    }, {
+        key: "calcRoute",
+        value: function calcRoute() {
+            var _this2 = this;
+
+            var start = this.model.moveFrom;
+            var end = this.model.moveTo;
+            var directionsService = new google.maps.DirectionsService();
+            if (!start || !end) {
+                return;
+            }
+            // sets a object literal with an origin of start, destination of end and the travel mode
+            var request = {
+                origin: start,
+                destination: end,
+                travelMode: google.maps.TravelMode.DRIVING
+            };
+            // this gives the directionsService var a route of the request object literal, and a callback method that executes upon the receipt of the response from directionsService.  Learn more about callbacks here, http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/
+            this._ngZone.runOutsideAngular(function () {
+                directionsService.route(request, function (response, status) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        _this2.renderRoutes(response);
+                        _this2.model.distance = response.routes[0].legs[0].distance.text;
+                        _this2._ngZone.run(function () {});
+                    } else {
+                        _this2.model.distance = 'Error';
+                        _this2._ngZone.run(function () {});
+                    }
+                });
             });
-        });
-    }
-    ngOnDestroy() {
-        //prevent memory leak when component destroyed
-        this.subscription.unsubscribe();
-    }
-};
-__decorate([
-    core_1.Output()
-], AddJobModalComponent.prototype, "addJob", void 0);
-AddJobModalComponent = __decorate([
-    core_1.Component({
-        selector: 'add-job-modal',
-        templateUrl: 'src/app/calendar/add-job-modal.component.html',
-        directives: [common_1.NgClass, googleplace_directive_1.GoogleplaceDirective, common_2.FORM_DIRECTIVES, datepicker_1.DatePicker]
-    }),
-    __param(0, core_1.Inject(add_job_modal_service_1.AddJobModalService)),
-    __param(1, core_1.Inject(core_1.NgZone))
-], AddJobModalComponent);
+        }
+    }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+            //prevent memory leak when component destroyed
+            this.subscription.unsubscribe();
+        }
+    }]);
+
+    return AddJobModalComponent;
+}();
+__decorate([core_1.Output()], AddJobModalComponent.prototype, "addJob", void 0);
+AddJobModalComponent = __decorate([core_1.Component({
+    selector: 'add-job-modal',
+    templateUrl: 'src/app/calendar/add-job-modal.component.html',
+    directives: [common_1.NgClass, googleplace_directive_1.GoogleplaceDirective, common_2.FORM_DIRECTIVES, datepicker_1.DatePicker]
+}), __param(0, core_1.Inject(add_job_modal_service_1.AddJobModalService)), __param(1, core_1.Inject(core_1.NgZone))], AddJobModalComponent);
 exports.AddJobModalComponent = AddJobModalComponent;
+
 },{"../directives/datepicker":392,"../directives/googleplace.directive":393,"./add-job-modal.service":383,"./job":388,"@angular/common":1,"@angular/core":148}],383:[function(require,module,exports){
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if ((typeof Reflect === "undefined" ? "undefined" : _typeof(Reflect)) === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+        if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    }return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-const core_1 = require('@angular/core');
-const Subject_1 = require('rxjs/Subject');
-let AddJobModalService = class AddJobModalService {
-    constructor() {
+var core_1 = require('@angular/core');
+var Subject_1 = require('rxjs/Subject');
+var AddJobModalService = function () {
+    function AddJobModalService() {
+        _classCallCheck(this, AddJobModalService);
+
         // Observable string sources
         this.modelOpenedSource = new Subject_1.Subject();
         this.updatedDirectionSource = new Subject_1.Subject();
@@ -53375,799 +53410,866 @@ let AddJobModalService = class AddJobModalService {
         this.modelOpened$ = this.modelOpenedSource.asObservable();
     }
     // Service message commands
-    openModal(date) {
-        this.modelOpenedSource.next(date);
-    }
-};
-AddJobModalService = __decorate([
-    core_1.Injectable()
-], AddJobModalService);
+
+
+    _createClass(AddJobModalService, [{
+        key: "openModal",
+        value: function openModal(date) {
+            this.modelOpenedSource.next(date);
+        }
+    }]);
+
+    return AddJobModalService;
+}();
+AddJobModalService = __decorate([core_1.Injectable()], AddJobModalService);
 exports.AddJobModalService = AddJobModalService;
+
 },{"@angular/core":148,"rxjs/Subject":333}],384:[function(require,module,exports){
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-const core_1 = require('@angular/core');
-const calendar_service_ts_1 = require('./calendar-service.ts');
-let CalendarHeader = class CalendarHeader {
-    constructor(calendarService) {
-        this.calendarService = calendarService;
-        console.log(calendarService);
-    }
-};
-CalendarHeader = __decorate([
-    core_1.Component({
-        selector: 'calendar-header',
-        template: `
-      <div class="calendar__header">
-        <div class="mdl-cell mdl-cell--6-col">
-          <button class="mdl-button mdl-button--icon">
-             <i class="material-icons" (click)="calendarService.showPrevMonth()">keyboard_arrow_left</i>
-          </button>
-       
-          <span class="calendar__header__title">
-            {{ calendarService.dateValue }}
-          </span>
 
-          <button class="mdl-button mdl-button--icon">
-              <i class="material-icons" (click)="calendarService.showNextMonth()">keyboard_arrow_right</i>
-          </button>
-        </div>
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-        <div class="mdl-cell mdl-cell--6-col text-right">
-          <button class="mdl-button">
-            Day
-          </button>
-          <button class="mdl-button">
-            Week
-          </button>
-          <button class="mdl-button mdl-button--raised mdl-button--colored">
-            Month
-          </button>
-        </div>
-      </div>`
-    }),
-    __param(0, core_1.Inject(calendar_service_ts_1.CalendarService))
-], CalendarHeader);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+  var c = arguments.length,
+      r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+      d;
+  if ((typeof Reflect === "undefined" ? "undefined" : _typeof(Reflect)) === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+    if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+  }return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __param = undefined && undefined.__param || function (paramIndex, decorator) {
+  return function (target, key) {
+    decorator(target, key, paramIndex);
+  };
+};
+var core_1 = require('@angular/core');
+var calendar_service_ts_1 = require('./calendar-service.ts');
+var CalendarHeader = function CalendarHeader(calendarService) {
+  _classCallCheck(this, CalendarHeader);
+
+  this.calendarService = calendarService;
+  console.log(calendarService);
+};
+CalendarHeader = __decorate([core_1.Component({
+  selector: 'calendar-header',
+  template: "\n      <div class=\"calendar__header\">\n        <div class=\"mdl-cell mdl-cell--6-col\">\n          <button class=\"mdl-button mdl-button--icon\">\n             <i class=\"material-icons\" (click)=\"calendarService.showPrevMonth()\">keyboard_arrow_left</i>\n          </button>\n       \n          <span class=\"calendar__header__title\">\n            {{ calendarService.dateValue }}\n          </span>\n\n          <button class=\"mdl-button mdl-button--icon\">\n              <i class=\"material-icons\" (click)=\"calendarService.showNextMonth()\">keyboard_arrow_right</i>\n          </button>\n        </div>\n\n        <div class=\"mdl-cell mdl-cell--6-col text-right\">\n          <button class=\"mdl-button\">\n            Day\n          </button>\n          <button class=\"mdl-button\">\n            Week\n          </button>\n          <button class=\"mdl-button mdl-button--raised mdl-button--colored\">\n            Month\n          </button>\n        </div>\n      </div>"
+}), __param(0, core_1.Inject(calendar_service_ts_1.CalendarService))], CalendarHeader);
 exports.CalendarHeader = CalendarHeader;
+
 },{"./calendar-service.ts":385,"@angular/core":148}],385:[function(require,module,exports){
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-const core_1 = require('@angular/core');
-const moment_ = require('moment');
-const moment = moment_['default'] || moment_;
-let CalendarService = class CalendarService {
-    constructor() {
-        this.fullMonth = [];
-        this.calCurrentDate = new Date();
-        this.month = this.calCurrentDate.getMonth();
-        this.year = this.calCurrentDate.getFullYear();
-        this.currentMonthDays = this.getDaysInMonth(this.month, this.year);
-        this.selectedDayWeekIndex = null;
-        this.selectedDayIndex = null;
-        this.jobs = [''];
-        this.init();
-    }
-    getDaysInMonth(month, year) {
-        let date = new Date(year, month, 1);
-        let days = [];
-        let weeks = [];
-        let dayIndex = date.getDay();
-        let firstDate = dayIndex - 1;
-        date.setDate(date.getDate() - firstDate);
-        for (let i = 0; i < 6; i++) {
-            for (let j = 0; j < 7; j++) {
-                let jobDate = date.getDate();
-                let day = date.getDay();
-                let ms = date.getTime();
-                let item = {
-                    date: jobDate,
-                    day: day,
-                    dayIndex: j,
-                    miliseconds: date.getTime(),
-                    fullDate: date.toLocaleDateString(),
-                    isCurrentMonth: date.getMonth() === month ? 'current' : '',
-                    jobs: [],
-                    className: ''
-                };
-                //console.log(this.calDaysInMonth)
-                // this.jobs.forEach(job => {
-                //   let jobDay = job.date.split('-');
-                //   let jobDate = jobDay[0];
-                //   let jobMonth = jobDay[1];
-                //   if(jobDate == date.getDate() && jobMonth == date.getMonth()) {
-                //     item.jobs[item.jobs.length] = job;
-                //   }
-                // });
-                days.push(item);
-                date.setDate(date.getDate() + 1);
-            }
-            weeks.push({
-                days: days.slice(0),
-                selectedDay: null,
-                className: 'closed'
-            });
-            days.length = 0;
-        }
-        return weeks;
-    }
-    generateCalendar(date) {
-        let lastDayOfMonth = date.endOf('month').date();
-        let month = date.month();
-        let year = date.year();
-        let n = 1;
-        let firstWeekDay = null;
-        let week = [];
-        this.dateValue = date.format('MMMM');
-        this.days = [];
-        this.fullMonth = [];
-        if (this.firstWeekDaySunday === true) {
-            firstWeekDay = date.set('date', 2).day();
-        }
-        else {
-            firstWeekDay = date.set('date', 1).day();
-        }
-        if (firstWeekDay !== 1) {
-            n -= firstWeekDay - 1;
-        }
-        for (let i = n; i <= lastDayOfMonth; i += 1) {
-            if (i > 0) {
-                this.days.push({ day: i, month: month + 1, year: year, enabled: true });
-            }
-            else {
-                this.days.push({ day: null, month: null, year: null, enabled: false });
-            }
-        }
-        for (let i = 0, j = 1; i < this.days.length; i++, j++) {
-            week.push(this.days[i]);
-            if (j === 7) {
-                this.fullMonth.push(week);
-                week = [];
-                j = 0;
-            }
-        }
-        this.fullMonth.push(week);
-    }
-    generateDayNames() {
-        this.dayNames = [];
-        let date = this.firstWeekDaySunday === true ? moment('2015-06-07') : moment('2015-06-01');
-        for (let i = 0; i < 7; i += 1) {
-            this.dayNames.push(date.format('ddd'));
-            date.add('1', 'd');
-        }
-    }
-    addJob(job) {
-        let weekIndex = this.selectedDayWeekIndex;
-        let dayIndex = this.selectedDayIndex;
-        this.currentMonthDays[weekIndex].days[dayIndex].jobs.push(job);
-    }
-    showNextMonth() {
-        this.date.add(1, 'M');
-        this.generateCalendar(this.date);
-    }
-    showPrevMonth() {
-        this.date.subtract(1, 'M');
-        this.generateCalendar(this.date);
-    }
-    showFullInfo(day, weekIndex, dayIndex) {
-        if (this.selectedDayWeekIndex && this.selectedDayIndex) {
-            this.currentMonthDays[this.selectedDayWeekIndex].selectedDay = null;
-            this.currentMonthDays[this.selectedDayWeekIndex].className = 'closed';
-            this.currentMonthDays[this.selectedDayWeekIndex]
-                .days[this.selectedDayIndex].className = '';
-        }
-        this.currentMonthDays[weekIndex].days[dayIndex].className = 'active';
-        this.currentMonthDays[weekIndex].selectedDay = day;
-        this.currentMonthDays[weekIndex].className = 'active';
-        this.selectedDayWeekIndex = weekIndex;
-        this.selectedDayIndex = dayIndex;
-    }
-    init() {
-        this.date = moment();
-        this.firstWeekDaySunday = false;
-        this.generateDayNames();
-        this.generateCalendar(this.date);
-    }
-};
-CalendarService = __decorate([
-    core_1.Injectable()
-], CalendarService);
-exports.CalendarService = CalendarService;
-},{"@angular/core":148,"moment":326}],386:[function(require,module,exports){
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-const core_1 = require('@angular/core');
-const days_list_component_1 = require('./days-list.component');
-const calendar_header_component_1 = require('./calendar-header.component');
-const add_job_modal_component_1 = require('./add-job-modal.component');
-const add_job_modal_service_1 = require('./add-job-modal.service');
-const calendar_service_ts_1 = require('./calendar-service.ts');
-let CalendarComponent = class CalendarComponent {
-    constructor(calendarService, addJobModalService) {
-        this.calendarService = calendarService;
-        this.addJobModalService = addJobModalService;
-    }
-    addJob(job) {
-        this.calendarService.addJob(job);
-    }
-};
-CalendarComponent = __decorate([
-    core_1.Component({
-        selector: 'calendar',
-        template: `
-    <h4 class="page-header">Calendar Page</h4>
-    <div class="calendar card-shadow">
-      <calendar-header></calendar-header>
-      <days-list></days-list>
-    </div>
 
-    <add-job-modal (addJob)="addJob($event)"></add-job-modal>
-    `,
-        directives: [add_job_modal_component_1.AddJobModalComponent, days_list_component_1.DaysList, calendar_header_component_1.CalendarHeader],
-        providers: [calendar_service_ts_1.CalendarService, add_job_modal_service_1.AddJobModalService]
-    }),
-    __param(0, core_1.Inject(calendar_service_ts_1.CalendarService)),
-    __param(1, core_1.Inject(add_job_modal_service_1.AddJobModalService))
-], CalendarComponent);
-exports.CalendarComponent = CalendarComponent;
-},{"./add-job-modal.component":382,"./add-job-modal.service":383,"./calendar-header.component":384,"./calendar-service.ts":385,"./days-list.component":387,"@angular/core":148}],387:[function(require,module,exports){
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-const core_1 = require('@angular/core');
-const calendar_service_ts_1 = require('./calendar-service.ts');
-const add_job_modal_service_1 = require('./add-job-modal.service');
-let DaysList = class DaysList {
-    constructor(calendarService, addJobModalService) {
-        this.calendarService = calendarService;
-        this.addJobModalService = addJobModalService;
-    }
-    openModal(date) {
-        this.addJobModalService.openModal(date);
-    }
-};
-DaysList = __decorate([
-    core_1.Component({
-        selector: 'days-list',
-        template: `<ul class="demo-list-item mdl-list calendar__legend-list">
-        <li class="mdl-list__item">
-          <span class="mdl-list__item-primary-content">
-            <span class="calendar__legend green"></span>
-            Small job
-          </span>
-        </li>
-        <li class="mdl-list__item">
-          <span class="mdl-list__item-primary-content">
-            <span class="calendar__legend orange"></span>
-            Medium job
-          </span>
-        </li>
-        <li class="mdl-list__item">
-          <span class="mdl-list__item-primary-content">
-            <span class="calendar__legend red"></span>
-            Large job
-          </span>
-        </li>
-      </ul>
+var _typeof7 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-      <div class="calendar__labels">
-        <div class="calendar__labels__item"
-         *ngFor="let dayName of calendarService.dayNames">
-          {{ dayName }}
-        </div>
-      </div>
-      
-      <div class="calendar__week" 
-           *ngFor="let week of calendarService.fullMonth, let weekIndex = index">
-        
-        <div class="calendar__days-wrap">
-        
-          <div class="calendar__day"
-               *ngFor="let d of week, let dayIndex = index"
-               (click)="calendarService.showFullInfo(d, weekIndex, dayIndex)">
-            <div class="calendar__day-inner">
-              <span class="calendar__day__date">
-                {{ d.day }}
-              </span>
-              <!--<span class="calendar__day__job {{ job.size }}" *ngFor="let job of day.jobs">-->
-                <!--{{ job.movingDate }} | {{ job.moveFrom }} | {{ job.moveTo }} | {{ job.phone }}-->
-              <!--</span>-->
-            </div>
-          </div>
-          
-        </div>
+var _typeof6 = typeof Symbol === "function" && _typeof7(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === "undefined" ? "undefined" : _typeof7(obj);
+} : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof7(obj);
+};
 
-        <!--<div class="calendar__day-full-info {{ week.className }}">-->
-          <!--<div *ngIf="week.selectedDay">-->
-            <!--<div class="calendar__day__date-label">{{ week.selectedDay.fullDate }}</div>-->
-            <!--<div *ngFor="let job of week.selectedDay.jobs"-->
-                  <!--class="calendar__day-full-info__job">-->
-              <!--{{ job.movingDate }} | {{ job.moveFrom }} | {{ job.moveTo }} -->
-              <!--{{ job.movingSize }} | {{ job.phone }} | {{ job.name }} | {{ job.mail }} -->
-            <!--</div>-->
-            <!--<div *ngIf="!week.selectedDay.jobs.length" class="calendar__day__no-job">-->
-                <!--No jobs booked for today -->
-            <!--</div>-->
-            <!--<button class="small-space mdl-button mdl-button&#45;&#45;raised mdl-button&#45;&#45;colored"-->
-                    <!--(click)="openModal(week.selectedDay.fullDate)">-->
-                  <!--Add job-->
-            <!--</button>-->
-          <!--</div>-->
-        <!--</div>-->
-      </div>
-  `
-    }),
-    __param(0, core_1.Inject(calendar_service_ts_1.CalendarService)),
-    __param(1, core_1.Inject(add_job_modal_service_1.AddJobModalService))
-], DaysList);
-exports.DaysList = DaysList;
-},{"./add-job-modal.service":383,"./calendar-service.ts":385,"@angular/core":148}],388:[function(require,module,exports){
-"use strict";
-class Job {
-    constructor(movingDate = '', movingTime = '', moveFrom = '', moveTo = '', movingSize = '', movingSizeType = '', phone = '', name = '', mail = '', distance = '') {
-        this.movingDate = movingDate;
-        this.movingTime = movingTime;
-        this.moveFrom = moveFrom;
-        this.moveTo = moveTo;
-        this.movingSize = movingSize;
-        this.movingSizeType = movingSizeType;
-        this.phone = phone;
-        this.name = name;
-        this.mail = mail;
-        this.distance = distance;
+var _typeof5 = typeof Symbol === "function" && _typeof6(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === "undefined" ? "undefined" : _typeof6(obj);
+} : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof6(obj);
+};
+
+var _typeof4 = typeof Symbol === "function" && _typeof5(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === "undefined" ? "undefined" : _typeof5(obj);
+} : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof5(obj);
+};
+
+var _typeof3 = typeof Symbol === "function" && _typeof4(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === "undefined" ? "undefined" : _typeof4(obj);
+} : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof4(obj);
+};
+
+var _typeof2 = typeof Symbol === "function" && _typeof3(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === "undefined" ? "undefined" : _typeof3(obj);
+} : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof3(obj);
+};
+
+var _createClass = function () {
+    function defineProperties(target, props) {
+        for (var i = 0; i < props.length; i++) {
+            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+        }
+    }return function (Constructor, protoProps, staticProps) {
+        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+    };
+}();
+
+var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+} : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+};
+
+function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+        throw new TypeError("Cannot call a class as a function");
     }
 }
-exports.Job = Job;
-},{}],389:[function(require,module,exports){
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
+
+var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if ((typeof Reflect === "undefined" ? "undefined" : _typeof(Reflect)) === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+        if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    }return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-const core_1 = require('@angular/core');
-let LeadsComponent = class LeadsComponent {
-    constructor() {
-        this.inbox = [
-            {
-                dayGroup: {
-                    data: 'Today',
-                    leads: [
-                        {
-                            id: 1,
-                            type: 'new',
-                            moveFrom: 'LA, CA, United States',
-                            moveTo: 'irvine, CA, United States',
-                            date: {
-                                day: 'May 23',
-                                time: '10:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        },
-                        {
-                            id: 2,
-                            type: 'new',
-                            moveFrom: 'ntario, CA, United States',
-                            moveTo: 'irvine, CA, United States',
-                            date: {
-                                day: 'June 3',
-                                time: '10:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        },
-                        {
-                            id: 3,
-                            type: 'new',
-                            moveFrom: 'orange, CA, United States',
-                            moveTo: 'long beach, CA, United States',
-                            date: {
-                                day: 'Aug 11',
-                                time: '20:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        },
-                        {
-                            id: 4,
-                            type: 'new',
-                            moveFrom: 'LA, CA, United States',
-                            moveTo: 'irvine, CA, United States',
-                            date: {
-                                day: 'May 23',
-                                time: '10:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        },
-                        {
-                            id: 5,
-                            type: 'new',
-                            moveFrom: 'ntario, CA, United States',
-                            moveTo: 'irvine, CA, United States',
-                            date: {
-                                day: 'June 3',
-                                time: '10:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        },
-                        {
-                            id: 6,
-                            moveFrom: 'orange, CA, United States',
-                            moveTo: 'long beach, CA, United States',
-                            date: {
-                                day: 'Aug 11',
-                                time: '20:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
+var core_1 = require('@angular/core');
+var moment_ = require('moment');
+var moment = moment_['default'] || moment_;
+var CalendarService = function () {
+    function CalendarService() {
+        _classCallCheck(this, CalendarService);
+
+        this.fullMonth = [];
+        this.jobs = [{
+            movingDate: "8.08.2016",
+            movingTime: "02:12",
+            moveFrom: "Irving, TX, USA",
+            moveTo: "Santa Monica, CA, USA",
+            movingSize: "",
+            movingSizeType: "medium",
+            phone: "123213213312",
+            name: "aaasdsa",
+            mail: "das@das.das",
+            distance: "1,445 mi"
+        }, {
+            movingDate: "8.08.2016",
+            movingTime: "12:12",
+            moveFrom: "Irving, TX, USA",
+            moveTo: "Santa Monica, CA, USA",
+            movingSize: "",
+            movingSizeType: "small",
+            phone: "123213213312",
+            name: "aaasdsa",
+            mail: "das@das.das",
+            distance: "1,445 mi"
+        }, {
+            movingDate: "8.08.2016",
+            movingTime: "3:12",
+            moveFrom: "Irving, TX, USA",
+            moveTo: "Santa Monica, CA, USA",
+            movingSize: "",
+            movingSizeType: "small",
+            phone: "123213213312",
+            name: "aaasdsa",
+            mail: "das@das.das",
+            distance: "1,445 mi"
+        }, {
+            movingDate: "8.08.2016",
+            movingTime: "3:12",
+            moveFrom: "Irving, TX, USA",
+            moveTo: "Santa Monica, CA, USA",
+            movingSize: "",
+            movingSizeType: "small",
+            phone: "123213213312",
+            name: "aaasdsa",
+            mail: "das@das.das",
+            distance: "1,445 mi"
+        }, {
+            movingDate: "8.08.2016",
+            movingTime: "3:12",
+            moveFrom: "Irving, TX, USA",
+            moveTo: "Santa Monica, CA, USA",
+            movingSize: "",
+            movingSizeType: "small",
+            phone: "123213213312",
+            name: "aaasdsa",
+            mail: "das@das.das",
+            distance: "1,445 mi"
+        }, {
+            movingDate: "8.08.2016",
+            movingTime: "4:00",
+            moveFrom: "Irving, TX, USA",
+            moveTo: "Santa Monica, CA, USA",
+            movingSize: "",
+            movingSizeType: "large",
+            phone: "123213213312",
+            name: "aaasdsa",
+            mail: "das@das.das",
+            distance: "1,445 mi"
+        }];
+        this.selectedDayWeekIndex = null;
+        this.selectedDayIndex = null;
+        this.init();
+    }
+
+    _createClass(CalendarService, [{
+        key: "generateCalendar",
+        value: function generateCalendar(date) {
+            var _this = this;
+
+            var lastDayOfMonth = date.endOf('month').date();
+            var month = date.month();
+            var year = date.year();
+            var n = 1;
+            var firstWeekDay = null;
+            var week = [];
+            this.dateValue = date.format('MMMM');
+            this.days = [];
+            this.fullMonth = [];
+            if (this.firstWeekDaySunday === true) {
+                firstWeekDay = date.set('date', 2).day();
+            } else {
+                firstWeekDay = date.set('date', 1).day();
+            }
+            if (firstWeekDay !== 1) {
+                n -= firstWeekDay - 1;
+            }
+
+            var _loop = function _loop(i) {
+                var fullDate = '' + i + '.' + date.format('MM') + '.' + date.format('YYYY');
+                var jobsByTimeObj = {};
+                var jobsByTime = [];
+                if (i > 0) {
+                    (function () {
+                        var dayItem = {
+                            day: i,
+                            month: month + 1,
+                            fullDate: fullDate,
+                            year: year,
+                            isActive: false,
+                            jobs: [],
+                            jobsByTime: []
+                        };
+                        _this.jobs.forEach(function (job) {
+                            if (job.movingDate == fullDate) {
+                                dayItem.jobs.push(job);
+                                if (jobsByTimeObj[job.movingTime]) {
+                                    jobsByTimeObj[job.movingTime].push(job);
+                                } else {
+                                    jobsByTimeObj[job.movingTime] = [];
+                                    jobsByTimeObj[job.movingTime].push(job);
+                                }
+                            }
+                        });
+                        for (key in jobsByTimeObj) {
+                            jobsByTime.push({
+                                time: key,
+                                jobs: jobsByTimeObj[key]
+                            });
                         }
-                    ]
+                        dayItem.jobsByTime = jobsByTime;
+                        _this.days.push(dayItem);
+                    })();
+                } else {
+                    _this.days.push({ day: null });
                 }
-            },
-            {
-                dayGroup: {
-                    data: 'Yestarday',
-                    leads: [
-                        {
-                            id: 7,
-                            type: 'new',
-                            moveFrom: 'LA, CA, United States',
-                            moveTo: 'irvine, CA, United States',
-                            date: {
-                                day: 'May 23',
-                                time: '10:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        },
-                        {
-                            id: 8,
-                            type: 'new',
-                            moveFrom: 'ntario, CA, United States',
-                            moveTo: 'irvine, CA, United States',
-                            date: {
-                                day: 'June 3',
-                                time: '10:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        },
-                        {
-                            id: 9,
-                            moveFrom: 'orange, CA, United States',
-                            moveTo: 'long beach, CA, United States',
-                            date: {
-                                day: 'Aug 11',
-                                time: '20:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        }
-                    ]
-                }
-            },
-            {
-                dayGroup: {
-                    data: '06.16.2016',
-                    leads: [
-                        {
-                            id: 10,
-                            type: 'new',
-                            moveFrom: 'LA, CA, United States',
-                            moveTo: 'irvine, CA, United States',
-                            date: {
-                                day: 'May 23',
-                                time: '10:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        },
-                        {
-                            id: 11,
-                            type: 'new',
-                            moveFrom: 'ntario, CA, United States',
-                            moveTo: 'irvine, CA, United States',
-                            date: {
-                                day: 'June 3',
-                                time: '10:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        },
-                        {
-                            id: 12,
-                            moveFrom: 'orange, CA, United States',
-                            moveTo: 'long beach, CA, United States',
-                            date: {
-                                day: 'Aug 11',
-                                time: '20:30 AM'
-                            },
-                            movingDate: '05/05/2016',
-                            movingSize: 'OVER 3 PHONE',
-                            tel: '9095454758',
-                            email: 'TGFIREUP@GMAIL.COM',
-                            collapsed: true
-                        }
-                    ]
+            };
+
+            for (var i = n; i <= lastDayOfMonth; i += 1) {
+                var key;
+
+                _loop(i);
+            }
+            for (var _i = 0, j = 1; _i < this.days.length; _i++, j++) {
+                week.push(this.days[_i]);
+                if (j === 7) {
+                    this.fullMonth.push({
+                        days: week,
+                        isOpen: false,
+                        selectedDay: null
+                    });
+                    week = [];
+                    j = 0;
                 }
             }
-        ];
-    }
-    moveToTrash(groupIndex, leadIndex) {
-        let allLeads = this.inbox[groupIndex].dayGroup.leads;
-        let lead = allLeads[leadIndex];
-        if (confirm("Are you sure you want to delete " + lead.date + "?")) {
-            allLeads.splice(leadIndex, 1);
-        }
-    }
-    markAsRead(groupIndex, leadIndex) {
-        this.inbox[groupIndex].dayGroup.leads[leadIndex].type = 'read';
-    }
-    showEditor(groupIndex, leadIndex) {
-        let lead = this.inbox[groupIndex].dayGroup.leads[leadIndex];
-        let selector = 'textarea#' + 'area-' + lead.id;
-        console.log(selector);
-        lead.showEditor = !lead.showEditor;
-        lead.type = 'read';
-        tinymce.init({ selector: selector });
-    }
-    showMap(groupIndex, leadIndex) {
-        let lead = this.inbox[groupIndex].dayGroup.leads[leadIndex];
-        this.initMap(groupIndex, leadIndex);
-        lead.type = 'read';
-        lead.collapsed = !lead.collapsed;
-    }
-    initMap(groupIndex, leadIndex) {
-        let lead = this.inbox[groupIndex].dayGroup.leads[leadIndex];
-        let that = this;
-        let directionsDisplay;
-        let directionsService = new google.maps.DirectionsService();
-        initialize();
-        calcRoute();
-        function initialize() {
-            directionsDisplay = new google.maps.DirectionsRenderer();
-            var mapOptions = {
-                zoom: 7,
-                scrollwheel: false,
-                center: new google.maps.LatLng(40.7903, -73.9597)
-            };
-            var map = new google.maps.Map(document.getElementById('map-' + lead.id), mapOptions);
-            directionsDisplay.setMap(map);
-        }
-        function calcRoute() {
-            var start = lead.moveFrom;
-            var end = lead.moveTo;
-            // sets a object literal with an origin of start, destination of end and the travel mode
-            var request = {
-                origin: start,
-                destination: end,
-                travelMode: google.maps.TravelMode.WALKING
-            };
-            // this gives the directionsService var a route of the request object literal, and a callback method that executes upon the receipt of the response from directionsService.  Learn more about callbacks here, http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/
-            directionsService.route(request, function (response, status) {
-                if (status == google.maps.DirectionsStatus.OK) {
-                    directionsDisplay.setDirections(response);
-                    lead.distance = response.routes[0].legs[0].distance.text;
-                }
+            this.fullMonth.push({
+                days: week,
+                isOpen: false,
+                selectedDay: null
             });
         }
-        google.maps.event.addDomListener(window, 'load', initialize);
-        google.maps.event.addDomListener(window, 'load', calcRoute);
-    }
-};
-LeadsComponent = __decorate([
-    core_1.Component({
-        selector: 'leads',
-        template: `
-    <div *ngFor="let group of inbox, let groupIndex = index">
-      <h4 class="page-header">{{ group.dayGroup.data }}</h4>
-      <div *ngFor="let lead of group.dayGroup.leads, let leadIndex = index" class="md-lead {{ lead.type == 'new' ? 'md-lead--new' : '' }}">
-        <div class="md-lead__main-wrap">
-          <div class="md-lead__btns">
-            <button *ngIf="lead.type == 'new'" class="mdl-button mdl-button--icon mdl-button--accent" (click)="markAsRead(groupIndex, leadIndex)">
-              <i class="material-icons">check</i>
-            </button>
-            <button class="mdl-button mdl-button--icon" (click)="showEditor(groupIndex, leadIndex)">
-              <i class="material-icons">&#xE158;</i>
-            </button>
-            <button class="mdl-button mdl-button--icon mdl-button--colored"(click)="showMap(groupIndex, leadIndex)">
-              <i class="material-icons">place</i>
-            </button>
-            <button class="mdl-button mdl-button--icon" (click)="moveToTrash(groupIndex, leadIndex)">
-              <i class="material-icons">delete_forever</i>
-            </button>
-          </div>
-          
-          <div class="md-lead__main">
-            <div class="md-lead__title">
-              <span class="md-lead__label">
-                {{ lead.moveFrom }}
-              </span>
-              <i class="material-icons">trending_flat</i>
-              <span class="md-lead__label">
-                {{ lead.moveTo }}
-              </span>
-            </div>
-          </div>
-          <div class="md-lead__body">
-            <span class="md-lead__label">Moving dates: 05/05/2016</span>
-            <span class="md-lead__label">Moving size: Over 3</span>
-            <span class="md-lead__label">Phone: 9095454758</span>
-            <span class="md-lead__label">E-mail: tgfireup@gmail.com {{ lead.id}}</span>
-            <span class="md-lead__label">Distance: {{ lead.distance }}</span>
-          </div>
-        </div>
-  
-        <div class="md-lead__map-wrapper {{ lead.collapsed ? 'md-lead__map-wrapper--collapsed' : '' }}">
-          <div id="map-{{ lead.id }}" class="md-lead__map"></div>
-        </div>
+    }, {
+        key: "generateDayNames",
+        value: function generateDayNames() {
+            this.dayNames = [];
+            var date = this.firstWeekDaySunday === true ? moment('2015-06-07') : moment('2015-06-01');
+            for (var i = 0; i < 7; i += 1) {
+                this.dayNames.push(date.format('ddd'));
+                date.add('1', 'd');
+            }
+        }
+    }, {
+        key: "addJob",
+        value: function addJob(job) {
+            this.fullMonth[this.selectedDayWeekIndex].days[this.selectedDayIndex].jobs.push(job);
+            var jobsByTime = this.fullMonth[this.selectedDayWeekIndex].days[this.selectedDayIndex].jobsByTime;
+            var isJobAdded = false;
+            jobsByTime.forEach(function (time) {
+                if (time.time === job.movingTime) {
+                    time.jobs.push(job);
+                    isJobAdded = true;
+                }
+            });
+            if (!isJobAdded) {
+                jobsByTime.push({
+                    time: job.movingTime,
+                    jobs: [job]
+                });
+            }
+        }
+    }, {
+        key: "showNextMonth",
+        value: function showNextMonth() {
+            this.date.add(1, 'M');
+            this.generateCalendar(this.date);
+        }
+    }, {
+        key: "showPrevMonth",
+        value: function showPrevMonth() {
+            this.date.subtract(1, 'M');
+            this.generateCalendar(this.date);
+        }
+    }, {
+        key: "showFullInfo",
+        value: function showFullInfo(day, weekIndex, dayIndex) {
+            if (!day.day) {
+                return false;
+            }
+            if (this.selectedDayWeekIndex != null && this.selectedDayIndex != null) {
+                this.fullMonth[this.selectedDayWeekIndex].isOpen = false;
+                this.fullMonth[this.selectedDayWeekIndex].days[this.selectedDayIndex].isActive = false;
+                this.fullMonth[this.selectedDayWeekIndex].selectedDay = null;
+            }
+            this.fullMonth[weekIndex].isOpen = true;
+            this.fullMonth[weekIndex].days[dayIndex].isActive = true;
+            this.fullMonth[weekIndex].selectedDay = day;
+            this.selectedDayWeekIndex = weekIndex;
+            this.selectedDayIndex = dayIndex;
+            console.log(day.jobsByTime);
+        }
+    }, {
+        key: "init",
+        value: function init() {
+            this.date = moment();
+            this.firstWeekDaySunday = false;
+            this.generateDayNames();
+            this.generateCalendar(this.date);
+        }
+    }]);
 
-        <div class="md-lead__send-msg {{ lead.showEditor ? '' : 'md-lead__send-msg--collapsed' }}">
-          <form action="#">
-            <textarea class="mdl-textfield__input"
-                      type="text"
-                      rows="3"
-                      id="area-{{ lead.id }}" >
-            </textarea>
-            <div class="mdl-textfield--align-right">
-              <button class="mdl-button mdl-button--raised mdl-button--accent">
-                Send
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    `
-    })
-], LeadsComponent);
+    return CalendarService;
+}();
+CalendarService = __decorate([core_1.Injectable()], CalendarService);
+exports.CalendarService = CalendarService;
+
+},{"@angular/core":148,"moment":326}],386:[function(require,module,exports){
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if ((typeof Reflect === "undefined" ? "undefined" : _typeof(Reflect)) === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+        if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    }return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __param = undefined && undefined.__param || function (paramIndex, decorator) {
+    return function (target, key) {
+        decorator(target, key, paramIndex);
+    };
+};
+var core_1 = require('@angular/core');
+var days_list_component_1 = require('./days-list.component');
+var calendar_header_component_1 = require('./calendar-header.component');
+var add_job_modal_component_1 = require('./add-job-modal.component');
+var add_job_modal_service_1 = require('./add-job-modal.service');
+var calendar_service_ts_1 = require('./calendar-service.ts');
+var CalendarComponent = function () {
+    function CalendarComponent(calendarService, addJobModalService) {
+        _classCallCheck(this, CalendarComponent);
+
+        this.calendarService = calendarService;
+        this.addJobModalService = addJobModalService;
+    }
+
+    _createClass(CalendarComponent, [{
+        key: "addJob",
+        value: function addJob(job) {
+            this.calendarService.addJob(job);
+        }
+    }]);
+
+    return CalendarComponent;
+}();
+CalendarComponent = __decorate([core_1.Component({
+    selector: 'calendar',
+    template: "\n    <h4 class=\"page-header\">Calendar Page</h4>\n    <div class=\"calendar card-shadow\">\n      <calendar-header></calendar-header>\n      <days-list></days-list>\n    </div>\n\n    <add-job-modal (addJob)=\"addJob($event)\"></add-job-modal>\n    ",
+    directives: [add_job_modal_component_1.AddJobModalComponent, days_list_component_1.DaysList, calendar_header_component_1.CalendarHeader],
+    providers: [calendar_service_ts_1.CalendarService, add_job_modal_service_1.AddJobModalService]
+}), __param(0, core_1.Inject(calendar_service_ts_1.CalendarService)), __param(1, core_1.Inject(add_job_modal_service_1.AddJobModalService))], CalendarComponent);
+exports.CalendarComponent = CalendarComponent;
+
+},{"./add-job-modal.component":382,"./add-job-modal.service":383,"./calendar-header.component":384,"./calendar-service.ts":385,"./days-list.component":387,"@angular/core":148}],387:[function(require,module,exports){
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+  var c = arguments.length,
+      r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+      d;
+  if ((typeof Reflect === "undefined" ? "undefined" : _typeof(Reflect)) === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+    if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+  }return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __param = undefined && undefined.__param || function (paramIndex, decorator) {
+  return function (target, key) {
+    decorator(target, key, paramIndex);
+  };
+};
+var core_1 = require('@angular/core');
+var calendar_service_ts_1 = require('./calendar-service.ts');
+var add_job_modal_service_1 = require('./add-job-modal.service');
+var DaysList = function () {
+  function DaysList(calendarService, addJobModalService) {
+    _classCallCheck(this, DaysList);
+
+    this.calendarService = calendarService;
+    this.addJobModalService = addJobModalService;
+  }
+
+  _createClass(DaysList, [{
+    key: "openModal",
+    value: function openModal(date) {
+      this.addJobModalService.openModal(date);
+    }
+  }]);
+
+  return DaysList;
+}();
+DaysList = __decorate([core_1.Component({
+  selector: 'days-list',
+  template: "<ul class=\"demo-list-item mdl-list calendar__legend-list\">\n        <li class=\"mdl-list__item\">\n          <span class=\"mdl-list__item-primary-content\">\n            <span class=\"calendar__legend green\"></span>\n            Small job\n          </span>\n        </li>\n        <li class=\"mdl-list__item\">\n          <span class=\"mdl-list__item-primary-content\">\n            <span class=\"calendar__legend orange\"></span>\n            Medium job\n          </span>\n        </li>\n        <li class=\"mdl-list__item\">\n          <span class=\"mdl-list__item-primary-content\">\n            <span class=\"calendar__legend red\"></span>\n            Large job\n          </span>\n        </li>\n      </ul>\n\n      <div class=\"calendar__labels\">\n        <div class=\"calendar__labels__item\"\n         *ngFor=\"let dayName of calendarService.dayNames\">\n          {{ dayName }}\n        </div>\n      </div>\n      \n      <div class=\"calendar__week\" \n           *ngFor=\"let week of calendarService.fullMonth, let weekIndex = index\">\n        \n        <div class=\"calendar__days-wrap\">\n        \n          <div class=\"calendar__day\"\n               *ngFor=\"let d of week.days, let dayIndex = index\"\n               (click)=\"calendarService.showFullInfo(d, weekIndex, dayIndex)\">\n            <div class=\"calendar__day-inner\" [ngClass]=\"{ active: d.isActive }\">\n              <span class=\"calendar__day__date\">\n                {{ d.day }}\n              </span>\n              <span class=\"calendar__day__job {{job.movingSizeType}}\" *ngFor=\"let job of d.jobs\">\n                {{ job.phone }} | {{ job.moveFrom }} | {{ job.moveTo }}\n              </span>\n            </div>\n          </div>\n          \n        </div>\n\n        <div class=\"calendar__day-full-info\" [ngClass]=\"{ open: week.isOpen }\">\n          <div *ngIf=\"week.selectedDay\">\n            <div class=\"calendar__day__date-label\">{{ week.selectedDay.fullDate }}</div>\n            \n            <div *ngFor=\"let jobsByTime of week.selectedDay.jobsByTime\" class=\"calendar__day-full-info__job-wrapper\">\n              \n              <div class=\"calendar__day-full-info__time\">\n                {{jobsByTime.time}}\n              </div>\n              \n              <div *ngFor=\"let job of jobsByTime.jobs\" class=\"calendar__day-full-info__job {{job.movingSizeType}}\">\n                {{ job.movingDate }} | {{ job.moveFrom }} | {{ job.moveTo }} \n              {{ job.movingSize }} | {{ job.phone }} | {{ job.name }} | {{ job.mail }} \n              </div>\n              \n            </div>\n            \n            <div *ngIf=\"!week.selectedDay.jobs.length\" class=\"calendar__day__no-job\">\n                No jobs booked for today \n            </div>\n            <button class=\"small-space mdl-button mdl-button--raised mdl-button--colored\"\n                    (click)=\"openModal(week.selectedDay.fullDate)\">\n                  Add job\n            </button>\n          </div>\n        </div>\n        \n      </div>\n  "
+}), __param(0, core_1.Inject(calendar_service_ts_1.CalendarService)), __param(1, core_1.Inject(add_job_modal_service_1.AddJobModalService))], DaysList);
+exports.DaysList = DaysList;
+
+},{"./add-job-modal.service":383,"./calendar-service.ts":385,"@angular/core":148}],388:[function(require,module,exports){
+"use strict";
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Job = function Job() {
+    var movingDate = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
+    var movingTime = arguments.length <= 1 || arguments[1] === undefined ? '' : arguments[1];
+    var moveFrom = arguments.length <= 2 || arguments[2] === undefined ? '' : arguments[2];
+    var moveTo = arguments.length <= 3 || arguments[3] === undefined ? '' : arguments[3];
+    var movingSize = arguments.length <= 4 || arguments[4] === undefined ? '' : arguments[4];
+    var movingSizeType = arguments.length <= 5 || arguments[5] === undefined ? '' : arguments[5];
+    var phone = arguments.length <= 6 || arguments[6] === undefined ? '' : arguments[6];
+    var name = arguments.length <= 7 || arguments[7] === undefined ? '' : arguments[7];
+    var mail = arguments.length <= 8 || arguments[8] === undefined ? '' : arguments[8];
+    var distance = arguments.length <= 9 || arguments[9] === undefined ? '' : arguments[9];
+
+    _classCallCheck(this, Job);
+
+    this.movingDate = movingDate;
+    this.movingTime = movingTime;
+    this.moveFrom = moveFrom;
+    this.moveTo = moveTo;
+    this.movingSize = movingSize;
+    this.movingSizeType = movingSizeType;
+    this.phone = phone;
+    this.name = name;
+    this.mail = mail;
+    this.distance = distance;
+};
+
+exports.Job = Job;
+
+},{}],389:[function(require,module,exports){
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if ((typeof Reflect === "undefined" ? "undefined" : _typeof(Reflect)) === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+        if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    }return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var core_1 = require('@angular/core');
+var LeadsComponent = function () {
+    function LeadsComponent() {
+        _classCallCheck(this, LeadsComponent);
+
+        this.inbox = [{
+            dayGroup: {
+                data: 'Today',
+                leads: [{
+                    id: 1,
+                    type: 'new',
+                    moveFrom: 'LA, CA, United States',
+                    moveTo: 'irvine, CA, United States',
+                    date: {
+                        day: 'May 23',
+                        time: '10:30 AM'
+                    },
+                    movingDate: '05/05/2016',
+                    movingSize: 'OVER 3 PHONE',
+                    tel: '9095454758',
+                    email: 'TGFIREUP@GMAIL.COM',
+                    collapsed: true
+                }, {
+                    id: 2,
+                    type: 'new',
+                    moveFrom: 'ntario, CA, United States',
+                    moveTo: 'irvine, CA, United States',
+                    date: {
+                        day: 'June 3',
+                        time: '10:30 AM'
+                    },
+                    movingDate: '05/05/2016',
+                    movingSize: 'OVER 3 PHONE',
+                    tel: '9095454758',
+                    email: 'TGFIREUP@GMAIL.COM',
+                    collapsed: true
+                }, {
+                    id: 3,
+                    type: 'new',
+                    moveFrom: 'orange, CA, United States',
+                    moveTo: 'long beach, CA, United States',
+                    date: {
+                        day: 'Aug 11',
+                        time: '20:30 AM'
+                    },
+                    movingDate: '05/05/2016',
+                    movingSize: 'OVER 3 PHONE',
+                    tel: '9095454758',
+                    email: 'TGFIREUP@GMAIL.COM',
+                    collapsed: true
+                }, {
+                    id: 4,
+                    type: 'new',
+                    moveFrom: 'LA, CA, United States',
+                    moveTo: 'irvine, CA, United States',
+                    date: {
+                        day: 'May 23',
+                        time: '10:30 AM'
+                    },
+                    movingDate: '05/05/2016',
+                    movingSize: 'OVER 3 PHONE',
+                    tel: '9095454758',
+                    email: 'TGFIREUP@GMAIL.COM',
+                    collapsed: true
+                }, {
+                    id: 5,
+                    type: 'new',
+                    moveFrom: 'ntario, CA, United States',
+                    moveTo: 'irvine, CA, United States',
+                    date: {
+                        day: 'June 3',
+                        time: '10:30 AM'
+                    },
+                    movingDate: '05/05/2016',
+                    movingSize: 'OVER 3 PHONE',
+                    tel: '9095454758',
+                    email: 'TGFIREUP@GMAIL.COM',
+                    collapsed: true
+                }, {
+                    id: 6,
+                    moveFrom: 'orange, CA, United States',
+                    moveTo: 'long beach, CA, United States',
+                    date: {
+                        day: 'Aug 11',
+                        time: '20:30 AM'
+                    },
+                    movingDate: '05/05/2016',
+                    movingSize: 'OVER 3 PHONE',
+                    tel: '9095454758',
+                    email: 'TGFIREUP@GMAIL.COM',
+                    collapsed: true
+                }]
+            }
+        }, {
+            dayGroup: {
+                data: 'Yestarday',
+                leads: [{
+                    id: 7,
+                    type: 'new',
+                    moveFrom: 'LA, CA, United States',
+                    moveTo: 'irvine, CA, United States',
+                    date: {
+                        day: 'May 23',
+                        time: '10:30 AM'
+                    },
+                    movingDate: '05/05/2016',
+                    movingSize: 'OVER 3 PHONE',
+                    tel: '9095454758',
+                    email: 'TGFIREUP@GMAIL.COM',
+                    collapsed: true
+                }, {
+                    id: 8,
+                    type: 'new',
+                    moveFrom: 'ntario, CA, United States',
+                    moveTo: 'irvine, CA, United States',
+                    date: {
+                        day: 'June 3',
+                        time: '10:30 AM'
+                    },
+                    movingDate: '05/05/2016',
+                    movingSize: 'OVER 3 PHONE',
+                    tel: '9095454758',
+                    email: 'TGFIREUP@GMAIL.COM',
+                    collapsed: true
+                }, {
+                    id: 9,
+                    moveFrom: 'orange, CA, United States',
+                    moveTo: 'long beach, CA, United States',
+                    date: {
+                        day: 'Aug 11',
+                        time: '20:30 AM'
+                    },
+                    movingDate: '05/05/2016',
+                    movingSize: 'OVER 3 PHONE',
+                    tel: '9095454758',
+                    email: 'TGFIREUP@GMAIL.COM',
+                    collapsed: true
+                }]
+            }
+        }, {
+            dayGroup: {
+                data: '06.16.2016',
+                leads: [{
+                    id: 10,
+                    type: 'new',
+                    moveFrom: 'LA, CA, United States',
+                    moveTo: 'irvine, CA, United States',
+                    date: {
+                        day: 'May 23',
+                        time: '10:30 AM'
+                    },
+                    movingDate: '05/05/2016',
+                    movingSize: 'OVER 3 PHONE',
+                    tel: '9095454758',
+                    email: 'TGFIREUP@GMAIL.COM',
+                    collapsed: true
+                }, {
+                    id: 11,
+                    type: 'new',
+                    moveFrom: 'ntario, CA, United States',
+                    moveTo: 'irvine, CA, United States',
+                    date: {
+                        day: 'June 3',
+                        time: '10:30 AM'
+                    },
+                    movingDate: '05/05/2016',
+                    movingSize: 'OVER 3 PHONE',
+                    tel: '9095454758',
+                    email: 'TGFIREUP@GMAIL.COM',
+                    collapsed: true
+                }, {
+                    id: 12,
+                    moveFrom: 'orange, CA, United States',
+                    moveTo: 'long beach, CA, United States',
+                    date: {
+                        day: 'Aug 11',
+                        time: '20:30 AM'
+                    },
+                    movingDate: '05/05/2016',
+                    movingSize: 'OVER 3 PHONE',
+                    tel: '9095454758',
+                    email: 'TGFIREUP@GMAIL.COM',
+                    collapsed: true
+                }]
+            }
+        }];
+    }
+
+    _createClass(LeadsComponent, [{
+        key: "moveToTrash",
+        value: function moveToTrash(groupIndex, leadIndex) {
+            var allLeads = this.inbox[groupIndex].dayGroup.leads;
+            var lead = allLeads[leadIndex];
+            if (confirm("Are you sure you want to delete " + lead.date + "?")) {
+                allLeads.splice(leadIndex, 1);
+            }
+        }
+    }, {
+        key: "markAsRead",
+        value: function markAsRead(groupIndex, leadIndex) {
+            this.inbox[groupIndex].dayGroup.leads[leadIndex].type = 'read';
+        }
+    }, {
+        key: "showEditor",
+        value: function showEditor(groupIndex, leadIndex) {
+            var lead = this.inbox[groupIndex].dayGroup.leads[leadIndex];
+            var selector = 'textarea#' + 'area-' + lead.id;
+            console.log(selector);
+            lead.showEditor = !lead.showEditor;
+            lead.type = 'read';
+            tinymce.init({ selector: selector });
+        }
+    }, {
+        key: "showMap",
+        value: function showMap(groupIndex, leadIndex) {
+            var lead = this.inbox[groupIndex].dayGroup.leads[leadIndex];
+            this.initMap(groupIndex, leadIndex);
+            lead.type = 'read';
+            lead.collapsed = !lead.collapsed;
+        }
+    }, {
+        key: "initMap",
+        value: function initMap(groupIndex, leadIndex) {
+            var lead = this.inbox[groupIndex].dayGroup.leads[leadIndex];
+            var that = this;
+            var directionsDisplay = void 0;
+            var directionsService = new google.maps.DirectionsService();
+            initialize();
+            calcRoute();
+            function initialize() {
+                directionsDisplay = new google.maps.DirectionsRenderer();
+                var mapOptions = {
+                    zoom: 7,
+                    scrollwheel: false,
+                    center: new google.maps.LatLng(40.7903, -73.9597)
+                };
+                var map = new google.maps.Map(document.getElementById('map-' + lead.id), mapOptions);
+                directionsDisplay.setMap(map);
+            }
+            function calcRoute() {
+                var start = lead.moveFrom;
+                var end = lead.moveTo;
+                // sets a object literal with an origin of start, destination of end and the travel mode
+                var request = {
+                    origin: start,
+                    destination: end,
+                    travelMode: google.maps.TravelMode.WALKING
+                };
+                // this gives the directionsService var a route of the request object literal, and a callback method that executes upon the receipt of the response from directionsService.  Learn more about callbacks here, http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/
+                directionsService.route(request, function (response, status) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        directionsDisplay.setDirections(response);
+                        lead.distance = response.routes[0].legs[0].distance.text;
+                    }
+                });
+            }
+            google.maps.event.addDomListener(window, 'load', initialize);
+            google.maps.event.addDomListener(window, 'load', calcRoute);
+        }
+    }]);
+
+    return LeadsComponent;
+}();
+LeadsComponent = __decorate([core_1.Component({
+    selector: 'leads',
+    template: "\n    <div *ngFor=\"let group of inbox, let groupIndex = index\">\n      <h4 class=\"page-header\">{{ group.dayGroup.data }}</h4>\n      <div *ngFor=\"let lead of group.dayGroup.leads, let leadIndex = index\" class=\"md-lead {{ lead.type == 'new' ? 'md-lead--new' : '' }}\">\n        <div class=\"md-lead__main-wrap\">\n          <div class=\"md-lead__btns\">\n            <button *ngIf=\"lead.type == 'new'\" class=\"mdl-button mdl-button--icon mdl-button--accent\" (click)=\"markAsRead(groupIndex, leadIndex)\">\n              <i class=\"material-icons\">check</i>\n            </button>\n            <button class=\"mdl-button mdl-button--icon\" (click)=\"showEditor(groupIndex, leadIndex)\">\n              <i class=\"material-icons\">&#xE158;</i>\n            </button>\n            <button class=\"mdl-button mdl-button--icon mdl-button--colored\"(click)=\"showMap(groupIndex, leadIndex)\">\n              <i class=\"material-icons\">place</i>\n            </button>\n            <button class=\"mdl-button mdl-button--icon\" (click)=\"moveToTrash(groupIndex, leadIndex)\">\n              <i class=\"material-icons\">delete_forever</i>\n            </button>\n          </div>\n          \n          <div class=\"md-lead__main\">\n            <div class=\"md-lead__title\">\n              <span class=\"md-lead__label\">\n                {{ lead.moveFrom }}\n              </span>\n              <i class=\"material-icons\">trending_flat</i>\n              <span class=\"md-lead__label\">\n                {{ lead.moveTo }}\n              </span>\n            </div>\n          </div>\n          <div class=\"md-lead__body\">\n            <span class=\"md-lead__label\">Moving dates: 05/05/2016</span>\n            <span class=\"md-lead__label\">Moving size: Over 3</span>\n            <span class=\"md-lead__label\">Phone: 9095454758</span>\n            <span class=\"md-lead__label\">E-mail: tgfireup@gmail.com {{ lead.id}}</span>\n            <span class=\"md-lead__label\">Distance: {{ lead.distance }}</span>\n          </div>\n        </div>\n  \n        <div class=\"md-lead__map-wrapper {{ lead.collapsed ? 'md-lead__map-wrapper--collapsed' : '' }}\">\n          <div id=\"map-{{ lead.id }}\" class=\"md-lead__map\"></div>\n        </div>\n\n        <div class=\"md-lead__send-msg {{ lead.showEditor ? '' : 'md-lead__send-msg--collapsed' }}\">\n          <form action=\"#\">\n            <textarea class=\"mdl-textfield__input\"\n                      type=\"text\"\n                      rows=\"3\"\n                      id=\"area-{{ lead.id }}\" >\n            </textarea>\n            <div class=\"mdl-textfield--align-right\">\n              <button class=\"mdl-button mdl-button--raised mdl-button--accent\">\n                Send\n              </button>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n    "
+})], LeadsComponent);
 exports.LeadsComponent = LeadsComponent;
+
 },{"@angular/core":148}],390:[function(require,module,exports){
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if ((typeof Reflect === "undefined" ? "undefined" : _typeof(Reflect)) === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+        if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    }return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-const core_1 = require('@angular/core');
-const router_1 = require('@angular/router');
-let NavBarComponent = class NavBarComponent {
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var NavBarComponent = function NavBarComponent() {
+    _classCallCheck(this, NavBarComponent);
 };
-NavBarComponent = __decorate([
-    core_1.Component({
-        selector: 'navbar',
-        template: `
-    <!-- Top row, always visible -->
-    <div class="header">
-      <a href="#" class="header__logo">Qshark Titan</a>
-      <nav class="header__nav">
-        <a class="header__nav__link" [routerLink]="['/']">
-        All leads</a>
-        <a class="header__nav__link" [routerLink]="['/calendar']">calendar</a>
-      </nav>
-    </div>
-    `,
-        directives: [router_1.ROUTER_DIRECTIVES]
-    })
-], NavBarComponent);
+NavBarComponent = __decorate([core_1.Component({
+    selector: 'navbar',
+    template: "\n    <!-- Top row, always visible -->\n    <div class=\"header\">\n      <a href=\"#\" class=\"header__logo\">Qshark Titan</a>\n      <nav class=\"header__nav\">\n        <a class=\"header__nav__link\" [routerLink]=\"['/']\">\n        All leads</a>\n        <a class=\"header__nav__link\" [routerLink]=\"['/calendar']\">calendar</a>\n      </nav>\n    </div>\n    ",
+    directives: [router_1.ROUTER_DIRECTIVES]
+})], NavBarComponent);
 exports.NavBarComponent = NavBarComponent;
+
 },{"@angular/core":148,"@angular/router":307}],391:[function(require,module,exports){
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if ((typeof Reflect === "undefined" ? "undefined" : _typeof(Reflect)) === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+        if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    }return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-const core_1 = require('@angular/core');
-const router_1 = require('@angular/router');
-let SideBarComponent = class SideBarComponent {
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var SideBarComponent = function SideBarComponent() {
+    _classCallCheck(this, SideBarComponent);
 };
-SideBarComponent = __decorate([
-    core_1.Component({
-        selector: 'sidebar',
-        template: `
-        <nav class="sidebar-nav">
-          <a class="sidebar-nav__link active" [routerLink]="['/']">
-            <i class="material-icons">list</i>
-            Filter
-          </a>
-          <a href="" class="sidebar-nav__link">
-            <i class="material-icons">&#xE146;</i> 
-            New moving job
-          </a>
-          <a class="sidebar-nav__link" href=""><i class="material-icons">motorcycle</i>
-          Link</a>
-          <a class="sidebar-nav__link" href=""><i class="material-icons">motorcycle</i>
-          Link</a>
-        </nav>`,
-        directives: [router_1.ROUTER_DIRECTIVES]
-    })
-], SideBarComponent);
+SideBarComponent = __decorate([core_1.Component({
+    selector: 'sidebar',
+    template: "\n        <nav class=\"sidebar-nav\">\n          <a class=\"sidebar-nav__link active\" [routerLink]=\"['/']\">\n            <i class=\"material-icons\">list</i>\n            Filter\n          </a>\n          <a href=\"\" class=\"sidebar-nav__link\">\n            <i class=\"material-icons\">&#xE146;</i> \n            New moving job\n          </a>\n          <a class=\"sidebar-nav__link\" href=\"\"><i class=\"material-icons\">motorcycle</i>\n          Link</a>\n          <a class=\"sidebar-nav__link\" href=\"\"><i class=\"material-icons\">motorcycle</i>\n          Link</a>\n        </nav>",
+    directives: [router_1.ROUTER_DIRECTIVES]
+})], SideBarComponent);
 exports.SideBarComponent = SideBarComponent;
+
 },{"@angular/core":148,"@angular/router":307}],392:[function(require,module,exports){
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if ((typeof Reflect === "undefined" ? "undefined" : _typeof(Reflect)) === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+        if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    }return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
+var __param = undefined && undefined.__param || function (paramIndex, decorator) {
+    return function (target, key) {
+        decorator(target, key, paramIndex);
+    };
 };
-const core_1 = require('@angular/core');
-const add_job_modal_service_1 = require('../calendar/add-job-modal.service');
-const common_1 = require('@angular/common');
-const moment_ = require('moment');
-const moment = moment_['default'] || moment_;
-let DatePicker = class DatePicker {
-    constructor(cd, viewContainer, addJobModalService) {
+var core_1 = require('@angular/core');
+var add_job_modal_service_1 = require('../calendar/add-job-modal.service');
+var common_1 = require('@angular/common');
+var moment_ = require('moment');
+var moment = moment_['default'] || moment_;
+var DatePicker = function () {
+    function DatePicker(cd, viewContainer, addJobModalService) {
+        var _this = this;
+
+        _classCallCheck(this, DatePicker);
+
         this.addJobModalService = addJobModalService;
         this.changed = new core_1.EventEmitter();
         cd.valueAccessor = this;
@@ -54177,275 +54279,265 @@ let DatePicker = class DatePicker {
         if (this.initDate) {
             this.init();
         }
-        this.subscription = addJobModalService.modelOpened$.subscribe(date => {
-            this.initDate = date;
-            this.initValue();
-            this.init();
+        this.subscription = addJobModalService.modelOpened$.subscribe(function (date) {
+            _this.initDate = date;
+            _this.initValue();
+            _this.init();
         });
     }
-    ngAfterViewInit() {
-        if (this.initDate) {
-            this.initValue();
-        }
-    }
-    openDatepicker() {
-        this.isOpened = true;
-    }
-    closeDatepicker() {
-        this.isOpened = false;
-    }
-    prevYear() {
-        this.date.subtract(1, 'Y');
-        this.generateCalendar(this.date);
-    }
-    prevMonth() {
-        this.date.subtract(1, 'M');
-        this.generateCalendar(this.date);
-    }
-    nextYear() {
-        this.date.add(1, 'Y');
-        this.generateCalendar(this.date);
-    }
-    nextMonth() {
-        this.date.add(1, 'M');
-        this.generateCalendar(this.date);
-    }
-    selectDate(e, date) {
-        e.preventDefault();
-        if (this.isSelected(date))
-            return;
-        let selectedDate = moment(date.day + '.' + date.month + '.' + date.year, 'DD.MM.YYYY');
-        this.setValue(selectedDate);
-        this.closeDatepicker();
-        this.changed.emit(selectedDate.toDate());
-    }
-    generateCalendar(date) {
-        let lastDayOfMonth = date.endOf('month').date();
-        let month = date.month();
-        let year = date.year();
-        let n = 1;
-        let firstWeekDay = null;
-        this.dateValue = date.format('MMMM YYYY');
-        this.days = [];
-        if (this.firstWeekDaySunday === true) {
-            firstWeekDay = date.set('date', 2).day();
-        }
-        else {
-            firstWeekDay = date.set('date', 1).day();
-        }
-        if (firstWeekDay !== 1) {
-            n -= firstWeekDay - 1;
-        }
-        for (let i = n; i <= lastDayOfMonth; i += 1) {
-            if (i > 0) {
-                this.days.push({ day: i, month: month + 1, year: year, enabled: true });
-            }
-            else {
-                this.days.push({ day: null, month: null, year: null, enabled: false });
+
+    _createClass(DatePicker, [{
+        key: "ngAfterViewInit",
+        value: function ngAfterViewInit() {
+            if (this.initDate) {
+                this.initValue();
             }
         }
-    }
-    isSelected(date) {
-        let selectedDate = moment(date.day + '.' + date.month + '.' + date.year, 'DD.MM.YYYY');
-        return selectedDate.toDate().getTime() === this.cannonical;
-    }
-    generateDayNames() {
-        this.dayNames = [];
-        let date = this.firstWeekDaySunday === true ? moment('2015-06-07') : moment('2015-06-01');
-        for (let i = 0; i < 7; i += 1) {
-            this.dayNames.push(date.format('ddd'));
-            date.add('1', 'd');
+    }, {
+        key: "openDatepicker",
+        value: function openDatepicker() {
+            this.isOpened = true;
         }
-    }
-    initMouseEvents() {
-        let body = document.getElementsByTagName('body')[0];
-        body.addEventListener('click', (e) => {
-            if (!this.isOpened || !e.target)
-                return;
-            if (this.el !== e.target && !this.el.contains(e.target)) {
-                this.closeDatepicker();
+    }, {
+        key: "closeDatepicker",
+        value: function closeDatepicker() {
+            this.isOpened = false;
+        }
+    }, {
+        key: "prevYear",
+        value: function prevYear() {
+            this.date.subtract(1, 'Y');
+            this.generateCalendar(this.date);
+        }
+    }, {
+        key: "prevMonth",
+        value: function prevMonth() {
+            this.date.subtract(1, 'M');
+            this.generateCalendar(this.date);
+        }
+    }, {
+        key: "nextYear",
+        value: function nextYear() {
+            this.date.add(1, 'Y');
+            this.generateCalendar(this.date);
+        }
+    }, {
+        key: "nextMonth",
+        value: function nextMonth() {
+            this.date.add(1, 'M');
+            this.generateCalendar(this.date);
+        }
+    }, {
+        key: "selectDate",
+        value: function selectDate(e, date) {
+            e.preventDefault();
+            if (this.isSelected(date)) return;
+            var selectedDate = moment(date.day + '.' + date.month + '.' + date.year, 'DD.MM.YYYY');
+            this.setValue(selectedDate);
+            this.closeDatepicker();
+            this.changed.emit(selectedDate.toDate());
+        }
+    }, {
+        key: "generateCalendar",
+        value: function generateCalendar(date) {
+            var lastDayOfMonth = date.endOf('month').date();
+            var month = date.month();
+            var year = date.year();
+            var n = 1;
+            var firstWeekDay = null;
+            this.dateValue = date.format('MMMM YYYY');
+            this.days = [];
+            if (this.firstWeekDaySunday === true) {
+                firstWeekDay = date.set('date', 2).day();
+            } else {
+                firstWeekDay = date.set('date', 1).day();
             }
-        }, false);
-    }
-    setValue(value) {
-        let val = moment(value, this.modelFormat || 'YYYY-MM-DD');
-        this.viewValue = val.format(this.viewFormat || 'Do MMMM YYYY');
-        this.cd.viewToModelUpdate(val.format(this.modelFormat || 'YYYY-MM-DD'));
-        this.cannonical = val.toDate().getTime();
-        this.dateLabels = {
-            day: moment(this.cannonical).format('DD'),
-            fullDayName: moment(this.cannonical).format('ddd'),
-            month: moment(this.cannonical).format('MMM'),
-            year: moment(this.cannonical).format('YYYY')
-        };
-    }
-    initValue() {
-        setTimeout(() => {
-            if (!this.initDate) {
-                this.setValue(moment().format(this.modelFormat || 'YYYY-MM-DD'));
+            if (firstWeekDay !== 1) {
+                n -= firstWeekDay - 1;
             }
-            else {
-                this.setValue(moment(this.initDate, this.modelFormat || 'YYYY-MM-DD'));
+            for (var i = n; i <= lastDayOfMonth; i += 1) {
+                if (i > 0) {
+                    this.days.push({ day: i, month: month + 1, year: year, enabled: true });
+                } else {
+                    this.days.push({ day: null, month: null, year: null, enabled: false });
+                }
             }
-        });
-    }
-    writeValue(value) {
-        if (!value)
-            return;
-        this.setValue(value);
-    }
-    registerOnChange(fn) {
-        this.onChange = fn;
-    }
-    registerOnTouched(fn) {
-        this.onTouched = fn;
-    }
-    init() {
-        this.isOpened = false;
-        this.date = moment();
-        this.firstWeekDaySunday = false;
-        this.generateDayNames();
-        this.generateCalendar(this.date);
-        this.initMouseEvents();
-    }
-};
-__decorate([
-    core_1.Input('model-format')
-], DatePicker.prototype, "modelFormat", void 0);
-__decorate([
-    core_1.Input('view-format')
-], DatePicker.prototype, "viewFormat", void 0);
-__decorate([
-    core_1.Input('init-date')
-], DatePicker.prototype, "initDate", void 0);
-__decorate([
-    core_1.Input('first-week-day-sunday')
-], DatePicker.prototype, "firstWeekDaySunday", void 0);
-__decorate([
-    core_1.Input('static')
-], DatePicker.prototype, "isStatic", void 0);
-__decorate([
-    core_1.Output()
-], DatePicker.prototype, "changed", void 0);
-DatePicker = __decorate([
-    core_1.Component({
-        selector: 'datepicker[ngModel]',
-        template: `
-  <input type="text"
-         class="form-field__input hasText"
-         (focus)="openDatepicker()"
-         [value]="viewValue"
-         [hidden]="isStatic"
-         readonly>
-  <label class="form-field__label" for="time">Moving Date</label>
-  <div class="datepicker" *ngIf="isStatic || isOpened" [ngClass]="{ static: isStatic }">
-    
-    <div class="datepicker__header">
-        <div class="datepicker__header__year">{{ dateLabels.year }}</div>
-        <div class="datepicker__header__date">
-          {{ dateLabels.fullDayName }}, {{ dateLabels.month }} {{ dateLabels.day }}
-        </div>
-    </div>
-    <div class="datepicker__body">
-    
-      <div class="datepicker__body__date">
-          <div class="mdl-button mdl-js-button mdl-button--icon" (click)="prevMonth()">
-            <i class="material-icons">keyboard_arrow_left</i>
-          </div>
-          <div>
-            {{ dateValue }}
-          </div>
-          <div class="mdl-button mdl-js-button mdl-button--icon" (click)="nextMonth()">
-            <i class="material-icons">keyboard_arrow_right</i>
-          </div>
-      </div>
-      
-      <div class="datepicker__day-names">
-        <span  class="datepicker__day-names__item" *ngFor="let dn of dayNames">
-          {{ dn }}
-        </span>
-      </div>
-      <div class="datepicker__days-wrapper">
-        <span class="datepicker__days-wrapper__item" *ngFor="let d of days; let i = index;">
-          
-          <span class="day mdl-button mdl-button--icon"
-                *ngIf="d.day"
-                [ngClass]="{'disabled': !d.enabled, 'selected': isSelected(d)}" 
-                (click)="selectDate($event, d)"
-          >
-            {{ d.day }}
-          </span>
-        </span>
-      </div>
-      
-    </div>
-  </div>
-  `,
-        providers: [],
-        directives: [common_1.FORM_DIRECTIVES, common_1.NgIf, common_1.NgFor, common_1.NgClass],
-        pipes: []
-    }),
-    __param(0, core_1.Inject(common_1.NgModel)),
-    __param(1, core_1.Inject(core_1.ViewContainerRef)),
-    __param(2, core_1.Inject(add_job_modal_service_1.AddJobModalService))
-], DatePicker);
+        }
+    }, {
+        key: "isSelected",
+        value: function isSelected(date) {
+            var selectedDate = moment(date.day + '.' + date.month + '.' + date.year, 'DD.MM.YYYY');
+            return selectedDate.toDate().getTime() === this.cannonical;
+        }
+    }, {
+        key: "generateDayNames",
+        value: function generateDayNames() {
+            this.dayNames = [];
+            var date = this.firstWeekDaySunday === true ? moment('2015-06-07') : moment('2015-06-01');
+            for (var i = 0; i < 7; i += 1) {
+                this.dayNames.push(date.format('ddd'));
+                date.add('1', 'd');
+            }
+        }
+    }, {
+        key: "initMouseEvents",
+        value: function initMouseEvents() {
+            var _this2 = this;
+
+            var body = document.getElementsByTagName('body')[0];
+            body.addEventListener('click', function (e) {
+                if (!_this2.isOpened || !e.target) return;
+                if (_this2.el !== e.target && !_this2.el.contains(e.target)) {
+                    _this2.closeDatepicker();
+                }
+            }, false);
+        }
+    }, {
+        key: "setValue",
+        value: function setValue(value) {
+            var val = moment(value, this.modelFormat || 'YYYY-MM-DD');
+            this.viewValue = val.format(this.viewFormat || 'Do MMMM YYYY');
+            this.cd.viewToModelUpdate(val.format(this.modelFormat || 'YYYY-MM-DD'));
+            this.cannonical = val.toDate().getTime();
+            this.dateLabels = {
+                day: moment(this.cannonical).format('DD'),
+                fullDayName: moment(this.cannonical).format('ddd'),
+                month: moment(this.cannonical).format('MMM'),
+                year: moment(this.cannonical).format('YYYY')
+            };
+        }
+    }, {
+        key: "initValue",
+        value: function initValue() {
+            var _this3 = this;
+
+            setTimeout(function () {
+                if (!_this3.initDate) {
+                    _this3.setValue(moment().format(_this3.modelFormat || 'YYYY-MM-DD'));
+                } else {
+                    _this3.setValue(moment(_this3.initDate, _this3.modelFormat || 'YYYY-MM-DD'));
+                }
+            });
+        }
+    }, {
+        key: "writeValue",
+        value: function writeValue(value) {
+            if (!value) return;
+            this.setValue(value);
+        }
+    }, {
+        key: "registerOnChange",
+        value: function registerOnChange(fn) {
+            this.onChange = fn;
+        }
+    }, {
+        key: "registerOnTouched",
+        value: function registerOnTouched(fn) {
+            this.onTouched = fn;
+        }
+    }, {
+        key: "init",
+        value: function init() {
+            this.isOpened = false;
+            this.date = moment();
+            this.firstWeekDaySunday = false;
+            this.generateDayNames();
+            this.generateCalendar(this.date);
+            this.initMouseEvents();
+        }
+    }]);
+
+    return DatePicker;
+}();
+__decorate([core_1.Input('model-format')], DatePicker.prototype, "modelFormat", void 0);
+__decorate([core_1.Input('view-format')], DatePicker.prototype, "viewFormat", void 0);
+__decorate([core_1.Input('init-date')], DatePicker.prototype, "initDate", void 0);
+__decorate([core_1.Input('first-week-day-sunday')], DatePicker.prototype, "firstWeekDaySunday", void 0);
+__decorate([core_1.Input('static')], DatePicker.prototype, "isStatic", void 0);
+__decorate([core_1.Output()], DatePicker.prototype, "changed", void 0);
+DatePicker = __decorate([core_1.Component({
+    selector: 'datepicker[ngModel]',
+    template: "\n  <input type=\"text\"\n         class=\"form-field__input hasText\"\n         (focus)=\"openDatepicker()\"\n         [value]=\"viewValue\"\n         [hidden]=\"isStatic\"\n         readonly>\n  <label class=\"form-field__label\" for=\"time\">Moving Date</label>\n  <div class=\"datepicker\" *ngIf=\"isStatic || isOpened\" [ngClass]=\"{ static: isStatic }\">\n    \n    <div class=\"datepicker__header\">\n        <div class=\"datepicker__header__year\">{{ dateLabels.year }}</div>\n        <div class=\"datepicker__header__date\">\n          {{ dateLabels.fullDayName }}, {{ dateLabels.month }} {{ dateLabels.day }}\n        </div>\n    </div>\n    <div class=\"datepicker__body\">\n    \n      <div class=\"datepicker__body__date\">\n          <div class=\"mdl-button mdl-js-button mdl-button--icon\" (click)=\"prevMonth()\">\n            <i class=\"material-icons\">keyboard_arrow_left</i>\n          </div>\n          <div>\n            {{ dateValue }}\n          </div>\n          <div class=\"mdl-button mdl-js-button mdl-button--icon\" (click)=\"nextMonth()\">\n            <i class=\"material-icons\">keyboard_arrow_right</i>\n          </div>\n      </div>\n      \n      <div class=\"datepicker__day-names\">\n        <span  class=\"datepicker__day-names__item\" *ngFor=\"let dn of dayNames\">\n          {{ dn }}\n        </span>\n      </div>\n      <div class=\"datepicker__days-wrapper\">\n        <span class=\"datepicker__days-wrapper__item\" *ngFor=\"let d of days; let i = index;\">\n          \n          <span class=\"day mdl-button mdl-button--icon\"\n                *ngIf=\"d.day\"\n                [ngClass]=\"{'disabled': !d.enabled, 'selected': isSelected(d)}\" \n                (click)=\"selectDate($event, d)\"\n          >\n            {{ d.day }}\n          </span>\n        </span>\n      </div>\n      \n    </div>\n  </div>\n  ",
+    providers: [],
+    directives: [common_1.FORM_DIRECTIVES, common_1.NgIf, common_1.NgFor, common_1.NgClass],
+    pipes: []
+}), __param(0, core_1.Inject(common_1.NgModel)), __param(1, core_1.Inject(core_1.ViewContainerRef)), __param(2, core_1.Inject(add_job_modal_service_1.AddJobModalService))], DatePicker);
 exports.DatePicker = DatePicker;
+
 },{"../calendar/add-job-modal.service":383,"@angular/common":1,"@angular/core":148,"moment":326}],393:[function(require,module,exports){
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if ((typeof Reflect === "undefined" ? "undefined" : _typeof(Reflect)) === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
+        if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    }return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
+var __param = undefined && undefined.__param || function (paramIndex, decorator) {
+    return function (target, key) {
+        decorator(target, key, paramIndex);
+    };
 };
-const core_1 = require('@angular/core');
-const common_1 = require('@angular/common');
-let GoogleplaceDirective = class GoogleplaceDirective {
-    constructor(el, model) {
+var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
+var GoogleplaceDirective = function () {
+    function GoogleplaceDirective(el, model) {
+        var _this = this;
+
+        _classCallCheck(this, GoogleplaceDirective);
+
         this.model = model;
         this.setAddress = new core_1.EventEmitter();
         this._el = el.nativeElement;
         this.modelValue = this.model;
         var input = this._el;
         this.autocomplete = new google.maps.places.Autocomplete(input, {});
-        google.maps.event.addListener(this.autocomplete, 'place_changed', () => {
-            var place = this.autocomplete.getPlace();
-            this.invokeEvent(place);
+        google.maps.event.addListener(this.autocomplete, 'place_changed', function () {
+            var place = _this.autocomplete.getPlace();
+            _this.invokeEvent(place);
         });
     }
-    invokeEvent(place) {
-        this.setAddress.emit(place);
-    }
-    onInputChange() {
-    }
-};
-__decorate([
-    core_1.Output()
-], GoogleplaceDirective.prototype, "setAddress", void 0);
-GoogleplaceDirective = __decorate([
-    core_1.Directive({
-        selector: '[googleplace]',
-        providers: [common_1.NgModel],
-        host: {
-            '(input)': 'onInputChange()'
+
+    _createClass(GoogleplaceDirective, [{
+        key: "invokeEvent",
+        value: function invokeEvent(place) {
+            this.setAddress.emit(place);
         }
-    }),
-    __param(0, core_1.Inject(core_1.ElementRef)),
-    __param(1, core_1.Inject(common_1.NgModel))
-], GoogleplaceDirective);
+    }, {
+        key: "onInputChange",
+        value: function onInputChange() {}
+    }]);
+
+    return GoogleplaceDirective;
+}();
+__decorate([core_1.Output()], GoogleplaceDirective.prototype, "setAddress", void 0);
+GoogleplaceDirective = __decorate([core_1.Directive({
+    selector: '[googleplace]',
+    providers: [common_1.NgModel],
+    host: {
+        '(input)': 'onInputChange()'
+    }
+}), __param(0, core_1.Inject(core_1.ElementRef)), __param(1, core_1.Inject(common_1.NgModel))], GoogleplaceDirective);
 exports.GoogleplaceDirective = GoogleplaceDirective;
+
 },{"@angular/common":1,"@angular/core":148}],394:[function(require,module,exports){
 "use strict";
-const platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
-const app_component_1 = require('./app.component');
-const app_routes_1 = require('./app.routes');
-platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [
-    app_routes_1.APP_ROUTER_PROVIDERS
-])
-    .catch(err => console.error(err));
+
+var platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
+var app_component_1 = require('./app.component');
+var app_routes_1 = require('./app.routes');
+platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [app_routes_1.APP_ROUTER_PROVIDERS]).catch(function (err) {
+    return console.error(err);
+});
+
 },{"./app.component":380,"./app.routes":381,"@angular/platform-browser-dynamic":238}]},{},[394])
 
 

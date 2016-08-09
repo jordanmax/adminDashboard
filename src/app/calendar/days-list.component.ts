@@ -38,37 +38,47 @@ import { AddJobModalService } from './add-job-modal.service';
         <div class="calendar__days-wrap">
         
           <div class="calendar__day"
-               *ngFor="let d of week, let dayIndex = index"
+               *ngFor="let d of week.days, let dayIndex = index"
                (click)="calendarService.showFullInfo(d, weekIndex, dayIndex)">
-            <div class="calendar__day-inner">
+            <div class="calendar__day-inner" [ngClass]="{ active: d.isActive }">
               <span class="calendar__day__date">
                 {{ d.day }}
               </span>
-              <!--<span class="calendar__day__job {{ job.size }}" *ngFor="let job of day.jobs">-->
-                <!--{{ job.movingDate }} | {{ job.moveFrom }} | {{ job.moveTo }} | {{ job.phone }}-->
-              <!--</span>-->
+              <span class="calendar__day__job {{job.movingSizeType}}" *ngFor="let job of d.jobs">
+                {{ job.phone }} | {{ job.moveFrom }} | {{ job.moveTo }}
+              </span>
             </div>
           </div>
           
         </div>
 
-        <!--<div class="calendar__day-full-info {{ week.className }}">-->
-          <!--<div *ngIf="week.selectedDay">-->
-            <!--<div class="calendar__day__date-label">{{ week.selectedDay.fullDate }}</div>-->
-            <!--<div *ngFor="let job of week.selectedDay.jobs"-->
-                  <!--class="calendar__day-full-info__job">-->
-              <!--{{ job.movingDate }} | {{ job.moveFrom }} | {{ job.moveTo }} -->
-              <!--{{ job.movingSize }} | {{ job.phone }} | {{ job.name }} | {{ job.mail }} -->
-            <!--</div>-->
-            <!--<div *ngIf="!week.selectedDay.jobs.length" class="calendar__day__no-job">-->
-                <!--No jobs booked for today -->
-            <!--</div>-->
-            <!--<button class="small-space mdl-button mdl-button&#45;&#45;raised mdl-button&#45;&#45;colored"-->
-                    <!--(click)="openModal(week.selectedDay.fullDate)">-->
-                  <!--Add job-->
-            <!--</button>-->
-          <!--</div>-->
-        <!--</div>-->
+        <div class="calendar__day-full-info" [ngClass]="{ open: week.isOpen }">
+          <div *ngIf="week.selectedDay">
+            <div class="calendar__day__date-label">{{ week.selectedDay.fullDate }}</div>
+            
+            <div *ngFor="let jobsByTime of week.selectedDay.jobsByTime" class="calendar__day-full-info__job-wrapper">
+              
+              <div class="calendar__day-full-info__time">
+                {{jobsByTime.time}}
+              </div>
+              
+              <div *ngFor="let job of jobsByTime.jobs" class="calendar__day-full-info__job {{job.movingSizeType}}">
+                {{ job.movingDate }} | {{ job.moveFrom }} | {{ job.moveTo }} 
+              {{ job.movingSize }} | {{ job.phone }} | {{ job.name }} | {{ job.mail }} 
+              </div>
+              
+            </div>
+            
+            <div *ngIf="!week.selectedDay.jobs.length" class="calendar__day__no-job">
+                No jobs booked for today 
+            </div>
+            <button class="small-space mdl-button mdl-button--raised mdl-button--colored"
+                    (click)="openModal(week.selectedDay.fullDate)">
+                  Add job
+            </button>
+          </div>
+        </div>
+        
       </div>
   `
 })
