@@ -54,6 +54,11 @@ import { AddJobModalService } from './add-job-modal.service';
 
         <div class="calendar__day-full-info" [ngClass]="{ open: week.isOpen }">
           <div *ngIf="week.selectedDay">
+            <button class="mdl-button mdl-js-button mdl-button--icon calendar__day-full-info__close-btn"
+                    (click)="calendarService.closeFullInfo()"
+            >
+              <i class="material-icons">close</i>
+            </button>
             <div class="calendar__day__date-label">{{ week.selectedDay.fullDate }}</div>
             
             <div *ngFor="let jobsByTime of week.selectedDay.jobsByTime" class="calendar__day-full-info__job-wrapper">
@@ -63,8 +68,26 @@ import { AddJobModalService } from './add-job-modal.service';
               </div>
               
               <div *ngFor="let job of jobsByTime.jobs" class="calendar__day-full-info__job {{job.movingSizeType}}">
-                {{ job.movingDate }} | {{ job.moveFrom }} | {{ job.moveTo }} 
-              {{ job.movingSize }} | {{ job.phone }} | {{ job.name }} | {{ job.mail }} 
+              
+                <div class="calendar__day-full-info__job__item">
+                  <i class="material-icons">&#xE878;</i>{{ job.movingDate }}
+                </div>
+                <div class="calendar__day-full-info__job__item">
+                  <i class="material-icons">&#xE8B4;</i>{{ job.moveFrom }}
+                </div>
+                <div class="calendar__day-full-info__job__item">
+                  <i class="material-icons">&#xE8B4;</i>{{ job.moveTo }}
+                </div>
+                <div class="calendar__day-full-info__job__item">
+                  <i class="material-icons">&#xE84F;</i>{{ job.movingSizeType }}
+                </div>
+                <div class="calendar__day-full-info__job__item">
+                  <i class="material-icons">&#xE551;</i>{{ job.phone }}
+                </div>
+                <div class="calendar__day-full-info__job__item">
+                  <i class="material-icons">&#xE554;</i>{{ job.mail }}
+                </div>
+                
               </div>
               
             </div>

@@ -86,11 +86,10 @@
 			background: $red;
 		}
 		&__no-job {
-			color: #fff;
 			font-size: 20px;
 		}
 		&__date-label {
-			color: #fff;
+			color: $black;
 			font-size: 16px;
 			margin-bottom: 10px;
 		}
@@ -126,25 +125,31 @@
 
 	&__day-full-info {
 		padding: 0 20px;
-		background: $cyan;
+		//background: $cyan;
+    background: $lightGray;
 		width: calc(100% + 40px);
 		margin-left: -20px;
 		box-sizing: border-box;
-    box-shadow: inset 0 15px 6px -10px rgba(0,0,0,0.15);
+    box-shadow: inset 0 15px 6px -13px rgba(0,0,0,.15);
     position: relative;
     transition: all .3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    &__close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
     &.open {
       padding: 20px;
     }
     &__job-wrapper {
       display: flex;
       padding-bottom: 5px;
-      border-bottom: 1px dashed #fff;
+      border-bottom: 1px dashed rgba(149, 148, 148, 0.87);
       margin: 5px 0;
 
     }
     &__time {
-      color: #fff;
+      color: $black;
       font-size: 20px;
       min-width: 60px;
       display: flex;
@@ -156,6 +161,19 @@
 			padding: 10px;
 			position: relative;
 			z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      &__item {
+        //width: calc(100% / 3);
+        display: flex;
+        align-items: center;
+        margin: 10px;
+        .material-icons {
+          color: $gray;
+          font-size: 18px;
+          margin-right: 5px;
+        }
+      }
       &.small {
         border-left: 6px solid $green
       }

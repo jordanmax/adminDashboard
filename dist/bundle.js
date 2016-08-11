@@ -53461,7 +53461,49 @@ exports.CalendarHeader = CalendarHeader;
 },{"./calendar-service.ts":385,"@angular/core":148}],385:[function(require,module,exports){
 "use strict";
 
-var _typeof7 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+var _typeof14 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+var _typeof13 = typeof Symbol === "function" && _typeof14(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === "undefined" ? "undefined" : _typeof14(obj);
+} : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof14(obj);
+};
+
+var _typeof12 = typeof Symbol === "function" && _typeof13(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === "undefined" ? "undefined" : _typeof13(obj);
+} : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof13(obj);
+};
+
+var _typeof11 = typeof Symbol === "function" && _typeof12(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === "undefined" ? "undefined" : _typeof12(obj);
+} : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof12(obj);
+};
+
+var _typeof10 = typeof Symbol === "function" && _typeof11(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === "undefined" ? "undefined" : _typeof11(obj);
+} : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof11(obj);
+};
+
+var _typeof9 = typeof Symbol === "function" && _typeof10(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === "undefined" ? "undefined" : _typeof10(obj);
+} : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof10(obj);
+};
+
+var _typeof8 = typeof Symbol === "function" && _typeof9(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === "undefined" ? "undefined" : _typeof9(obj);
+} : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof9(obj);
+};
+
+var _typeof7 = typeof Symbol === "function" && _typeof8(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === "undefined" ? "undefined" : _typeof8(obj);
+} : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof8(obj);
+};
 
 var _typeof6 = typeof Symbol === "function" && _typeof7(Symbol.iterator) === "symbol" ? function (obj) {
     return typeof obj === "undefined" ? "undefined" : _typeof7(obj);
@@ -53555,7 +53597,7 @@ var CalendarService = function () {
             distance: "1,445 mi"
         }, {
             movingDate: "8.08.2016",
-            movingTime: "3:12",
+            movingTime: "03:12",
             moveFrom: "Irving, TX, USA",
             moveTo: "Santa Monica, CA, USA",
             movingSize: "",
@@ -53566,7 +53608,7 @@ var CalendarService = function () {
             distance: "1,445 mi"
         }, {
             movingDate: "8.08.2016",
-            movingTime: "3:12",
+            movingTime: "03:12",
             moveFrom: "Irving, TX, USA",
             moveTo: "Santa Monica, CA, USA",
             movingSize: "",
@@ -53577,7 +53619,7 @@ var CalendarService = function () {
             distance: "1,445 mi"
         }, {
             movingDate: "8.08.2016",
-            movingTime: "3:12",
+            movingTime: "03:12",
             moveFrom: "Irving, TX, USA",
             moveTo: "Santa Monica, CA, USA",
             movingSize: "",
@@ -53588,7 +53630,7 @@ var CalendarService = function () {
             distance: "1,445 mi"
         }, {
             movingDate: "8.08.2016",
-            movingTime: "4:00",
+            movingTime: "04:00",
             moveFrom: "Irving, TX, USA",
             moveTo: "Santa Monica, CA, USA",
             movingSize: "",
@@ -53746,7 +53788,13 @@ var CalendarService = function () {
             this.fullMonth[weekIndex].selectedDay = day;
             this.selectedDayWeekIndex = weekIndex;
             this.selectedDayIndex = dayIndex;
-            console.log(day.jobsByTime);
+        }
+    }, {
+        key: "closeFullInfo",
+        value: function closeFullInfo() {
+            this.fullMonth[this.selectedDayWeekIndex].isOpen = false;
+            this.fullMonth[this.selectedDayWeekIndex].selectedDay = null;
+            this.fullMonth[this.selectedDayWeekIndex].days[this.selectedDayIndex].isActive = false;
         }
     }, {
         key: "init",
@@ -53819,11 +53867,161 @@ exports.CalendarComponent = CalendarComponent;
 },{"./add-job-modal.component":382,"./add-job-modal.service":383,"./calendar-header.component":384,"./calendar-service.ts":385,"./days-list.component":387,"@angular/core":148}],387:[function(require,module,exports){
 "use strict";
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _typeof24 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+var _typeof23 = typeof Symbol === "function" && _typeof24(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof24(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof24(obj);
+};
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var _typeof22 = typeof Symbol === "function" && _typeof23(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof23(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof23(obj);
+};
+
+var _typeof21 = typeof Symbol === "function" && _typeof22(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof22(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof22(obj);
+};
+
+var _typeof20 = typeof Symbol === "function" && _typeof21(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof21(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof21(obj);
+};
+
+var _typeof19 = typeof Symbol === "function" && _typeof20(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof20(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof20(obj);
+};
+
+var _typeof18 = typeof Symbol === "function" && _typeof19(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof19(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof19(obj);
+};
+
+var _typeof17 = typeof Symbol === "function" && _typeof18(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof18(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof18(obj);
+};
+
+var _typeof16 = typeof Symbol === "function" && _typeof17(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof17(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof17(obj);
+};
+
+var _typeof15 = typeof Symbol === "function" && _typeof16(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof16(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof16(obj);
+};
+
+var _typeof14 = typeof Symbol === "function" && _typeof15(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof15(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof15(obj);
+};
+
+var _typeof13 = typeof Symbol === "function" && _typeof14(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof14(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof14(obj);
+};
+
+var _typeof12 = typeof Symbol === "function" && _typeof13(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof13(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof13(obj);
+};
+
+var _typeof11 = typeof Symbol === "function" && _typeof12(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof12(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof12(obj);
+};
+
+var _typeof10 = typeof Symbol === "function" && _typeof11(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof11(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof11(obj);
+};
+
+var _typeof9 = typeof Symbol === "function" && _typeof10(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof10(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof10(obj);
+};
+
+var _typeof8 = typeof Symbol === "function" && _typeof9(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof9(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof9(obj);
+};
+
+var _typeof7 = typeof Symbol === "function" && _typeof8(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof8(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof8(obj);
+};
+
+var _typeof6 = typeof Symbol === "function" && _typeof7(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof7(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof7(obj);
+};
+
+var _typeof5 = typeof Symbol === "function" && _typeof6(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof6(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof6(obj);
+};
+
+var _typeof4 = typeof Symbol === "function" && _typeof5(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof5(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof5(obj);
+};
+
+var _typeof3 = typeof Symbol === "function" && _typeof4(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof4(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof4(obj);
+};
+
+var _typeof2 = typeof Symbol === "function" && _typeof3(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof3(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof3(obj);
+};
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+};
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
 
 var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
   var c = arguments.length,
@@ -53860,7 +54058,7 @@ var DaysList = function () {
 }();
 DaysList = __decorate([core_1.Component({
   selector: 'days-list',
-  template: "<ul class=\"demo-list-item mdl-list calendar__legend-list\">\n        <li class=\"mdl-list__item\">\n          <span class=\"mdl-list__item-primary-content\">\n            <span class=\"calendar__legend green\"></span>\n            Small job\n          </span>\n        </li>\n        <li class=\"mdl-list__item\">\n          <span class=\"mdl-list__item-primary-content\">\n            <span class=\"calendar__legend orange\"></span>\n            Medium job\n          </span>\n        </li>\n        <li class=\"mdl-list__item\">\n          <span class=\"mdl-list__item-primary-content\">\n            <span class=\"calendar__legend red\"></span>\n            Large job\n          </span>\n        </li>\n      </ul>\n\n      <div class=\"calendar__labels\">\n        <div class=\"calendar__labels__item\"\n         *ngFor=\"let dayName of calendarService.dayNames\">\n          {{ dayName }}\n        </div>\n      </div>\n      \n      <div class=\"calendar__week\" \n           *ngFor=\"let week of calendarService.fullMonth, let weekIndex = index\">\n        \n        <div class=\"calendar__days-wrap\">\n        \n          <div class=\"calendar__day\"\n               *ngFor=\"let d of week.days, let dayIndex = index\"\n               (click)=\"calendarService.showFullInfo(d, weekIndex, dayIndex)\">\n            <div class=\"calendar__day-inner\" [ngClass]=\"{ active: d.isActive }\">\n              <span class=\"calendar__day__date\">\n                {{ d.day }}\n              </span>\n              <span class=\"calendar__day__job {{job.movingSizeType}}\" *ngFor=\"let job of d.jobs\">\n                {{ job.phone }} | {{ job.moveFrom }} | {{ job.moveTo }}\n              </span>\n            </div>\n          </div>\n          \n        </div>\n\n        <div class=\"calendar__day-full-info\" [ngClass]=\"{ open: week.isOpen }\">\n          <div *ngIf=\"week.selectedDay\">\n            <div class=\"calendar__day__date-label\">{{ week.selectedDay.fullDate }}</div>\n            \n            <div *ngFor=\"let jobsByTime of week.selectedDay.jobsByTime\" class=\"calendar__day-full-info__job-wrapper\">\n              \n              <div class=\"calendar__day-full-info__time\">\n                {{jobsByTime.time}}\n              </div>\n              \n              <div *ngFor=\"let job of jobsByTime.jobs\" class=\"calendar__day-full-info__job {{job.movingSizeType}}\">\n                {{ job.movingDate }} | {{ job.moveFrom }} | {{ job.moveTo }} \n              {{ job.movingSize }} | {{ job.phone }} | {{ job.name }} | {{ job.mail }} \n              </div>\n              \n            </div>\n            \n            <div *ngIf=\"!week.selectedDay.jobs.length\" class=\"calendar__day__no-job\">\n                No jobs booked for today \n            </div>\n            <button class=\"small-space mdl-button mdl-button--raised mdl-button--colored\"\n                    (click)=\"openModal(week.selectedDay.fullDate)\">\n                  Add job\n            </button>\n          </div>\n        </div>\n        \n      </div>\n  "
+  template: "<ul class=\"demo-list-item mdl-list calendar__legend-list\">\n        <li class=\"mdl-list__item\">\n          <span class=\"mdl-list__item-primary-content\">\n            <span class=\"calendar__legend green\"></span>\n            Small job\n          </span>\n        </li>\n        <li class=\"mdl-list__item\">\n          <span class=\"mdl-list__item-primary-content\">\n            <span class=\"calendar__legend orange\"></span>\n            Medium job\n          </span>\n        </li>\n        <li class=\"mdl-list__item\">\n          <span class=\"mdl-list__item-primary-content\">\n            <span class=\"calendar__legend red\"></span>\n            Large job\n          </span>\n        </li>\n      </ul>\n\n      <div class=\"calendar__labels\">\n        <div class=\"calendar__labels__item\"\n         *ngFor=\"let dayName of calendarService.dayNames\">\n          {{ dayName }}\n        </div>\n      </div>\n      \n      <div class=\"calendar__week\" \n           *ngFor=\"let week of calendarService.fullMonth, let weekIndex = index\">\n        \n        <div class=\"calendar__days-wrap\">\n        \n          <div class=\"calendar__day\"\n               *ngFor=\"let d of week.days, let dayIndex = index\"\n               (click)=\"calendarService.showFullInfo(d, weekIndex, dayIndex)\">\n            <div class=\"calendar__day-inner\" [ngClass]=\"{ active: d.isActive }\">\n              <span class=\"calendar__day__date\">\n                {{ d.day }}\n              </span>\n              <span class=\"calendar__day__job {{job.movingSizeType}}\" *ngFor=\"let job of d.jobs\">\n                {{ job.phone }} | {{ job.moveFrom }} | {{ job.moveTo }}\n              </span>\n            </div>\n          </div>\n          \n        </div>\n\n        <div class=\"calendar__day-full-info\" [ngClass]=\"{ open: week.isOpen }\">\n          <div *ngIf=\"week.selectedDay\">\n            <button class=\"mdl-button mdl-js-button mdl-button--icon calendar__day-full-info__close-btn\"\n                    (click)=\"calendarService.closeFullInfo()\"\n            >\n              <i class=\"material-icons\">close</i>\n            </button>\n            <div class=\"calendar__day__date-label\">{{ week.selectedDay.fullDate }}</div>\n            \n            <div *ngFor=\"let jobsByTime of week.selectedDay.jobsByTime\" class=\"calendar__day-full-info__job-wrapper\">\n              \n              <div class=\"calendar__day-full-info__time\">\n                {{jobsByTime.time}}\n              </div>\n              \n              <div *ngFor=\"let job of jobsByTime.jobs\" class=\"calendar__day-full-info__job {{job.movingSizeType}}\">\n              \n                <div class=\"calendar__day-full-info__job__item\">\n                  <i class=\"material-icons\">&#xE878;</i>{{ job.movingDate }}\n                </div>\n                <div class=\"calendar__day-full-info__job__item\">\n                  <i class=\"material-icons\">&#xE8B4;</i>{{ job.moveFrom }}\n                </div>\n                <div class=\"calendar__day-full-info__job__item\">\n                  <i class=\"material-icons\">&#xE8B4;</i>{{ job.moveTo }}\n                </div>\n                <div class=\"calendar__day-full-info__job__item\">\n                  <i class=\"material-icons\">&#xE84F;</i>{{ job.movingSizeType }}\n                </div>\n                <div class=\"calendar__day-full-info__job__item\">\n                  <i class=\"material-icons\">&#xE551;</i>{{ job.phone }}\n                </div>\n                <div class=\"calendar__day-full-info__job__item\">\n                  <i class=\"material-icons\">&#xE554;</i>{{ job.mail }}\n                </div>\n                \n              </div>\n              \n            </div>\n            \n            <div *ngIf=\"!week.selectedDay.jobs.length\" class=\"calendar__day__no-job\">\n                No jobs booked for today \n            </div>\n            <button class=\"small-space mdl-button mdl-button--raised mdl-button--colored\"\n                    (click)=\"openModal(week.selectedDay.fullDate)\">\n                  Add job\n            </button>\n          </div>\n        </div>\n        \n      </div>\n  "
 }), __param(0, core_1.Inject(calendar_service_ts_1.CalendarService)), __param(1, core_1.Inject(add_job_modal_service_1.AddJobModalService))], DaysList);
 exports.DaysList = DaysList;
 

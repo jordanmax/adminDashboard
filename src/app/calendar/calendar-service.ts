@@ -23,7 +23,7 @@ export class CalendarService {
     movingTime:"02:12",
     moveFrom:"Irving, TX, USA",
     moveTo:"Santa Monica, CA, USA",
-    movingSize:"",
+    movingSize:"2 Bed room",
     movingSizeType:"medium",
     phone:"123213213312",
     name:"aaasdsa",
@@ -35,7 +35,7 @@ export class CalendarService {
       movingTime:"12:12",
       moveFrom:"Irving, TX, USA",
       moveTo:"Santa Monica, CA, USA",
-      movingSize:"",
+      movingSize:"2 Bed room",
       movingSizeType:"small",
       phone:"123213213312",
       name:"aaasdsa",
@@ -44,10 +44,10 @@ export class CalendarService {
     },
     {
       movingDate:"8.08.2016",
-      movingTime:"3:12",
+      movingTime:"03:12",
       moveFrom:"Irving, TX, USA",
       moveTo:"Santa Monica, CA, USA",
-      movingSize:"",
+      movingSize:"2 Bed room",
       movingSizeType:"small",
       phone:"123213213312",
       name:"aaasdsa",
@@ -56,10 +56,10 @@ export class CalendarService {
     },
     {
       movingDate:"8.08.2016",
-      movingTime:"3:12",
+      movingTime:"03:12",
       moveFrom:"Irving, TX, USA",
       moveTo:"Santa Monica, CA, USA",
-      movingSize:"",
+      movingSize:"2 Bed room",
       movingSizeType:"small",
       phone:"123213213312",
       name:"aaasdsa",
@@ -68,10 +68,10 @@ export class CalendarService {
     },
     {
       movingDate:"8.08.2016",
-      movingTime:"3:12",
+      movingTime:"03:12",
       moveFrom:"Irving, TX, USA",
       moveTo:"Santa Monica, CA, USA",
-      movingSize:"",
+      movingSize:"2 Bed room",
       movingSizeType:"small",
       phone:"123213213312",
       name:"aaasdsa",
@@ -80,10 +80,10 @@ export class CalendarService {
     },
     {
       movingDate:"8.08.2016",
-      movingTime:"4:00",
+      movingTime:"04:00",
       moveFrom:"Irving, TX, USA",
       moveTo:"Santa Monica, CA, USA",
-      movingSize:"",
+      movingSize:"2 Bed room",
       movingSizeType:"large",
       phone:"123213213312",
       name:"aaasdsa",
@@ -246,7 +246,13 @@ export class CalendarService {
     this.selectedDayWeekIndex = weekIndex;
     this.selectedDayIndex = dayIndex;
 
-    console.log(day.jobsByTime);
+  }
+
+  closeFullInfo() {
+    //asdasdasd
+    this.fullMonth[this.selectedDayWeekIndex].isOpen = false;
+    this.fullMonth[this.selectedDayWeekIndex].selectedDay = null;
+    this.fullMonth[this.selectedDayWeekIndex].days[this.selectedDayIndex].isActive = false;
   }
 
   private init(): void {
