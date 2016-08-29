@@ -426,7 +426,10 @@ textarea {
   box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.03);
   margin-right: 20px;
   background: #fff;
-  padding-bottom: 20px; }
+  padding-bottom: 20px;
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0; }
 
 .sidebar-nav {
   margin-top: 10px; }
@@ -711,9 +714,7 @@ textarea {
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
-      padding-bottom: 5px;
-      border-bottom: 1px dashed rgba(149, 148, 148, 0.87);
-      margin: 5px 0; }
+      padding-bottom: 5px; }
     .calendar__day-full-info__time {
       color: rgba(0, 0, 0, 0.87);
       font-size: 20px;
@@ -756,6 +757,45 @@ textarea {
         border-left: 6px solid #f44336; }
       .calendar__day-full-info__job + .calendar__day-full-info__job {
         margin-left: 10px; }
+  .calendar__time-grid-wrapper {
+    position: relative; }
+  .calendar__time-grid-jobs-wrapper {
+    position: absolute;
+    left: 51px;
+    top: 0;
+    width: calc(100% - 51px);
+    height: 100%;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+  .calendar__time-grid__row {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+    .calendar__time-grid__row + .calendar__time-grid__row {
+      border-top: 1px solid rgba(0, 0, 0, 0.87); }
+  .calendar__time-grid__hour {
+    width: 50px;
+    height: 31px;
+    -webkit-flex-shrink: 0;
+        -ms-flex-negative: 0;
+            flex-shrink: 0;
+    border-right: 1px solid rgba(0, 0, 0, 0.87); }
+  .calendar__time-grid__time-line {
+    -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    position: relative; }
+    .calendar__time-grid__time-line:before {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 1px;
+      margin-top: -1px;
+      top: 50%;
+      left: 0;
+      background: #e2e2e2; }
 
 .filter-form {
   padding: 10px;

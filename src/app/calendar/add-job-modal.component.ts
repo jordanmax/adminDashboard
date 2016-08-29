@@ -47,8 +47,6 @@ export class AddJobModalComponent {
       });
   }
 
-
-
   getAddress(place:Object, field) {
     this.model[field] = place['formatted_address'];
     this.calcRoute();

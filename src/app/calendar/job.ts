@@ -1,7 +1,8 @@
 export class Job {
   constructor(
     public movingDate: string = '',
-    public movingTime: string = '',
+    public movingTimeStart: string = '',
+    public movingTimeEnd: string = '',
     public moveFrom: string = '',
     public moveTo: string = '',
     public movingSize: string = '',
@@ -9,7 +10,8 @@ export class Job {
     public phone: string = '',
     public name: string = '',
     public mail: string = '',
-    public distance: string = ''
+    public distance: string = '',
+    public note: string = ''
   ) {  }
 }
 

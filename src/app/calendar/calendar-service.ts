@@ -19,83 +19,43 @@ export class CalendarService {
   public firstWeekDaySunday: boolean;
   public jobs = [
     {
-    movingDate:"8.08.2016",
-    movingTime:"02:12",
-    moveFrom:"Irving, TX, USA",
-    moveTo:"Santa Monica, CA, USA",
-    movingSize:"2 Bed room",
-    movingSizeType:"medium",
-    phone:"123213213312",
-    name:"aaasdsa",
-    mail:"das@das.das",
-    distance:"1,445 mi"
-    },
-    {
       movingDate:"8.08.2016",
-      movingTime:"12:12",
+      movingTimeStart:"02:00",
+      movingTimeEnd:"03:00",
       moveFrom:"Irving, TX, USA",
       moveTo:"Santa Monica, CA, USA",
       movingSize:"2 Bed room",
-      movingSizeType:"small",
+      movingSizeType:"medium",
       phone:"123213213312",
       name:"aaasdsa",
       mail:"das@das.das",
-      distance:"1,445 mi"
+      distance:"1,445 mi",
+      note: 'Lorem ipsum dolor sit amet, integre vivendum mnesarchum vis an. Quem illum'
     },
     {
       movingDate:"8.08.2016",
-      movingTime:"03:12",
+      movingTimeStart:"02:00",
+      movingTimeEnd:"04:00",
       moveFrom:"Irving, TX, USA",
       moveTo:"Santa Monica, CA, USA",
       movingSize:"2 Bed room",
-      movingSizeType:"small",
+      movingSizeType:"medium",
       phone:"123213213312",
       name:"aaasdsa",
       mail:"das@das.das",
-      distance:"1,445 mi"
-    },
-    {
-      movingDate:"8.08.2016",
-      movingTime:"03:12",
-      moveFrom:"Irving, TX, USA",
-      moveTo:"Santa Monica, CA, USA",
-      movingSize:"2 Bed room",
-      movingSizeType:"small",
-      phone:"123213213312",
-      name:"aaasdsa",
-      mail:"das@das.das",
-      distance:"1,445 mi"
-    },
-    {
-      movingDate:"8.08.2016",
-      movingTime:"03:12",
-      moveFrom:"Irving, TX, USA",
-      moveTo:"Santa Monica, CA, USA",
-      movingSize:"2 Bed room",
-      movingSizeType:"small",
-      phone:"123213213312",
-      name:"aaasdsa",
-      mail:"das@das.das",
-      distance:"1,445 mi"
-    },
-    {
-      movingDate:"8.08.2016",
-      movingTime:"04:00",
-      moveFrom:"Irving, TX, USA",
-      moveTo:"Santa Monica, CA, USA",
-      movingSize:"2 Bed room",
-      movingSizeType:"large",
-      phone:"123213213312",
-      name:"aaasdsa",
-      mail:"das@das.das",
-      distance:"1,445 mi"
+      distance:"1,445 mi",
+      note: 'Lorem ipsum dolor sit amet, integre vivendum mnesarchum vis an. Quem illum'
     }
   ];
 
   constructor() {
     this.init();
   }
-
+  gridHours = [
+    '8am','9am','10am','11am','12pm',
+    '1pm','2pm','3pm','4pm','5pm','6pm',
+    '7pm','8pm','9pm','10pm','11pm','12pm'
+  ];
   selectedDayWeekIndex = null;
 
   selectedDayIndex = null;
@@ -141,11 +101,11 @@ export class CalendarService {
         this.jobs.forEach(job => {
           if(job.movingDate == fullDate) {
             dayItem.jobs.push(job);
-            if(jobsByTimeObj[job.movingTime]) {
-              jobsByTimeObj[job.movingTime].push(job)
+            if(jobsByTimeObj[job.movingTimeStart]) {
+              jobsByTimeObj[job.movingTimeStart].push(job)
             } else {
-              jobsByTimeObj[job.movingTime] = [];
-              jobsByTimeObj[job.movingTime].push(job)
+              jobsByTimeObj[job.movingTimeStart] = [];
+              jobsByTimeObj[job.movingTimeStart].push(job)
             }
           }
         });
@@ -194,6 +154,11 @@ export class CalendarService {
       this.dayNames.push(date.format('ddd'));
       date.add('1', 'd');
     }
+  }
+
+  parseTimeToHeight(time) {
+    let s = 31 * 3 + 'px';
+    return 'height:' + s
   }
 
   addJob(job) {
