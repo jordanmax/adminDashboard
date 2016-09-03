@@ -152,6 +152,10 @@
       display: flex;
       align-items: center;
     }
+    &__job-wrap {
+      display: flex;
+    }
+
 		&__job {
 			background: #fff;
       box-shadow: 0 2px 3px 2px rgba(0,0,0,.1);
@@ -195,8 +199,7 @@
     top: 0;
     width: calc(100% - 51px);
     height: 100%;
-    display: flex;
-
+    display: block;
   }
   &__time-grid {
     &__row {

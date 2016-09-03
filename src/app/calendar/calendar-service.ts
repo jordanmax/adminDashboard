@@ -19,7 +19,7 @@ export class CalendarService {
   public firstWeekDaySunday: boolean;
   public jobs = [
     {
-      movingDate:"8.08.2016",
+      movingDate:"10.08.2016",
       movingTimeStart:"02:00",
       movingTimeEnd:"03:00",
       moveFrom:"Irving, TX, USA",
@@ -33,9 +33,23 @@ export class CalendarService {
       note: 'Lorem ipsum dolor sit amet, integre vivendum mnesarchum vis an. Quem illum'
     },
     {
-      movingDate:"8.08.2016",
+      movingDate:"10.08.2016",
       movingTimeStart:"02:00",
-      movingTimeEnd:"04:00",
+      movingTimeEnd:"15:30",
+      moveFrom:"Irving, TX, USA",
+      moveTo:"Santa Monica, CA, USA",
+      movingSize:"2 Bed room",
+      movingSizeType:"medium",
+      phone:"123213213312",
+      name:"aaasdsa",
+      mail:"das@das.das",
+      distance:"1,445 mi",
+      note: 'Lorem ipsum dolor sit amet, integre vivendum mnesarchum vis an. Quem illum'
+    },
+    {
+      movingDate:"10.08.2016",
+      movingTimeStart:"17:00",
+      movingTimeEnd:"18:30",
       moveFrom:"Irving, TX, USA",
       moveTo:"Santa Monica, CA, USA",
       movingSize:"2 Bed room",
@@ -47,10 +61,6 @@ export class CalendarService {
       note: 'Lorem ipsum dolor sit amet, integre vivendum mnesarchum vis an. Quem illum'
     }
   ];
-
-  constructor() {
-    this.init();
-  }
   gridHours = [
     '8am','9am','10am','11am','12pm',
     '1pm','2pm','3pm','4pm','5pm','6pm',
@@ -59,6 +69,10 @@ export class CalendarService {
   selectedDayWeekIndex = null;
 
   selectedDayIndex = null;
+
+  constructor() {
+    this.init();
+  }
 
   private generateCalendar(date): void {
     let lastDayOfMonth = date.endOf('month').date();
@@ -84,6 +98,8 @@ export class CalendarService {
 
     for (let i = n; i <= lastDayOfMonth; i += 1) {
       let fullDate = '' + i + '.' +  date.format('MM') + '.' + date.format('YYYY');
+      if (i < 10) fullDate = '0' + fullDate;
+
       let jobsByTimeObj = {};
       let jobsByTime = [];
 
@@ -101,24 +117,17 @@ export class CalendarService {
         this.jobs.forEach(job => {
           if(job.movingDate == fullDate) {
             dayItem.jobs.push(job);
-            if(jobsByTimeObj[job.movingTimeStart]) {
-              jobsByTimeObj[job.movingTimeStart].push(job)
-            } else {
-              jobsByTimeObj[job.movingTimeStart] = [];
-              jobsByTimeObj[job.movingTimeStart].push(job)
-            }
           }
         });
 
-        for (var key in jobsByTimeObj) {
-          jobsByTime.push({
-            time: key,
-            jobs: jobsByTimeObj[key]
-          })
+        dayItem.jobs.forEach(job => {
+          job.duration = this.getJobDuration(job);
+          job.offset = this.setJobOffset(job);
+        });
+        console.log(dayItem.jobs);
+        if(dayItem.jobs.length) {
+          dayItem.jobsByTime = this.groupJobsByTime(this.sortJobsByDuration(dayItem.jobs));
         }
-
-        dayItem.jobsByTime = jobsByTime;
-
         this.days.push(dayItem);
 
       } else {
@@ -156,9 +165,80 @@ export class CalendarService {
     }
   }
 
+  setJobOffset(job) {
+    let time = job.movingTimeStart.split(':');
+    let hoursOffset = time[0];
+    let minutesOffset= time[1];
+    if(hoursOffset.charAt(0) === '0') {
+      hoursOffset = hoursOffset.slice(hoursOffset.length - 1)
+    }
+    if(minutesOffset.charAt(0) === '0') {
+      minutesOffset = minutesOffset.slice(minutesOffset.length - 1)
+    }
+
+    return {
+      top: hoursOffset + minutesOffset,
+      height: -parseInt((job.duration/(1000*60*60))%24)
+    }
+  }
+
   parseTimeToHeight(time) {
     let s = 31 * 3 + 'px';
     return 'height:' + s
+  }
+
+  sortJobsByDuration(jobs) {
+    return jobs.sort((jobA, jobB) => (
+      jobA.duration > jobB.duration
+    ))
+  }
+
+  getJobDuration(job) {
+    let start  = job.movingDate + ' ' + job.movingTimeStart; //; 10.08.2016 02:00
+    let end = job.movingDate + ' ' + job.movingTimeEnd; //; 10.08.2016 03:00
+    let ms = moment(start,"DD.MM.YYYY HH:mm").diff(moment(end,"DD.MM.YYYY HH:mm"));
+
+    return moment.duration(ms);
+  }
+
+  groupJobsByTime(jobs) {
+    let jobsGroupByTime = {};
+    let result = [];
+
+    jobs.forEach((job) => {
+      let groupNotFound = true;
+      if(!jobsGroupByTime.hasOwnProperty('0')) {
+        jobsGroupByTime['0'] = [];
+        jobsGroupByTime['0'].push(job);
+      } else {
+        for (let prop in jobsGroupByTime) {
+          let _prop = prop;
+
+          for(let i = 0; i < jobsGroupByTime[prop].length; i++) {
+            if (
+              (job.movingTimeStart >= jobsGroupByTime[prop][i].movingTimeStart
+              && job.movingTimeStart <= jobsGroupByTime[prop][i].movingTimeEnd)
+              ||
+              (job.movingTimeEnd >= jobsGroupByTime[prop][i].movingTimeStart
+              && job.movingTimeEnd <= jobsGroupByTime[prop][i].movingTimeEnd)
+            ) {
+              jobsGroupByTime[_prop].push(job);
+              groupNotFound = false;
+              break;
+            }
+          }
+        }
+        if (groupNotFound) {
+          jobsGroupByTime[Object.keys(jobsGroupByTime).length] = [];
+          jobsGroupByTime[Object.keys(jobsGroupByTime).length - 1].push(job)
+        }
+      }
+    });
+
+    for (let prop in jobsGroupByTime) {
+      result.push(jobsGroupByTime[prop]);
+    }
+    return result
   }
 
   addJob(job) {
@@ -214,7 +294,6 @@ export class CalendarService {
   }
 
   closeFullInfo() {
-    //asdasdasd
     this.fullMonth[this.selectedDayWeekIndex].isOpen = false;
     this.fullMonth[this.selectedDayWeekIndex].selectedDay = null;
     this.fullMonth[this.selectedDayWeekIndex].days[this.selectedDayIndex].isActive = false;

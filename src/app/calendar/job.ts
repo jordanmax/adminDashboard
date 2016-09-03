@@ -11,7 +11,9 @@ export class Job {
     public name: string = '',
     public mail: string = '',
     public distance: string = '',
-    public note: string = ''
+    public note: string = '',
+    public duration: string = '',
+    public offset: string = ''
   ) {  }
 }
 

@@ -53461,7 +53461,31 @@ exports.CalendarHeader = CalendarHeader;
 },{"./calendar-service.ts":385,"@angular/core":148}],385:[function(require,module,exports){
 "use strict";
 
-var _typeof7 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+var _typeof11 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+var _typeof10 = typeof Symbol === "function" && _typeof11(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === "undefined" ? "undefined" : _typeof11(obj);
+} : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof11(obj);
+};
+
+var _typeof9 = typeof Symbol === "function" && _typeof10(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === "undefined" ? "undefined" : _typeof10(obj);
+} : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof10(obj);
+};
+
+var _typeof8 = typeof Symbol === "function" && _typeof9(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === "undefined" ? "undefined" : _typeof9(obj);
+} : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof9(obj);
+};
+
+var _typeof7 = typeof Symbol === "function" && _typeof8(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === "undefined" ? "undefined" : _typeof8(obj);
+} : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof8(obj);
+};
 
 var _typeof6 = typeof Symbol === "function" && _typeof7(Symbol.iterator) === "symbol" ? function (obj) {
     return typeof obj === "undefined" ? "undefined" : _typeof7(obj);
@@ -53532,7 +53556,7 @@ var CalendarService = function () {
 
         this.fullMonth = [];
         this.jobs = [{
-            movingDate: "8.08.2016",
+            movingDate: "10.08.2016",
             movingTimeStart: "02:00",
             movingTimeEnd: "03:00",
             moveFrom: "Irving, TX, USA",
@@ -53545,9 +53569,22 @@ var CalendarService = function () {
             distance: "1,445 mi",
             note: 'Lorem ipsum dolor sit amet, integre vivendum mnesarchum vis an. Quem illum'
         }, {
-            movingDate: "8.08.2016",
+            movingDate: "10.08.2016",
             movingTimeStart: "02:00",
-            movingTimeEnd: "04:00",
+            movingTimeEnd: "15:30",
+            moveFrom: "Irving, TX, USA",
+            moveTo: "Santa Monica, CA, USA",
+            movingSize: "2 Bed room",
+            movingSizeType: "medium",
+            phone: "123213213312",
+            name: "aaasdsa",
+            mail: "das@das.das",
+            distance: "1,445 mi",
+            note: 'Lorem ipsum dolor sit amet, integre vivendum mnesarchum vis an. Quem illum'
+        }, {
+            movingDate: "10.08.2016",
+            movingTimeStart: "17:00",
+            movingTimeEnd: "18:30",
             moveFrom: "Irving, TX, USA",
             moveTo: "Santa Monica, CA, USA",
             movingSize: "2 Bed room",
@@ -53589,6 +53626,7 @@ var CalendarService = function () {
 
             var _loop = function _loop(i) {
                 var fullDate = '' + i + '.' + date.format('MM') + '.' + date.format('YYYY');
+                if (i < 10) fullDate = '0' + fullDate;
                 var jobsByTimeObj = {};
                 var jobsByTime = [];
                 if (i > 0) {
@@ -53605,21 +53643,16 @@ var CalendarService = function () {
                         _this.jobs.forEach(function (job) {
                             if (job.movingDate == fullDate) {
                                 dayItem.jobs.push(job);
-                                if (jobsByTimeObj[job.movingTimeStart]) {
-                                    jobsByTimeObj[job.movingTimeStart].push(job);
-                                } else {
-                                    jobsByTimeObj[job.movingTimeStart] = [];
-                                    jobsByTimeObj[job.movingTimeStart].push(job);
-                                }
                             }
                         });
-                        for (key in jobsByTimeObj) {
-                            jobsByTime.push({
-                                time: key,
-                                jobs: jobsByTimeObj[key]
-                            });
+                        dayItem.jobs.forEach(function (job) {
+                            job.duration = _this.getJobDuration(job);
+                            job.offset = _this.setJobOffset(job);
+                        });
+                        console.log(dayItem.jobs);
+                        if (dayItem.jobs.length) {
+                            dayItem.jobsByTime = _this.groupJobsByTime(_this.sortJobsByDuration(dayItem.jobs));
                         }
-                        dayItem.jobsByTime = jobsByTime;
                         _this.days.push(dayItem);
                     })();
                 } else {
@@ -53628,8 +53661,6 @@ var CalendarService = function () {
             };
 
             for (var i = n; i <= lastDayOfMonth; i += 1) {
-                var key;
-
                 _loop(i);
             }
             for (var _i = 0, j = 1; _i < this.days.length; _i++, j++) {
@@ -53661,10 +53692,74 @@ var CalendarService = function () {
             }
         }
     }, {
+        key: "setJobOffset",
+        value: function setJobOffset(job) {
+            var time = job.movingTimeStart.split(':');
+            var hoursOffset = time[0];
+            var minutesOffset = time[1];
+            if (hoursOffset.charAt(0) === '0') {
+                hoursOffset = hoursOffset.slice(hoursOffset.length - 1);
+            }
+            if (minutesOffset.charAt(0) === '0') {
+                minutesOffset = minutesOffset.slice(minutesOffset.length - 1);
+            }
+            return {
+                top: hoursOffset + minutesOffset,
+                height: -parseInt(job.duration / (1000 * 60 * 60) % 24)
+            };
+        }
+    }, {
         key: "parseTimeToHeight",
         value: function parseTimeToHeight(time) {
             var s = 31 * 3 + 'px';
             return 'height:' + s;
+        }
+    }, {
+        key: "sortJobsByDuration",
+        value: function sortJobsByDuration(jobs) {
+            return jobs.sort(function (jobA, jobB) {
+                return jobA.duration > jobB.duration;
+            });
+        }
+    }, {
+        key: "getJobDuration",
+        value: function getJobDuration(job) {
+            var start = job.movingDate + ' ' + job.movingTimeStart; //; 10.08.2016 02:00
+            var end = job.movingDate + ' ' + job.movingTimeEnd; //; 10.08.2016 03:00
+            var ms = moment(start, "DD.MM.YYYY HH:mm").diff(moment(end, "DD.MM.YYYY HH:mm"));
+            return moment.duration(ms);
+        }
+    }, {
+        key: "groupJobsByTime",
+        value: function groupJobsByTime(jobs) {
+            var jobsGroupByTime = {};
+            var result = [];
+            jobs.forEach(function (job) {
+                var groupNotFound = true;
+                if (!jobsGroupByTime.hasOwnProperty('0')) {
+                    jobsGroupByTime['0'] = [];
+                    jobsGroupByTime['0'].push(job);
+                } else {
+                    for (var prop in jobsGroupByTime) {
+                        var _prop = prop;
+                        for (var i = 0; i < jobsGroupByTime[prop].length; i++) {
+                            if (job.movingTimeStart >= jobsGroupByTime[prop][i].movingTimeStart && job.movingTimeStart <= jobsGroupByTime[prop][i].movingTimeEnd || job.movingTimeEnd >= jobsGroupByTime[prop][i].movingTimeStart && job.movingTimeEnd <= jobsGroupByTime[prop][i].movingTimeEnd) {
+                                jobsGroupByTime[_prop].push(job);
+                                groupNotFound = false;
+                                break;
+                            }
+                        }
+                    }
+                    if (groupNotFound) {
+                        jobsGroupByTime[Object.keys(jobsGroupByTime).length] = [];
+                        jobsGroupByTime[Object.keys(jobsGroupByTime).length - 1].push(job);
+                    }
+                }
+            });
+            for (var prop in jobsGroupByTime) {
+                result.push(jobsGroupByTime[prop]);
+            }
+            return result;
         }
     }, {
         key: "addJob",
@@ -53717,7 +53812,6 @@ var CalendarService = function () {
     }, {
         key: "closeFullInfo",
         value: function closeFullInfo() {
-            //asdasdasd
             this.fullMonth[this.selectedDayWeekIndex].isOpen = false;
             this.fullMonth[this.selectedDayWeekIndex].selectedDay = null;
             this.fullMonth[this.selectedDayWeekIndex].days[this.selectedDayIndex].isActive = false;
@@ -53841,7 +53935,11 @@ exports.DaysList = DaysList;
 },{"./add-job-modal.service":383,"./calendar-service.ts":385,"@angular/core":148}],388:[function(require,module,exports){
 "use strict";
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+        throw new TypeError("Cannot call a class as a function");
+    }
+}
 
 var Job = function Job() {
     var movingDate = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
@@ -53856,6 +53954,8 @@ var Job = function Job() {
     var mail = arguments.length <= 9 || arguments[9] === undefined ? '' : arguments[9];
     var distance = arguments.length <= 10 || arguments[10] === undefined ? '' : arguments[10];
     var note = arguments.length <= 11 || arguments[11] === undefined ? '' : arguments[11];
+    var duration = arguments.length <= 12 || arguments[12] === undefined ? '' : arguments[12];
+    var offset = arguments.length <= 13 || arguments[13] === undefined ? '' : arguments[13];
 
     _classCallCheck(this, Job);
 
@@ -53871,6 +53971,8 @@ var Job = function Job() {
     this.mail = mail;
     this.distance = distance;
     this.note = note;
+    this.duration = duration;
+    this.offset = offset;
 };
 
 exports.Job = Job;
