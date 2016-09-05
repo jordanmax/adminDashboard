@@ -69,7 +69,8 @@
           <div class="calendar__day-full-info__job-wrap"
                *ngFor="let jobGroup of week.selectedDay.jobsByTime">
             <div *ngFor="let job of jobGroup"
-                 class="calendar__day-full-info__job {{job.movingSizeType}}">
+                 class="calendar__day-full-info__job {{job.movingSizeType}}"
+                 [ngStyle]="{marginTop: job.offset.top + 'px', height: job.offset.height + 'px'}">
               <div class="calendar__day-full-info__job__item">
                 <i class="material-icons">&#xE878;</i>{{ job.movingDate }}
               </div>

@@ -17,11 +17,13 @@ export class CalendarService {
   private date: any;
   private cannonical: number;
   public firstWeekDaySunday: boolean;
+  public dayStart = 8;
+  public gridDayHeight = 32;
   public jobs = [
     {
       movingDate:"10.08.2016",
-      movingTimeStart:"02:00",
-      movingTimeEnd:"03:00",
+      movingTimeStart:"12:00",
+      movingTimeEnd:"13:30",
       moveFrom:"Irving, TX, USA",
       moveTo:"Santa Monica, CA, USA",
       movingSize:"2 Bed room",
@@ -34,7 +36,7 @@ export class CalendarService {
     },
     {
       movingDate:"10.08.2016",
-      movingTimeStart:"02:00",
+      movingTimeStart:"12:00",
       movingTimeEnd:"15:30",
       moveFrom:"Irving, TX, USA",
       moveTo:"Santa Monica, CA, USA",
@@ -50,14 +52,14 @@ export class CalendarService {
       movingDate:"10.08.2016",
       movingTimeStart:"17:00",
       movingTimeEnd:"18:30",
-      moveFrom:"Irving, TX, USA",
+      moveFrom:"Minsk, TX, USA",
       moveTo:"Santa Monica, CA, USA",
       movingSize:"2 Bed room",
       movingSizeType:"medium",
       phone:"123213213312",
       name:"aaasdsa",
       mail:"das@das.das",
-      distance:"1,445 mi",
+      distance:"100,445 mi",
       note: 'Lorem ipsum dolor sit amet, integre vivendum mnesarchum vis an. Quem illum'
     }
   ];
@@ -124,7 +126,7 @@ export class CalendarService {
           job.duration = this.getJobDuration(job);
           job.offset = this.setJobOffset(job);
         });
-        console.log(dayItem.jobs);
+
         if(dayItem.jobs.length) {
           dayItem.jobsByTime = this.groupJobsByTime(this.sortJobsByDuration(dayItem.jobs));
         }
@@ -176,20 +178,17 @@ export class CalendarService {
       minutesOffset = minutesOffset.slice(minutesOffset.length - 1)
     }
 
-    return {
-      top: hoursOffset + minutesOffset,
-      height: -parseInt((job.duration/(1000*60*60))%24)
-    }
-  }
+    minutesOffset = minutesOffset / 60;
 
-  parseTimeToHeight(time) {
-    let s = 31 * 3 + 'px';
-    return 'height:' + s
+    return {
+      top: (+hoursOffset + +minutesOffset - this.dayStart) * this.gridDayHeight,
+      height: -parseInt((job.duration/1000/60/60) * this.gridDayHeight)
+    }
   }
 
   sortJobsByDuration(jobs) {
     return jobs.sort((jobA, jobB) => (
-      jobA.duration > jobB.duration
+      this.getJobDuration(jobA) > this.getJobDuration(jobB)
     ))
   }
 
@@ -216,11 +215,11 @@ export class CalendarService {
 
           for(let i = 0; i < jobsGroupByTime[prop].length; i++) {
             if (
-              (job.movingTimeStart >= jobsGroupByTime[prop][i].movingTimeStart
-              && job.movingTimeStart <= jobsGroupByTime[prop][i].movingTimeEnd)
+              (moment(job.movingTimeStart,"HH:mm").valueOf() >= moment(jobsGroupByTime[prop][i].movingTimeStart,"HH:mm").valueOf()
+              && moment(job.movingTimeStart,"HH:mm").valueOf() <= moment(jobsGroupByTime[prop][i].movingTimeEnd,"HH:mm").valueOf())
               ||
-              (job.movingTimeEnd >= jobsGroupByTime[prop][i].movingTimeStart
-              && job.movingTimeEnd <= jobsGroupByTime[prop][i].movingTimeEnd)
+              (moment(job.movingTimeEnd,"HH:mm").valueOf() >= moment(jobsGroupByTime[prop][i].movingTimeStart,"HH:mm").valueOf()
+              && moment(job.movingTimeEnd,"HH:mm").valueOf() <= moment(jobsGroupByTime[prop][i].movingTimeEnd,"HH:mm").valueOf())
             ) {
               jobsGroupByTime[_prop].push(job);
               groupNotFound = false;
@@ -243,24 +242,17 @@ export class CalendarService {
 
   addJob(job) {
     this.fullMonth[this.selectedDayWeekIndex].days[this.selectedDayIndex].jobs.push(job);
-
-    let jobsByTime = this.fullMonth[this.selectedDayWeekIndex].days[this.selectedDayIndex].jobsByTime;
-    let isJobAdded = false;
-
-    jobsByTime.forEach(time => {
-      if(time.time === job.movingTime) {
-        time.jobs.push(job);
-        isJobAdded = true
-      }
+    let jobs = this.fullMonth[this.selectedDayWeekIndex].days[this.selectedDayIndex].jobs;
+    console.log(jobs)
+    console.log(this.sortJobsByDuration(jobs))
+    jobs.forEach(job => {
+      job.duration = this.getJobDuration(job);
+      job.offset = this.setJobOffset(job);
     });
 
-    if(!isJobAdded) {
-      jobsByTime.push({
-        time: job.movingTime,
-        jobs: [job]
-      })
-    }
-
+    this.fullMonth[this.selectedDayWeekIndex]
+        .days[this.selectedDayIndex]
+        .jobsByTime = this.groupJobsByTime(this.sortJobsByDuration(jobs)).slice();
   }
 
   showNextMonth() {

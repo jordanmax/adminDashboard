@@ -53461,55 +53461,7 @@ exports.CalendarHeader = CalendarHeader;
 },{"./calendar-service.ts":385,"@angular/core":148}],385:[function(require,module,exports){
 "use strict";
 
-var _typeof11 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
-var _typeof10 = typeof Symbol === "function" && _typeof11(Symbol.iterator) === "symbol" ? function (obj) {
-    return typeof obj === "undefined" ? "undefined" : _typeof11(obj);
-} : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof11(obj);
-};
-
-var _typeof9 = typeof Symbol === "function" && _typeof10(Symbol.iterator) === "symbol" ? function (obj) {
-    return typeof obj === "undefined" ? "undefined" : _typeof10(obj);
-} : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof10(obj);
-};
-
-var _typeof8 = typeof Symbol === "function" && _typeof9(Symbol.iterator) === "symbol" ? function (obj) {
-    return typeof obj === "undefined" ? "undefined" : _typeof9(obj);
-} : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof9(obj);
-};
-
-var _typeof7 = typeof Symbol === "function" && _typeof8(Symbol.iterator) === "symbol" ? function (obj) {
-    return typeof obj === "undefined" ? "undefined" : _typeof8(obj);
-} : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof8(obj);
-};
-
-var _typeof6 = typeof Symbol === "function" && _typeof7(Symbol.iterator) === "symbol" ? function (obj) {
-    return typeof obj === "undefined" ? "undefined" : _typeof7(obj);
-} : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof7(obj);
-};
-
-var _typeof5 = typeof Symbol === "function" && _typeof6(Symbol.iterator) === "symbol" ? function (obj) {
-    return typeof obj === "undefined" ? "undefined" : _typeof6(obj);
-} : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof6(obj);
-};
-
-var _typeof4 = typeof Symbol === "function" && _typeof5(Symbol.iterator) === "symbol" ? function (obj) {
-    return typeof obj === "undefined" ? "undefined" : _typeof5(obj);
-} : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof5(obj);
-};
-
-var _typeof3 = typeof Symbol === "function" && _typeof4(Symbol.iterator) === "symbol" ? function (obj) {
-    return typeof obj === "undefined" ? "undefined" : _typeof4(obj);
-} : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof4(obj);
-};
+var _typeof3 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 var _typeof2 = typeof Symbol === "function" && _typeof3(Symbol.iterator) === "symbol" ? function (obj) {
     return typeof obj === "undefined" ? "undefined" : _typeof3(obj);
@@ -53555,10 +53507,12 @@ var CalendarService = function () {
         _classCallCheck(this, CalendarService);
 
         this.fullMonth = [];
+        this.dayStart = 8;
+        this.gridDayHeight = 32;
         this.jobs = [{
             movingDate: "10.08.2016",
-            movingTimeStart: "02:00",
-            movingTimeEnd: "03:00",
+            movingTimeStart: "12:00",
+            movingTimeEnd: "13:30",
             moveFrom: "Irving, TX, USA",
             moveTo: "Santa Monica, CA, USA",
             movingSize: "2 Bed room",
@@ -53570,7 +53524,7 @@ var CalendarService = function () {
             note: 'Lorem ipsum dolor sit amet, integre vivendum mnesarchum vis an. Quem illum'
         }, {
             movingDate: "10.08.2016",
-            movingTimeStart: "02:00",
+            movingTimeStart: "12:00",
             movingTimeEnd: "15:30",
             moveFrom: "Irving, TX, USA",
             moveTo: "Santa Monica, CA, USA",
@@ -53585,14 +53539,14 @@ var CalendarService = function () {
             movingDate: "10.08.2016",
             movingTimeStart: "17:00",
             movingTimeEnd: "18:30",
-            moveFrom: "Irving, TX, USA",
+            moveFrom: "Minsk, TX, USA",
             moveTo: "Santa Monica, CA, USA",
             movingSize: "2 Bed room",
             movingSizeType: "medium",
             phone: "123213213312",
             name: "aaasdsa",
             mail: "das@das.das",
-            distance: "1,445 mi",
+            distance: "100,445 mi",
             note: 'Lorem ipsum dolor sit amet, integre vivendum mnesarchum vis an. Quem illum'
         }];
         this.gridHours = ['8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm', '12pm'];
@@ -53649,7 +53603,6 @@ var CalendarService = function () {
                             job.duration = _this.getJobDuration(job);
                             job.offset = _this.setJobOffset(job);
                         });
-                        console.log(dayItem.jobs);
                         if (dayItem.jobs.length) {
                             dayItem.jobsByTime = _this.groupJobsByTime(_this.sortJobsByDuration(dayItem.jobs));
                         }
@@ -53703,22 +53656,19 @@ var CalendarService = function () {
             if (minutesOffset.charAt(0) === '0') {
                 minutesOffset = minutesOffset.slice(minutesOffset.length - 1);
             }
+            minutesOffset = minutesOffset / 60;
             return {
-                top: hoursOffset + minutesOffset,
-                height: -parseInt(job.duration / (1000 * 60 * 60) % 24)
+                top: (+hoursOffset + +minutesOffset - this.dayStart) * this.gridDayHeight,
+                height: -parseInt(job.duration / 1000 / 60 / 60 * this.gridDayHeight)
             };
-        }
-    }, {
-        key: "parseTimeToHeight",
-        value: function parseTimeToHeight(time) {
-            var s = 31 * 3 + 'px';
-            return 'height:' + s;
         }
     }, {
         key: "sortJobsByDuration",
         value: function sortJobsByDuration(jobs) {
+            var _this2 = this;
+
             return jobs.sort(function (jobA, jobB) {
-                return jobA.duration > jobB.duration;
+                return _this2.getJobDuration(jobA) > _this2.getJobDuration(jobB);
             });
         }
     }, {
@@ -53743,7 +53693,7 @@ var CalendarService = function () {
                     for (var prop in jobsGroupByTime) {
                         var _prop = prop;
                         for (var i = 0; i < jobsGroupByTime[prop].length; i++) {
-                            if (job.movingTimeStart >= jobsGroupByTime[prop][i].movingTimeStart && job.movingTimeStart <= jobsGroupByTime[prop][i].movingTimeEnd || job.movingTimeEnd >= jobsGroupByTime[prop][i].movingTimeStart && job.movingTimeEnd <= jobsGroupByTime[prop][i].movingTimeEnd) {
+                            if (moment(job.movingTimeStart, "HH:mm").valueOf() >= moment(jobsGroupByTime[prop][i].movingTimeStart, "HH:mm").valueOf() && moment(job.movingTimeStart, "HH:mm").valueOf() <= moment(jobsGroupByTime[prop][i].movingTimeEnd, "HH:mm").valueOf() || moment(job.movingTimeEnd, "HH:mm").valueOf() >= moment(jobsGroupByTime[prop][i].movingTimeStart, "HH:mm").valueOf() && moment(job.movingTimeEnd, "HH:mm").valueOf() <= moment(jobsGroupByTime[prop][i].movingTimeEnd, "HH:mm").valueOf()) {
                                 jobsGroupByTime[_prop].push(job);
                                 groupNotFound = false;
                                 break;
@@ -53764,21 +53714,17 @@ var CalendarService = function () {
     }, {
         key: "addJob",
         value: function addJob(job) {
+            var _this3 = this;
+
             this.fullMonth[this.selectedDayWeekIndex].days[this.selectedDayIndex].jobs.push(job);
-            var jobsByTime = this.fullMonth[this.selectedDayWeekIndex].days[this.selectedDayIndex].jobsByTime;
-            var isJobAdded = false;
-            jobsByTime.forEach(function (time) {
-                if (time.time === job.movingTime) {
-                    time.jobs.push(job);
-                    isJobAdded = true;
-                }
+            var jobs = this.fullMonth[this.selectedDayWeekIndex].days[this.selectedDayIndex].jobs;
+            console.log(jobs);
+            console.log(this.sortJobsByDuration(jobs));
+            jobs.forEach(function (job) {
+                job.duration = _this3.getJobDuration(job);
+                job.offset = _this3.setJobOffset(job);
             });
-            if (!isJobAdded) {
-                jobsByTime.push({
-                    time: job.movingTime,
-                    jobs: [job]
-                });
-            }
+            this.fullMonth[this.selectedDayWeekIndex].days[this.selectedDayIndex].jobsByTime = this.groupJobsByTime(this.sortJobsByDuration(jobs)).slice();
         }
     }, {
         key: "showNextMonth",
@@ -53935,11 +53881,7 @@ exports.DaysList = DaysList;
 },{"./add-job-modal.service":383,"./calendar-service.ts":385,"@angular/core":148}],388:[function(require,module,exports){
 "use strict";
 
-function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-        throw new TypeError("Cannot call a class as a function");
-    }
-}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Job = function Job() {
     var movingDate = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
